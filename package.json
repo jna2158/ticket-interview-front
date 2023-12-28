@@ -2,7 +2,7 @@
   "name": "ticket-interview-front",
   "version": "1.0.0",
   "description": "ticket-interview-front",
-  "main": "./src/index.js",
+  "main": "./src/index.tsx",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack serve"
@@ -19,9 +19,14 @@
   },
   "homepage": "https://github.com/jna2158/ticket-interview-front#readme",
   "dependencies": {
+    "@types/jest": "^29.5.11",
+    "@types/node": "^20.10.5",
+    "@types/react": "^18.2.45",
+    "@types/react-dom": "^18.2.18",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.21.1"
+    "react-router-dom": "^6.21.1",
+    "typescript": "^5.3.3"
   },
   "devDependencies": {
     "@babel/cli": "^7.23.4",
