@@ -1,21 +1,40 @@
-const path = require("path");
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  mode: "development",
-  entry: {
-    main: "./src/index.js",
-  },
+  entry: path.join(__dirname, 'src', 'index.js'),
+  mode: 'development',
   output: {
-    filename: "[name].js",
-    path: path.resolve("./dist"),
+    path: path.resolve(__dirname, 'dist'),
   },
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.?(js|jsx)$/,
         exclude: /node_modules/,
-        loader: "babel-loader", // 바벨 로더를 추가한다
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env', '@babel/preset-react'],
+          },
+        },
+        resolve: {
+          extensions: ['', '.js', '.jsx'],
+        },
+      },
+      {
+        test: /\.css$/i,
+        use: ['style-loader', 'css-loader'],
+      },
+      {
+        test: /\.(png|jp(e*)g|svg|gif)$/,
+        use: ['file-loader'],
       },
     ],
   },
-}
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: "./public/index.html",
+    })
+  ],
+};
