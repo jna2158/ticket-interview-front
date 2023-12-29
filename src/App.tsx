@@ -1,6 +1,6 @@
+import Navbar from './components/navbar';
 import React from 'react';
 import styled from "styled-components";
-import GlobalStyle from './styles/GlobalStyles';
 
 const Wrap = styled.div`
   width: 80px;
@@ -11,11 +11,9 @@ const Wrap = styled.div`
 class App extends React.Component {
   render() {
     return (
-      <GlobalStyle>
-        <div className='App'>
-          <Wrap>어서오세요.</Wrap>
-        </div>
-      </GlobalStyle>
+      <div className='App'>
+        <Navbar />
+      </div>
     );
   }
 }
