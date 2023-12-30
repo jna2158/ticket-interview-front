@@ -1,13 +1,29 @@
 import React from "react";
 import styled from "styled-components";
+import googleLogo from "../assets/image/btn_google.svg";
+import kakaoLogo from "../assets/image/btn_kakao.svg";
+import naverLogo from "../assets/image/btn_naver.svg";
+import mainLogo from "../assets/image/account_baby.png";
 
 export default function LoginModal({setIsLoginModalOpen}: {setIsLoginModalOpen: any}) {
 
   return(
     <LoginModalOverlay>
       <Modal>
-        <SpanBox><i className="fa-solid fa-x" onClick={() => setIsLoginModalOpen(false)}></i></SpanBox>
-        <Title>지금 로그인하고<br/><span>Ticket Interview에서</span><br/>당신의 면접을 더욱 효과적으로 준비하세요.</Title>
+        <SpanBox><i className="fa-solid fa-circle-xmark" onClick={() => setIsLoginModalOpen(false)}></i></SpanBox>
+        <Header>Ticket Interview</Header>
+        <Title>지금 로그인하여<br /><span>Ticket Interview에서</span> 당신의 면접을<br />더욱 효과적으로 준비하세요.</Title>
+        <MainLogo>
+          <img src={ mainLogo }></img>
+        </MainLogo>
+        <Hr />
+
+        <SocialLoginInfo>간편하게 SNS 로그인</SocialLoginInfo>
+        <SocialLoginSection>
+          <img src={ googleLogo }></img>
+          <img src={ kakaoLogo }></img>
+          <img src={ naverLogo }></img>
+        </SocialLoginSection>
       </Modal>
     </LoginModalOverlay>
   )
@@ -25,7 +41,7 @@ const LoginModalOverlay = styled.section`
 
 const Modal = styled.div`
   padding: 2rem;
-  background-color: ${({theme}) => theme.colors.gray0};
+  background-color: ${({theme}) => theme.colors.gray9};
   border-radius: 1.3rem;
   position: fixed;
   display: flex;
@@ -40,21 +56,63 @@ const Modal = styled.div`
 `;
 
 const SpanBox = styled.span`
-  i.fa-solid.fa-x {
+  i.fa-solid.fa-circle-xmark {
     display: flex;
     justify-content: flex-end;
     font-size: 20px;
     cursor: pointer;
+    color: ${({theme}) => theme.colors.gray4};
   }
 `;
+
+const Header = styled.div`
+  font-family: 'Nano Sans Korean';
+  text-align: center;
+  font-size: 1.2rem;
+  color: ${({theme}) => theme.colors.gray5};
+`;
+
 const Title = styled.div`
   font-family: 'Nano Sans Korean';
   font-size: 1.5rem;
   font-weight: 600;
   line-height: 2.8rem;
-  color: #495057;
+  margin-top: 1%;
+  color: ${({theme}) => theme.colors.white};
     & span {
       font-weight: 700;
-      color: #343a40;
+      color: #ff922b;
+    }
+`;
+
+const MainLogo = styled.div`
+    text-align: center;
+    & img {
+      width: 40%;
+    }
+`;
+
+const Hr = styled.hr`
+  border: none;
+  height: 1px;
+  background-color: ${({theme}) => theme.colors.gray7};
+`;
+
+const SocialLoginInfo = styled.div`
+    font-family: 'Nano Sans Korean';
+    text-align: center;
+    font-size: .7rem;
+    color: ${({theme}) => theme.colors.gray5};
+`
+
+const SocialLoginSection = styled.div`
+    height: 5vh;
+    display: flex;
+    gap: 3%;
+    justify-content: center;
+    margin-top: 1%;
+    & img {
+      width: 3vw;
+      cursor: pointer;
     }
 `;
