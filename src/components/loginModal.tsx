@@ -4,6 +4,8 @@ import googleLogo from "../assets/image/btn_google.svg";
 import kakaoLogo from "../assets/image/btn_kakao.svg";
 import naverLogo from "../assets/image/btn_naver.svg";
 import mainLogo from "../assets/image/account_baby.png";
+// oauth
+import GoogleButton from "./oauth/googleButton";
 
 export default function LoginModal({setIsLoginModalOpen}: {setIsLoginModalOpen: any}) {
 
@@ -20,7 +22,7 @@ export default function LoginModal({setIsLoginModalOpen}: {setIsLoginModalOpen: 
 
         <SocialLoginInfo>간편하게 SNS 로그인</SocialLoginInfo>
         <SocialLoginSection>
-          <img src={ googleLogo }></img>
+          <GoogleButton />
           <img src={ kakaoLogo }></img>
           <img src={ naverLogo }></img>
         </SocialLoginSection>
