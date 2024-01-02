@@ -1,11 +1,10 @@
 import React from "react";
 import styled from "styled-components";
-import googleLogo from "../assets/image/btn_google.svg";
-import kakaoLogo from "../assets/image/btn_kakao.svg";
-import naverLogo from "../assets/image/btn_naver.svg";
 import mainLogo from "../assets/image/account_baby.png";
 // oauth
 import GoogleButton from "./oauth/googleButton";
+import KakaoButton from "./oauth/kakaoButton";
+import NaverButton from "./oauth/naverButton";
 
 export default function LoginModal({setIsLoginModalOpen}: {setIsLoginModalOpen: any}) {
 
@@ -23,8 +22,8 @@ export default function LoginModal({setIsLoginModalOpen}: {setIsLoginModalOpen: 
         <SocialLoginInfo>간편하게 SNS 로그인</SocialLoginInfo>
         <SocialLoginSection>
           <GoogleButton />
-          <img src={ kakaoLogo }></img>
-          <img src={ naverLogo }></img>
+          <KakaoButton />
+          <NaverButton />
         </SocialLoginSection>
       </Modal>
     </LoginModalOverlay>
