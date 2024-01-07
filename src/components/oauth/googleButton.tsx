@@ -6,8 +6,9 @@ import googleLogo from "../../assets/image/btn_google.svg";
 export default function GoogleButton() {
 
   const login = useGoogleLogin({
-    onSuccess: tokenResponse => console.log('access_token', tokenResponse),
-    
+    onSuccess: codeResponse => console.log(codeResponse),
+    flow: 'auth-code',
+    redirect_uri: "https://ticket-interview.com/accounts/google/login/"
   });
   return (
     <img src={ googleLogo } onClick={() => login()}></img>

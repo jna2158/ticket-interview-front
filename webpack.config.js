@@ -2,11 +2,12 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
 const dotenv = require("dotenv");
+
 dotenv.config();
 
 module.exports = {
   entry: path.join(__dirname, 'src', 'index.tsx'),
-  mode: 'development',
+  mode: 'production',
   output: {
     path: path.resolve(__dirname, 'dist'),
   },
@@ -43,4 +44,9 @@ module.exports = {
       process: "process/browser.js"
     })
   ],
+  performance: {
+    hints: false,
+    maxEntrypointSize: 512000,
+    maxAssetSize: 512000
+  }
 };

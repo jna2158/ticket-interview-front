@@ -6,7 +6,7 @@ RUN npm install
 COPY . .
 RUN npm run build
 
-FROM nginx:1.18.0
+FROM nginx:1.24.0
 
 # Remove the default Nginx configuration
 RUN rm -rf /etc/nginx/conf.d
@@ -15,7 +15,7 @@ RUN rm -rf /etc/nginx/conf.d
 COPY ./react_nginx.conf /etc/nginx/conf.d/default.conf
 
 # Copy the built React app from the 'build' stage to the Nginx 'html' directory
-COPY --from=build /app/build /usr/share/nginx/public
+COPY --from=build /app/dist /usr/share/nginx/public
 
 # Expose port 80
 EXPOSE 80
