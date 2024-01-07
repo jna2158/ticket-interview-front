@@ -1,1 +1,1 @@
-export const API_HOST = 'https://www.ticket-itview.com';
+export const API_HOST = 'https://ticket-interview.com';
