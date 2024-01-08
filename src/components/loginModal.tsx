@@ -21,7 +21,7 @@ export default function LoginModal({setIsLoginModalOpen}: {setIsLoginModalOpen: 
 
         <SocialLoginInfo>간편하게 SNS 로그인</SocialLoginInfo>
         <SocialLoginSection>
-          <GoogleButton />
+          <GoogleButton setIsLoginModalOpen={setIsLoginModalOpen}/>
           <KakaoButton />
           <NaverButton />
         </SocialLoginSection>

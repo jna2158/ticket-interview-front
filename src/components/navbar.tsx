@@ -4,7 +4,7 @@ import LoginModal from "./loginModal";
 
 export default function Navbar() {
   /** state */
-  const [isLoginModalOpen, setIsLoginModalOpen] = useState(true);
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
 
   return(
     <section>
