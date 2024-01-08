@@ -2,13 +2,13 @@ import React from "react";
 // react-query
 import { useMutation } from "react-query";
 // oauth
-import { googleLogin } from "../../services/loginApi";
+import { googleLogin } from "../../services/login.service";
 import { CodeResponse, useGoogleLogin } from "@react-oauth/google";
 import googleLogo from "../../assets/image/btn_google.svg";
 import { API_HOST } from "../../shared/constant";
 
 export default function GoogleButton() {
-  
+
   /** google authorization server에 로그인 요청을 해서 authcode를 응답받는다. */
   const getAuthCode = useGoogleLogin({
     onSuccess: (codeResponse: Omit<CodeResponse, "codeResponse">) => {
