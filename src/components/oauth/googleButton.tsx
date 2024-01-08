@@ -1,39 +1,39 @@
-import React, { useState } from "react";
-import { useGoogleLogin } from "@react-oauth/google";
+import React from "react";
+// react-query
+import { useMutation } from "react-query";
+// oauth
+import { googleLogin } from "../../services/loginApi";
+import { CodeResponse, useGoogleLogin } from "@react-oauth/google";
 import googleLogo from "../../assets/image/btn_google.svg";
-import { useMutation, useQuery } from "react-query";
 import { API_HOST } from "../../shared/constant";
-import axios from "axios";
 
 export default function GoogleButton() {
-  /** google authorization server에 로그인 요청을 해서 authorizationCode를 응답받는다. */
-  const getAuthorizationCode = useGoogleLogin({
-    onSuccess: codeResponse => {
-      mutate(codeResponse.code);
+  
+  /** google authorization server에 로그인 요청을 해서 authcode를 응답받는다. */
+  const getAuthCode = useGoogleLogin({
+    onSuccess: (codeResponse: Omit<CodeResponse, "codeResponse">) => {
+      loginMutation.mutate(codeResponse.code)
     },
     flow: 'auth-code',
-    redirect_uri: "https://ticket-interview.com/accounts/google/login/"
+    redirect_uri: `${API_HOST}/accounts/google/login/`
   });
 
-  /** 로그인 요청 
-   * 
-   * @param id: google authorization code
-  */
-  const login = (code: string): Promise<any> => {
-    return axios.post(`${API_HOST}/api/accounts/googlelogin`, {code: code});
-  };
-
-
-  const { mutate } = useMutation((code: string) => login(code), {
-    onSuccess: () => { 	// mutate가 정상적으로 실행되면, 함수를 실행합니다.
-		  console.log("createPost success");
+  const loginMutation = useMutation(googleLogin, {
+    onMutate: variable => {
+      console.log("onMutate", variable);
     },
-    onError: () => { 	// mutate가 실패하면, 함수를 실행합니다.
-    	console.log("createPost error");
+    onError: (error, variable, context) => {
+      console.log(error);
+    },
+    onSuccess: (data, variables, context) => {
+      console.log("success", data, variables, context);
+    },
+    onSettled: () => {
+      console.log("end");
     }
-  });
+  })
 
   return (
-    <img src={ googleLogo } onClick={() => getAuthorizationCode()}></img>
+    <img src={ googleLogo } onClick={() => getAuthCode()}></img>
   )
 }
