@@ -15,7 +15,7 @@ export default function GoogleButton({setIsLoginModalOpen}: {setIsLoginModalOpen
       loginMutation.mutate(codeResponse.code)
     },
     flow: 'auth-code',
-    redirect_uri: `${API_HOST}/accounts/google/login/`
+    redirect_uri: `${API_HOST}/api/accounts/googlelogin`
   });
 
   const loginMutation = useMutation(googleLogin, {
