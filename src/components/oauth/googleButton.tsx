@@ -12,10 +12,10 @@ export default function GoogleButton({setIsLoginModalOpen}: {setIsLoginModalOpen
   /** google authorization server에 로그인 요청을 해서 authcode를 응답받는다. */
   const getAuthCode = useGoogleLogin({
     onSuccess: (codeResponse: Omit<CodeResponse, "codeResponse">) => {
-      // loginMutation.mutate(codeResponse.code)
+      loginMutation.mutate(codeResponse.code)
     },
     flow: 'auth-code',
-    redirect_uri: `${API_HOST}/api/accounts/googlelogin`
+    redirect_uri: `${API_HOST}/accounts/google/login/`
   });
 
   const loginMutation = useMutation(googleLogin, {
