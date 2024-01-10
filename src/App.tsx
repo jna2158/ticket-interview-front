@@ -1,6 +1,8 @@
 import Navbar from './components/navbar';
 import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import styled from "styled-components";
+import GoogleOauthRedirect from './components/oauth/googleOauthRedirect';
 
 const Wrap = styled.div`
   width: 80px;
@@ -12,7 +14,12 @@ class App extends React.Component {
   render() {
     return (
       <div className='App'>
-        <Navbar />
+        <BrowserRouter>
+          <Navbar />
+          <Routes>
+            <Route path="accounts/google/login/" element={<GoogleOauthRedirect />}></Route>
+          </Routes>
+        </BrowserRouter>
       </div>
     );
   }
