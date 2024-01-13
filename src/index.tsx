@@ -8,7 +8,9 @@ import theme from "./styles/Theme";
 import { QueryClient, QueryClientProvider } from 'react-query';
 // route
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+// oauth redirect
 import GoogleOauthRedirect from "./components/oauth/login-redirect/googleOauthRedirect";
+import KakaoOauthRedirect from "./components/oauth/login-redirect/kakaoOauthRefirect";
 
 const rootElement = document.getElementById('root');
 const root = ReactDOM.createRoot(rootElement!);
@@ -24,6 +26,7 @@ root.render(
             <Routes>
               <Route path="/" element={<App />}></Route>
               <Route path="accounts/google/login/" element={<GoogleOauthRedirect />}></Route>
+              <Route path="accounts/kakao/login/" element={<KakaoOauthRedirect />}></Route>
             </Routes>
           </BrowserRouter>
         </ThemeProvider>
