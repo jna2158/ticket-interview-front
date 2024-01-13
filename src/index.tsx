@@ -4,28 +4,29 @@ import App from "./App";
 import { ThemeProvider } from "styled-components";
 import GlobalStyle from "./styles/GlobalStyles";
 import theme from "./styles/Theme";
-// oauth
-import { GoogleOAuthProvider } from "@react-oauth/google";
 // react-query
 import { QueryClient, QueryClientProvider } from 'react-query';
+// route
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import GoogleOauthRedirect from "./components/oauth/login-redirect/googleOauthRedirect";
 
 const rootElement = document.getElementById('root');
-if (!rootElement) throw new Error('Failed to find the root element');
-const root = ReactDOM.createRoot(rootElement);
-
-const clientId: string = process.env.GOOGLE_OAUTH_CLIENT_ID || '';
-
+const root = ReactDOM.createRoot(rootElement!);
 const queryClient = new QueryClient();
 
 root.render(
   <QueryClientProvider client={queryClient}>
-    <GoogleOAuthProvider clientId={clientId}>
       <React.StrictMode>
         <ThemeProvider theme={theme}>
           <GlobalStyle />
-          <App />
+          <BrowserRouter>
+            {/* route */}
+            <Routes>
+              <Route path="/" element={<App />}></Route>
+              <Route path="accounts/google/login/" element={<GoogleOauthRedirect />}></Route>
+            </Routes>
+          </BrowserRouter>
         </ThemeProvider>
       </React.StrictMode>
-    </GoogleOAuthProvider>
   </QueryClientProvider>
 );

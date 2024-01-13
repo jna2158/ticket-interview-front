@@ -3,17 +3,20 @@ import React, { useEffect } from "react";
 import { useMutation } from "react-query";
 // oauth
 import { googleLogin } from "../../../services/login.service";
+import { HOME_URL } from "../../../shared/constant";
 
 export default function GoogleOauthRedirect() {
   const authCode: string = new URL(window.location.href).searchParams.get("code")!;
 
   const loginMutation = useMutation(googleLogin, {
-    onSuccess: (data, variables, context) => {
-      console.log("success", data, variables, context);
-      localStorage.setItem("ACCESS_TOKEN", data.data.access_token);
+    onSuccess: ({ data }) => {
+      localStorage.setItem("ACCESS_TOKEN", data.access_token);
+      localStorage.setItem("username", data.username);
+      localStorage.setItem("email", data.email);
+      window.location.href = HOME_URL;
     },
-    onError: (error, variable, context) => {
-      console.log("error", error);
+    onError: (error) => {
+      console.log(error);
     },
   });
 
@@ -25,7 +28,7 @@ export default function GoogleOauthRedirect() {
   }, []);
 
   return (
-    <div>...</div>
+    null
   )
     
 }

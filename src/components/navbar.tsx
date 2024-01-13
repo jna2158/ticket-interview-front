@@ -5,13 +5,18 @@ import LoginModal from "./loginModal";
 export default function Navbar() {
   /** state */
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+  const isLogged = localStorage.getItem("username");
 
   return(
     <section>
       <Header>
         <Nav>
           <Logo/> 로고
-          <Login onClick={() => setIsLoginModalOpen(true)}>로그인</Login>
+          {
+            isLogged
+            ? <Profile><strong>{localStorage.getItem("username")}</strong> 님</Profile>
+            : <Login onClick={() => setIsLoginModalOpen(true)}>로그인</Login>
+          }
         </Nav>
       </Header>
       {
@@ -44,3 +49,10 @@ const Login = styled.div`
   font-size: 1.3rem;
   font-family: 'Nanum Gothic';
 `;
+
+const Profile = styled.div`
+  float: right;
+  cursor: pointer
+  font-size: 1.3rem;
+  font-family: 'Nanum Gothic';
+`
