@@ -50,7 +50,7 @@ const Modal = styled.div`
   gap: 10px;
   top: 50%;
   left: 50%;
-  width: 35vw;
+  width: 28vw;
   height: auto;
   transform: translate(-50%, -50%);
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
@@ -75,7 +75,7 @@ const Header = styled.div`
 
 const Title = styled.div`
   font-family: 'Nano Sans Korean';
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   font-weight: 600;
   line-height: 2.8rem;
   margin-top: 1%;
