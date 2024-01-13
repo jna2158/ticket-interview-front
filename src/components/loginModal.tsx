@@ -2,9 +2,9 @@ import React from "react";
 import styled from "styled-components";
 import mainLogo from "../assets/image/account_baby.png";
 // oauth
-import GoogleButton from "./oauth/googleButton";
-import KakaoButton from "./oauth/kakaoButton";
-import NaverButton from "./oauth/naverButton";
+import GoogleButton from "./oauth/login/googleButton";
+import KakaoButton from "./oauth/login/kakaoButton";
+import NaverButton from "./oauth/login/naverButton";
 
 export default function LoginModal({setIsLoginModalOpen}: {setIsLoginModalOpen: any}) {
 
@@ -21,7 +21,7 @@ export default function LoginModal({setIsLoginModalOpen}: {setIsLoginModalOpen: 
 
         <SocialLoginInfo>간편하게 SNS 로그인</SocialLoginInfo>
         <SocialLoginSection>
-          <GoogleButton setIsLoginModalOpen={setIsLoginModalOpen}/>
+          <GoogleButton />
           <KakaoButton />
           <NaverButton />
         </SocialLoginSection>

@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 // react-query
 import { useMutation } from "react-query";
 // oauth
-import { googleLogin } from "../../services/login.service";
+import { googleLogin } from "../../../services/login.service";
 
 export default function GoogleOauthRedirect() {
   const authCode: string = new URL(window.location.href).searchParams.get("code")!;

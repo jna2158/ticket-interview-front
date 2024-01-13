@@ -2,7 +2,7 @@ import Navbar from './components/navbar';
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import styled from "styled-components";
-import GoogleOauthRedirect from './components/oauth/googleOauthRedirect';
+import GoogleOauthRedirect from './components/oauth/login-redirect/googleOauthRedirect';
 
 const Wrap = styled.div`
   width: 80px;

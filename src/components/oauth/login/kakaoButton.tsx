@@ -1,5 +1,5 @@
 import React from "react";
-import kakaoLogo from "../../assets/image/btn_kakao.svg";
+import kakaoLogo from "../../../assets/image/btn_kakao.svg";
 
 export default function KakaoButton() {
   return (
