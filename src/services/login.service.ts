@@ -15,6 +15,6 @@ export const googleLogin = (code: string): Promise<any> => {
  * 
  * @param code: authCode
  */
-export const kakaoLogin = (code: string): Promise<any> => {
-  return axios.post(`${API_HOST}/api/accounts/kakaologin`, {code: code});
+export const kakaoLogin = (query: any): Promise<any> => {
+  return axios.get(`${API_HOST}/api/accounts/kakaologin?code=${query.authCode}&state=${query.state}`);
 }

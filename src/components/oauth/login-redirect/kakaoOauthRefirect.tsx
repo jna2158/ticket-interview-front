@@ -7,7 +7,7 @@ import { HOME_URL } from "../../../shared/constant";
 
 export default function KakaoOauthRedirect() {
   const authCode: string = new URL(window.location.href).searchParams.get("code")!;
-
+  const state: string = new URL(window.location.href).searchParams.get("state")!;
   const loginMutation = useMutation(kakaoLogin, {
     onSuccess: ({ data }) => {
       localStorage.setItem("ACCESS_TOKEN", data.access_token);
@@ -24,7 +24,7 @@ export default function KakaoOauthRedirect() {
     if (!authCode) {
       return;
     }
-    loginMutation.mutate(authCode);
+    loginMutation.mutate({authCode: authCode, state: state});
   }, []);
 
   return (
