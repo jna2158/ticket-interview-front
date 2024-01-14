@@ -11,6 +11,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 // oauth redirect
 import GoogleOauthRedirect from "./components/oauth/login-redirect/googleOauthRedirect";
 import KakaoOauthRedirect from "./components/oauth/login-redirect/kakaoOauthRefirect";
+import NaverOauthRedirect from "./components/oauth/login-redirect/naverOauthRedirect";
 
 const rootElement = document.getElementById('root');
 const root = ReactDOM.createRoot(rootElement!);
@@ -27,6 +28,7 @@ root.render(
               <Route path="/" element={<App />}></Route>
               <Route path="accounts/google/login/" element={<GoogleOauthRedirect />}></Route>
               <Route path="accounts/kakao/login/" element={<KakaoOauthRedirect />}></Route>
+              <Route path="accounts/naver/login/" element={<NaverOauthRedirect />}></Route>
             </Routes>
           </BrowserRouter>
         </ThemeProvider>
