@@ -27,5 +27,5 @@ export const kakaoLogin = (code: string): Promise<any> => {
  * @param state: state
  */
 export const naverLogin = (query: any): Promise<any> => {
-  return axios.get(`${API_HOST}/api/accounts/kakaologin?code=${query.authCode}&state=${query.state}`);
+  return axios.get(`${API_HOST}/api/accounts/naverlogin?code=${query.authCode}&state=${query.state}`);
 }
