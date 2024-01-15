@@ -2,9 +2,9 @@ import React from "react";
 import styled from "styled-components";
 import mainLogo from "../assets/image/account_baby.png";
 // oauth
-import GoogleButton from "./oauth/login/googleButton";
-import KakaoButton from "./oauth/login/kakaoButton";
-import NaverButton from "./oauth/login/naverButton";
+import GoogleButton from "./oauth/login/GoogleButton";
+import KakaoButton from "./oauth/login/KakaoButton";
+import NaverButton from "./oauth/login/NaverButton";
 
 export default function LoginModal({setIsLoginModalOpen}: {setIsLoginModalOpen: any}) {
 

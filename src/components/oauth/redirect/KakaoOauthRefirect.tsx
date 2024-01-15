@@ -2,13 +2,12 @@ import React, { useEffect } from "react";
 // react-query
 import { useMutation } from "react-query";
 // oauth
-import { naverLogin } from "../../../services/login.service";
-import { HOME_URL } from "../../../shared/constant";
+import { kakaoLogin } from "../../../services/LoginService";
+import { HOME_URL } from "../../../shared/ApiConstant";
 
-export default function NaverOauthRedirect() {
+export default function KakaoOauthRedirect() {
   const authCode: string = new URL(window.location.href).searchParams.get("code")!;
-  const state: string = new URL(window.location.href).searchParams.get("state")!;
-  const loginMutation = useMutation(naverLogin, {
+  const loginMutation = useMutation(kakaoLogin, {
     onSuccess: ({ data }) => {
       localStorage.setItem("ACCESS_TOKEN", data.access_token);
       localStorage.setItem("username", data.username);
@@ -24,7 +23,7 @@ export default function NaverOauthRedirect() {
     if (!authCode) {
       return;
     }
-    loginMutation.mutate({authCode: authCode, state: state});
+    loginMutation.mutate(authCode);
   }, []);
 
   return (

@@ -9,9 +9,9 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 // route
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 // oauth redirect
-import GoogleOauthRedirect from "./components/oauth/login-redirect/googleOauthRedirect";
-import KakaoOauthRedirect from "./components/oauth/login-redirect/kakaoOauthRefirect";
-import NaverOauthRedirect from "./components/oauth/login-redirect/naverOauthRedirect";
+import GoogleOauthRedirect from "./components/oauth/redirect/GoogleOauthRedirect";
+import KakaoOauthRedirect from "./components/oauth/redirect/KakaoOauthRefirect";
+import NaverOauthRedirect from "./components/oauth/redirect/NaverOauthRedirect";
 
 const rootElement = document.getElementById('root');
 const root = ReactDOM.createRoot(rootElement!);

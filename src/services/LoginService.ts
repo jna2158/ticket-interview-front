@@ -1,4 +1,4 @@
-import { API_HOST } from "../shared/constant";
+import { API_HOST } from "../shared/ApiConstant";
 import axios from "axios";
 
 /**

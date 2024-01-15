@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { API_HOST } from './constant';
+import { API_HOST } from './ApiConstant';
 
 // 요청 인터셉터 설정
 axios.interceptors.request.use(

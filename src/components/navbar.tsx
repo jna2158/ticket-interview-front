@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import LoginModal from "./loginModal";
+import LoginModal from "./LoginModal";
 
 export default function Navbar() {
   /** state */
