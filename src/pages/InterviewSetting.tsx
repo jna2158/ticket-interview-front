@@ -63,9 +63,7 @@ export default function InterviewSetting() {
       checked: false,
       problems: 0
     }
-  ]
-  
-
+  ];
 
   return (
     <Wrapper>
@@ -109,21 +107,20 @@ const SectionWrapper = styled.div`
 `;
 
 const LeftSection = styled.div`
-  background-color: ivory;
-  width: 40%;
+  width: 50%;
   height: auto;
 `;
 
 const CheckBoxWrap = styled.section`
-  border: 1px solid black;
-  padding: 3%;
+  border-right: 1px solid gray;
+  padding: .5%;
 `;
 
 const CheckInput = styled.input`
   appearance: none;
   width: 2.5vw;
   height: 5vh;
-  border: .7px solid #11264f;
+  border: 1.1px solid #11264f;
   border-radius: 0.35rem;
   position: relative;
   padding: 1px;
@@ -150,10 +147,11 @@ const CheckLabel = styled.label`
   left: 2%;
   border-bottom: 1px solid gray;
   font-family: 'Gowun Dodum';
+  font-weight: 600;
+  cursor: pointer;
 `;
 
 const RightSection = styled.div`
-  background-color: skyblue;
-  width: 60%;
+  width: 50%;
   height: auto;
 `;

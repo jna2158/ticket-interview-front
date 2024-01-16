@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import LoginModal from "./LoginModal";
+import logo from "../../src/assets/image/account_baby.png";
 
 export default function Navbar() {
   /** state */
@@ -11,7 +12,9 @@ export default function Navbar() {
     <section>
       <Header>
         <Nav>
-          <Logo/> 로고
+          <Logo>
+            <a><img src={logo}></img></a>
+          </Logo>
           {
             isLogged
             ? <Profile><strong>{localStorage.getItem("username")}</strong> 님</Profile>
@@ -33,14 +36,18 @@ const Header = styled.header`
 `;
 
 const Nav = styled.nav`
-  width: calc(100% - 120px);
+  width: calc(100% - 50px);
   margin: auto;
   line-height: 70px;
 `;
 
 const Logo = styled.div`
   float: left;
-  width: 130px;
+  & a {
+    & img {
+      width: 5.5vw;
+    }
+  }
 `;
 
 const Login = styled.div`
