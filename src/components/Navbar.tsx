@@ -52,7 +52,7 @@ const Login = styled.div`
 
 const Profile = styled.div`
   float: right;
-  cursor: pointer
+  cursor: pointer;
   font-size: 1.3rem;
   font-family: 'Nanum Gothic';
-`
+`;
