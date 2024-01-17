@@ -8,58 +8,32 @@ export default function Navbar() {
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const isLogged = localStorage.getItem("username");
 
-  return(
+  return (
     <section>
-      <Header>
-        <Nav>
-          <Logo>
-            <a><img src={logo}></img></a>
-          </Logo>
+      <Nav className="navbar">
+        <div className="container-fluid">
+          <a className="navbar-brand" href="#">
+            <img src={logo} alt="Logo" width="36" height="36" className="d-inline-block align-text-top" /> Ticket Interview
+          </a>
           {
             isLogged
-            ? <Profile><strong>{localStorage.getItem("username")}</strong> 님</Profile>
-            : <Login onClick={() => setIsLoginModalOpen(true)}>로그인</Login>
+            ? <span className="navbar-brand mb-0 h1">{localStorage.getItem("username")} 님</span>
+            : <button className="btn btn-outline-secondary" type="button" onClick={() => setIsLoginModalOpen(true)}>Login</button>
           }
-        </Nav>
-      </Header>
+        </div>
+      </Nav>
       {
         isLoginModalOpen ? <LoginModal setIsLoginModalOpen={setIsLoginModalOpen}/> : null
       }
     </section>
-  )
+  );
 }
 
 /** Style */
-const Header = styled.header`
-  background-color: #fff;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.12);
-`;
-
 const Nav = styled.nav`
-  width: calc(100% - 50px);
-  margin: auto;
-  line-height: 70px;
-`;
-
-const Logo = styled.div`
-  float: left;
-  & a {
-    & img {
-      width: 5.5vw;
-    }
-  }
-`;
-
-const Login = styled.div`
-  float: right;
-  cursor: pointer;
-  font-size: 1.3rem;
-  font-family: 'Nanum Gothic';
-`;
-
-const Profile = styled.div`
-  float: right;
-  cursor: pointer;
-  font-size: 1.3rem;
-  font-family: 'Nanum Gothic';
+  height: 8.5vh;
+  background-color: #f3fbff;;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.12);
+  font-family: "Gowun Dodum";
+  font-weight: 600;
 `;
