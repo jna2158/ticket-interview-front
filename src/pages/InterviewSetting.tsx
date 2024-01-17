@@ -66,33 +66,23 @@ export default function InterviewSetting() {
   ];
 
   return (
-    <Wrapper>
-      <SettingTitle>Setting</SettingTitle>
-      <SectionWrapper>
-        <LeftSection>
-          <CheckBoxWrap>
-            {
-              subjectArr.map(el => {
-                return (
-                  <>
-                    <CheckInput type="checkbox" id={el.id} name={el.id}/>
-                    <CheckLabel htmlFor={el.id}>{el.title}</CheckLabel>
-                    <br /><br />
-                  </>
-                )
-              })
-            }
-          </CheckBoxWrap>
-        </LeftSection>
-        <RightSection>오른쪽 영역</RightSection>
-      </SectionWrapper>
-    </Wrapper>
+    <SectionWrapper>
+      <LeftSection>
+          {
+            subjectArr.map(el => {
+              return (
+                <CheckBoxWrapper className="form-check">
+                  <CheckInput className="form-check-input" type="checkbox" id={el.id} />
+                  <CheckLabel className="form-check-label" htmlFor={el.id}>{el.title}</CheckLabel>
+                </CheckBoxWrapper>
+              )
+            })
+          }
+      </LeftSection>
+      <RightSection>오른쪽 영역</RightSection>
+    </SectionWrapper>
   )
 }
-
-const Wrapper = styled.div`
-`;
-
 const SettingTitle = styled.div`
   font-size: 2rem;
   text-align: center;
@@ -106,51 +96,32 @@ const SectionWrapper = styled.div`
   display: flex;
 `;
 
+/* Left Section */
 const LeftSection = styled.div`
   width: 50%;
   height: auto;
+  border-right: 1px solid gray;
 `;
 
-const CheckBoxWrap = styled.section`
-  border-right: 1px solid gray;
-  padding: .5%;
+const CheckBoxWrapper = styled.div`
+  border: 1px solid black;
+  margin: 2%;
+  height: 7.5vh;
 `;
 
 const CheckInput = styled.input`
-  appearance: none;
-  width: 2.5vw;
-  height: 5vh;
-  border: 1.1px solid #11264f;
-  border-radius: 0.35rem;
-  position: relative;
-  padding: 1px;
-  background: rgb(68, 84, 167);
-  background: radial-gradient(circle, rgba(68, 84, 167, 1) 0%, rgba(174, 178, 227, 1) 100%);
-  background-clip: content-box;
-  &:checked {
-    &::before {
-      content: '\\2713';
-      display: block;
-      position: absolute;
-      top: 60%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      color: white;
-      font-size: 2.5rem;
-    }
-  }
+  /* width: 30px;
+  height: 30px; */
 `;
 
 const CheckLabel = styled.label`
-  position: relative;
-  top: -13px;
-  left: 2%;
-  border-bottom: 1px solid gray;
   font-family: 'Gowun Dodum';
   font-weight: 600;
+  font-size: 1.6rem;
   cursor: pointer;
 `;
 
+/* Right Section */
 const RightSection = styled.div`
   width: 50%;
   height: auto;
