@@ -1,7 +1,23 @@
-import React from "react"
-import styled from "styled-components"
+import React from "react";
+import styled from "styled-components";
+import { useSpring, animated } from "react-spring";
+
+const calc = (x: number, y: number) => [-(y - window.innerHeight / 2) / 20, (x - window.innerWidth / 2) / 20, 1.1];
+const trans = (x: number, y: number, s: number) => `perspective(600px) rotateX(${x}deg) rotateY(${y}deg) scale(${s})`;
 
 export default function InterviewSetting() {
+  const [props, set] = useSpring(() => ([
+    { id: "structure", xys: [0, 0, 1], config: { mass: 5, tension: 350, friction: 40 } },
+    { id: "algorithm", xys: [0, 0, 1], config: { mass: 5, tension: 350, friction: 40 } },
+    { id: "network", xys: [0, 0, 1], config: { mass: 5, tension: 350, friction: 40 } },
+    { id: "os", xys: [0, 0, 1], config: { mass: 5, tension: 350, friction: 40 } },
+    { id: "database", xys: [0, 0, 1], config: { mass: 5, tension: 350, friction: 40 } },
+    { id: "python", xys: [0, 0, 1], config: { mass: 5, tension: 350, friction: 40 } },
+    { id: "javascript", xys: [0, 0, 1], config: { mass: 5, tension: 350, friction: 40 } },
+    { id: "programming", xys: [0, 0, 1], config: { mass: 5, tension: 350, friction: 40 } },
+    { id: "personal", xys: [0, 0, 1], config: { mass: 5, tension: 350, friction: 40 } }
+  ]));
+
   interface Subject {
     readonly id: string;
     title: string;
@@ -66,16 +82,36 @@ export default function InterviewSetting() {
     }
   ];
 
+  const handleCheckBox = (e: any) => {
+    // console.log(e.target.id);
+    // console.log(e.target.checked);
+  }
+  const handleCheckBoxClick = (e: any) => {
+    // set({ xys: calc(1200, 500) })
+    console.log("handleCheckBoxClick >> ");
+    console.log(e.target.id);
+    if (!e.target.id) return;
+
+    console.log("props");
+    console.log(props);
+    
+    
+  }
+
   return (
     <SectionWrapper>
       <LeftSection>
           {
             subjectArr.map(el => {
               return (
-                <CheckBoxWrapper className="form-check">
-                  <CheckInput className="form-check-input" type="checkbox" id={el.id} />
-                  <CheckLabel className="form-check-label border-bottom" htmlFor={el.id}>{el.title}</CheckLabel>
-                </CheckBoxWrapper>
+                <animated.div
+                  onClick={(e: any) => handleCheckBoxClick(e)}
+                >
+                  <CheckBoxWrapper className="form-check">
+                    <CheckInput onChange={(e: any) => handleCheckBox(e)} className="form-check-input" type="checkbox" id={el.id} />
+                    <CheckLabel className="form-check-label border-bottom" htmlFor={el.id}>{el.title}</CheckLabel>
+                  </CheckBoxWrapper>
+                </animated.div>
               )
             })
           }
