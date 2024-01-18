@@ -8,6 +8,7 @@ export default function InterviewSetting() {
     checked: boolean;
     problems: number;
   };
+
   const subjectArr: Subject[] = [
     {
       id: "structure",
@@ -73,7 +74,7 @@ export default function InterviewSetting() {
               return (
                 <CheckBoxWrapper className="form-check">
                   <CheckInput className="form-check-input" type="checkbox" id={el.id} />
-                  <CheckLabel className="form-check-label" htmlFor={el.id}>{el.title}</CheckLabel>
+                  <CheckLabel className="form-check-label border-bottom" htmlFor={el.id}>{el.title}</CheckLabel>
                 </CheckBoxWrapper>
               )
             })
@@ -94,6 +95,7 @@ const SettingTitle = styled.div`
 
 const SectionWrapper = styled.div`
   display: flex;
+  margin-left: 2%;
 `;
 
 /* Left Section */
@@ -104,21 +106,27 @@ const LeftSection = styled.div`
 `;
 
 const CheckBoxWrapper = styled.div`
-  border: 1px solid black;
   margin: 2%;
   height: 7.5vh;
 `;
 
 const CheckInput = styled.input`
-  /* width: 30px;
-  height: 30px; */
+  width: 30px;
+  height: 30px;
+  border-radius: .25rem;
 `;
 
 const CheckLabel = styled.label`
   font-family: 'Gowun Dodum';
   font-weight: 600;
   font-size: 1.6rem;
+  margin-left: 30px;
   cursor: pointer;
+
+  &:hover {
+    transition: all .5s;
+    transform: scale(1.05);
+  }
 `;
 
 /* Right Section */
