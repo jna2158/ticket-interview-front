@@ -31,7 +31,7 @@ export default function InterviewSetting() {
       checked: false,
       problems: 0,
       left: "0%",
-      top: "0px"
+      top: "0vh"
     },
     {
       id: "network",
@@ -39,7 +39,7 @@ export default function InterviewSetting() {
       checked: false,
       problems: 0,
       left: "0%",
-      top: "0px"
+      top: "0vh"
     },
     {
       id: "os",
@@ -47,7 +47,7 @@ export default function InterviewSetting() {
       checked: false,
       problems: 0,
       left: "0%",
-      top: "0px"
+      top: "0vh"
     },
     {
       id: "database",
@@ -55,7 +55,7 @@ export default function InterviewSetting() {
       checked: false,
       problems: 0,
       left: "0%",
-      top: "0px"
+      top: "0vh"
     },
     {
       id: "python",
@@ -63,7 +63,7 @@ export default function InterviewSetting() {
       checked: false,
       problems: 0,
       left: "0%",
-      top: "0px"
+      top: "0vh"
     },
     {
       id: "javascript",
@@ -71,7 +71,7 @@ export default function InterviewSetting() {
       checked: false,
       problems: 0,
       left: "0%",
-      top: "0px"
+      top: "0vh"
     },
     {
       id: "programming",
@@ -79,7 +79,7 @@ export default function InterviewSetting() {
       checked: false,
       problems: 0,
       left: "0%",
-      top: "0px"
+      top: "0vh"
     },
     {
       id: "personal",
@@ -87,7 +87,7 @@ export default function InterviewSetting() {
       checked: false,
       problems: 0,
       left: "0%",
-      top: "0px"
+      top: "0vh"
     }
   ]);   
   
@@ -143,6 +143,24 @@ const SubjectItem = ({el, subjectArr, setSubjectArr}: any) => {
       };
       setSubjectArr(updatedSubjectArr);
     }
+
+    if (e.target.checked) {
+      for (let i = clickedIndex + 1; i <= subjectArr.length - 1; i++) {
+        updatedSubjectArr[i] = {
+          ...updatedSubjectArr[i],
+          top: `${Number(subjectArr[i].top.split("vh")[0]) - 8}vh`
+        };
+      }
+    } else {
+      for (let i = clickedIndex + 1; i <= subjectArr.length - 1; i++) {
+        updatedSubjectArr[i] = {
+          ...updatedSubjectArr[i],
+          top: `${Number(subjectArr[i].top.split("vh")[0]) + 8}vh`
+        };
+      }
+    }
+    
+    setSubjectArr(updatedSubjectArr);
   }
 
   return (
@@ -188,7 +206,7 @@ const LeftSection = styled.div`
 const CheckBoxWrapper = styled.div<{box: ISubject}>`
   margin: 2%;
   height: 7.5vh;
-  transition: left 2s, transform 2s;
+  transition: left 2s, top .5s, transform 2s;
   left: ${(props: any) => {
     return props.box.left;
   }};
