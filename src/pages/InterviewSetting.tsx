@@ -122,16 +122,14 @@ const SubjectItem = ({el, subjectArr, setSubjectArr}: any) => {
    * @params e: event
    */
   const handleCheckBoxClick = (e: any) => {
-    console.log("handleCheckBoxClick >> ");
-    console.log(subjectArr);
-    
     if (!e.target || !e.target.id) return;
 
     // 애니메이션
     e.target.checked ? set({ xys: calc(1000, 500)}) : set({ xys: [0, 0, 1] });
 
-    // 위치 이동
+    // 오른쪽으로 위치 이동
     const clickedIndex = _.findIndex(subjectArr, {id: e.target.id});
+    const checkedCount = _.filter(subjectArr, {checked: e.target.checked});
     const updatedSubjectArr = [...subjectArr];
 
     if (clickedIndex !== -1) {
@@ -144,20 +142,13 @@ const SubjectItem = ({el, subjectArr, setSubjectArr}: any) => {
       setSubjectArr(updatedSubjectArr);
     }
 
-    if (e.target.checked) {
-      for (let i = clickedIndex + 1; i <= subjectArr.length - 1; i++) {
-        updatedSubjectArr[i] = {
-          ...updatedSubjectArr[i],
-          top: `${Number(subjectArr[i].top.split("vh")[0]) - 8}vh`
-        };
-      }
-    } else {
-      for (let i = clickedIndex + 1; i <= subjectArr.length - 1; i++) {
-        updatedSubjectArr[i] = {
-          ...updatedSubjectArr[i],
-          top: `${Number(subjectArr[i].top.split("vh")[0]) + 8}vh`
-        };
-      }
+    // 왼쪽에 있는 item 위치 이동
+    const num = e.target.checked ? -8 : 8;
+    for (let i = clickedIndex + 1; i <= subjectArr.length - 1; i++) {
+      updatedSubjectArr[i] = {
+        ...updatedSubjectArr[i],
+        top: `${Number(subjectArr[i].top.split("vh")[0]) + num}vh`
+      };
     }
     
     setSubjectArr(updatedSubjectArr);
