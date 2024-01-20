@@ -13,132 +13,66 @@ interface ISubject {
   left: string;
 };
 
-// const [subjectArr, setSubjectArr] = useState<ISubject[]>([
-//   {
-//     id: "structure",
-//     title: "1",
-//     checked: false,
-//     problems: 0,
-//     left: "0%"
-//   },
-//   {
-//     id: "algorithm",
-//     title: "2",
-//     checked: false,
-//     problems: 0,
-//     left: "0%"
-//   },
-//   {
-//     id: "network",
-//     title: "3",
-//     checked: false,
-//     problems: 0,
-//     left: "0%"
-//   },
-//   {
-//     id: "os",
-//     title: "4",
-//     checked: false,
-//     problems: 0,
-//     left: "0%"
-//   },
-//   {
-//     id: "database",
-//     title: "5",
-//     checked: false,
-//     problems: 0,
-//     left: "0%"
-//   },
-//   {
-//     id: "python",
-//     title: "6",
-//     checked: false,
-//     problems: 0,
-//     left: "0%"
-//   },
-//   {
-//     id: "javascript",
-//     title: "7",
-//     checked: false,
-//     problems: 0,
-//     left: "0%"
-//   },
-//   {
-//     id: "programming",
-//     title: "8",
-//     checked: false,
-//     problems: 0,
-//     left: "0%"
-//   },
-//   {
-//     id: "personal",
-//     title: "9",
-//     checked: false,
-//     problems: 0,
-//     left: "0%"
-//   }
-// ]);
-
 const subjectArr = [
   {
     id: "structure",
-    title: "1",
+    title: "자료구조",
     checked: false,
     problems: 0,
     left: "0%"
   },
   {
     id: "algorithm",
-    title: "2",
+    title: "알고리즘",
     checked: false,
     problems: 0,
     left: "0%"
   },
   {
     id: "network",
-    title: "3",
+    title: "네트워크",
     checked: false,
     problems: 0,
     left: "0%"
   },
   {
     id: "os",
-    title: "4",
+    title: "운영체제",
     checked: false,
     problems: 0,
     left: "0%"
   },
   {
     id: "database",
-    title: "5",
+    title: "데이터베이스",
     checked: false,
     problems: 0,
     left: "0%"
   },
   {
     id: "python",
-    title: "6",
+    title: "Python",
     checked: false,
     problems: 0,
     left: "0%"
   },
   {
     id: "javascript",
-    title: "7",
+    title: "Javascript",
     checked: false,
     problems: 0,
     left: "0%"
   },
   {
     id: "programming",
-    title: "8",
+    title: "프로그래밍 공통",
     checked: false,
     problems: 0,
     left: "0%"
   },
   {
     id: "personal",
-    title: "9",
+    title: "인성",
     checked: false,
     problems: 0,
     left: "0%"
