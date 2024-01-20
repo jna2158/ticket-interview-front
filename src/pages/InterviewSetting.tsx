@@ -12,7 +12,9 @@ interface ISubject {
   checked: boolean;
   problems: number;
   left: string;
+  top: string;
 };
+
 export default function InterviewSetting() {
   const [subjectArr, setSubjectArr] = useState([
     {
@@ -20,63 +22,72 @@ export default function InterviewSetting() {
       title: "자료구조",
       checked: false,
       problems: 0,
-      left: "0%"
+      left: "0%",
+      top: "0px"
     },
     {
       id: "algorithm",
       title: "알고리즘",
       checked: false,
       problems: 0,
-      left: "0%"
+      left: "0%",
+      top: "0px"
     },
     {
       id: "network",
       title: "네트워크",
       checked: false,
       problems: 0,
-      left: "0%"
+      left: "0%",
+      top: "0px"
     },
     {
       id: "os",
       title: "운영체제",
       checked: false,
       problems: 0,
-      left: "0%"
+      left: "0%",
+      top: "0px"
     },
     {
       id: "database",
       title: "데이터베이스",
       checked: false,
       problems: 0,
-      left: "0%"
+      left: "0%",
+      top: "0px"
     },
     {
       id: "python",
       title: "Python",
       checked: false,
       problems: 0,
-      left: "0%"
+      left: "0%",
+      top: "0px"
     },
     {
       id: "javascript",
       title: "Javascript",
       checked: false,
       problems: 0,
-      left: "0%"
+      left: "0%",
+      top: "0px"
     },
     {
       id: "programming",
       title: "프로그래밍 공통",
       checked: false,
       problems: 0,
-      left: "0%"
+      left: "0%",
+      top: "0px"
     },
     {
       id: "personal",
       title: "인성",
       checked: false,
       problems: 0,
-      left: "0%"
+      left: "0%",
+      top: "0px"
     }
   ]);   
   
@@ -94,7 +105,7 @@ export default function InterviewSetting() {
   );
 }
 
-const SubjectItem = ({el, subjectArr, setSubjectArr}: any) => {
+const SubjectItem = ({el, subjectArr, setSubjectArr}: any) => {  
   const [props, set] = useSpring(() => ({
     xys: [0, 0, 1],
     config: { mass: 5, tension: 350, friction: 40 },
@@ -111,6 +122,9 @@ const SubjectItem = ({el, subjectArr, setSubjectArr}: any) => {
    * @params e: event
    */
   const handleCheckBoxClick = (e: any) => {
+    console.log("handleCheckBoxClick >> ");
+    console.log(subjectArr);
+    
     if (!e.target || !e.target.id) return;
 
     // 애니메이션
@@ -124,7 +138,8 @@ const SubjectItem = ({el, subjectArr, setSubjectArr}: any) => {
       const left = subjectArr[clickedIndex].left === "0%" ? "110%" : "0%";
       updatedSubjectArr[clickedIndex] = {
         ...updatedSubjectArr[clickedIndex],
-        left: left,
+        left,
+        checked: e.target.checked
       };
       setSubjectArr(updatedSubjectArr);
     }
@@ -135,7 +150,7 @@ const SubjectItem = ({el, subjectArr, setSubjectArr}: any) => {
       onClick={(e: any) => handleCheckBoxClick(e)}
       style={{ transform: props.xys.to(trans) }}
     >
-      <CheckBoxWrapper box={el.left} className="form-check">
+      <CheckBoxWrapper box={el} className="form-check">
         <CheckInput
           className="form-check-input"
           type="checkbox"
@@ -170,12 +185,15 @@ const LeftSection = styled.div`
   border-right: 1px solid gray;
 `;
 
-const CheckBoxWrapper = styled.div<{box: string}>`
+const CheckBoxWrapper = styled.div<{box: ISubject}>`
   margin: 2%;
   height: 7.5vh;
   transition: left 2s, transform 2s;
   left: ${(props: any) => {
-    return props.box;
+    return props.box.left;
+  }};
+  top: ${(props: any) => {
+    return props.box.top;
   }};
 `;
 
