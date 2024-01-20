@@ -96,7 +96,6 @@ export default function InterviewSetting() {
 }
 
 const SubjectItem = ({el}: any) => {
-  
   const [props, set] = useSpring(() => ({
     xys: [0, 0, 1],
     config: { mass: 5, tension: 350, friction: 40 }
@@ -119,7 +118,7 @@ const SubjectItem = ({el}: any) => {
       onClick={(e: any) => handleCheckBoxClick(e)}
       style={{ transform: props.xys.to(trans) }}
     >
-      <CheckBoxWrapper left={el.left} className="form-check">
+      <CheckBoxWrapper box={el.left} className="form-check">
         <CheckInput
           className="form-check-input"
           type="checkbox"
@@ -154,11 +153,11 @@ const LeftSection = styled.div`
   border-right: 1px solid gray;
 `;
 
-const CheckBoxWrapper = styled.div`
+const CheckBoxWrapper = styled.div<{box: string}>`
   margin: 2%;
   height: 7.5vh;
-  left: ${(props) => {
-    return props.left;
+  left: ${(props: any) => {
+    return props.box;
   }};
 `;
 
