@@ -127,33 +127,55 @@ const SubjectItem = ({el, subjectArr, setSubjectArr}: any) => {
     // 애니메이션
     e.target.checked ? set({ xys: calc(1000, 500)}) : set({ xys: [0, 0, 1] });
 
-    // 오른쪽으로 위치 이동
     const clickedIndex = _.findIndex(subjectArr, {id: e.target.id});
-    const checkedCount = _.filter(subjectArr, {checked: e.target.checked}).length;
+    const checkedItem = _.filter(subjectArr, {checked: true});
     const updatedSubjectArr = [...subjectArr];
 
+    // [1]. 오른쪽 또는 왼쪽으로 위치 이동
     if (clickedIndex !== -1) {
       const left = subjectArr[clickedIndex].left === "0%" ? "110%" : "0%";
+      let cnt = 0;
+      for (let i = 0; i <= clickedIndex - 1; i++) {
+        if (updatedSubjectArr[i].checked === false) {
+          cnt++;
+        }
+      }
+
+      let top = "0vh";
+      if (e.target.checked) {
+        top = `${-(clickedIndex * 9.5) + (checkedItem.length * 9.5)}vh`;
+      } else {
+        // top = `${-(clickedIndex * 9.5) + ((clickedIndex - cnt) * 9.5)}vh`;
+        top = `${(cnt * 9.5) - (clickedIndex * 9.5)}vh`;
+      }
       updatedSubjectArr[clickedIndex] = {
         ...updatedSubjectArr[clickedIndex],
         left,
-        top: `${-(clickedIndex * 8.2) + (checkedCount * 8.2)}vh`,
+        top,
         checked: e.target.checked
       };
-      setSubjectArr(updatedSubjectArr);
     }
 
-    // 왼쪽에 있는 item 위치 이동
-    const num = e.target.checked ? -8 : 8;
+    // [2]. 왼쪽에 있는 item 위치 이동
+    const num = e.target.checked ? -9.5 : 9.5;
     for (let i = clickedIndex + 1; i <= subjectArr.length - 1; i++) {
-      if (!subjectArr[i].checked) {
+      if (!subjectArr[i].checked && subjectArr[i].id !== e.target.id) {
         updatedSubjectArr[i] = {
           ...updatedSubjectArr[i],
           top: `${Number(subjectArr[i].top.split("vh")[0]) + num}vh`
         };
       }
     }
-    
+
+    // [3]. 오른쪽에 있는 item 위치 이동
+    // if (!e.target.checked) {
+    //   for (let i = 0; i <= subjectArr.length - 1; i++) {
+    //     if (subjectArr[i].checked) {
+          
+    //     }
+    //   }
+    // }
+
     setSubjectArr(updatedSubjectArr);
   }
 
@@ -187,7 +209,7 @@ const SettingTitle = styled.div`
 
 const SectionWrapper = styled.div`
   display: flex;
-  margin-left: 2%;
+  margin-left: 17px;
 `;
 
 /* Left Section */
@@ -195,10 +217,11 @@ const LeftSection = styled.div`
   width: 50%;
   height: auto;
   border-right: 1px solid gray;
+  margin-left: 7%;
 `;
 
 const CheckBoxWrapper = styled.div<{box: ISubject}>`
-  margin: 2%;
+  margin: 2vh;
   height: 7.5vh;
   transition: left 2s, top .5s, transform 2s;
   left: ${(props: any) => {
