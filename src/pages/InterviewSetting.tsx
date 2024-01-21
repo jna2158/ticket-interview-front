@@ -23,7 +23,7 @@ export default function InterviewSetting() {
       checked: false,
       problems: 0,
       left: "0%",
-      top: "0px"
+      top: "0vh"
     },
     {
       id: "algorithm",
@@ -129,7 +129,7 @@ const SubjectItem = ({el, subjectArr, setSubjectArr}: any) => {
 
     // 오른쪽으로 위치 이동
     const clickedIndex = _.findIndex(subjectArr, {id: e.target.id});
-    const checkedCount = _.filter(subjectArr, {checked: e.target.checked});
+    const checkedCount = _.filter(subjectArr, {checked: e.target.checked}).length;
     const updatedSubjectArr = [...subjectArr];
 
     if (clickedIndex !== -1) {
@@ -137,6 +137,7 @@ const SubjectItem = ({el, subjectArr, setSubjectArr}: any) => {
       updatedSubjectArr[clickedIndex] = {
         ...updatedSubjectArr[clickedIndex],
         left,
+        top: `${-(clickedIndex * 8.2) + (checkedCount * 8.2)}vh`,
         checked: e.target.checked
       };
       setSubjectArr(updatedSubjectArr);
@@ -145,10 +146,12 @@ const SubjectItem = ({el, subjectArr, setSubjectArr}: any) => {
     // 왼쪽에 있는 item 위치 이동
     const num = e.target.checked ? -8 : 8;
     for (let i = clickedIndex + 1; i <= subjectArr.length - 1; i++) {
-      updatedSubjectArr[i] = {
-        ...updatedSubjectArr[i],
-        top: `${Number(subjectArr[i].top.split("vh")[0]) + num}vh`
-      };
+      if (!subjectArr[i].checked) {
+        updatedSubjectArr[i] = {
+          ...updatedSubjectArr[i],
+          top: `${Number(subjectArr[i].top.split("vh")[0]) + num}vh`
+        };
+      }
     }
     
     setSubjectArr(updatedSubjectArr);
