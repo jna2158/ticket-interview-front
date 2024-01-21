@@ -145,7 +145,6 @@ const SubjectItem = ({el, subjectArr, setSubjectArr}: any) => {
       if (e.target.checked) {
         top = `${-(clickedIndex * 9.5) + (checkedItem.length * 9.5)}vh`;
       } else {
-        // top = `${-(clickedIndex * 9.5) + ((clickedIndex - cnt) * 9.5)}vh`;
         top = `${(cnt * 9.5) - (clickedIndex * 9.5)}vh`;
       }
       updatedSubjectArr[clickedIndex] = {
@@ -156,7 +155,7 @@ const SubjectItem = ({el, subjectArr, setSubjectArr}: any) => {
       };
     }
 
-    // [2]. 왼쪽에 있는 item 위치 이동
+    // [2]. 왼쪽에 있는 item의 높이 이동
     const num = e.target.checked ? -9.5 : 9.5;
     for (let i = clickedIndex + 1; i <= subjectArr.length - 1; i++) {
       if (!subjectArr[i].checked && subjectArr[i].id !== e.target.id) {
@@ -167,14 +166,18 @@ const SubjectItem = ({el, subjectArr, setSubjectArr}: any) => {
       }
     }
 
-    // [3]. 오른쪽에 있는 item 위치 이동
-    // if (!e.target.checked) {
-    //   for (let i = 0; i <= subjectArr.length - 1; i++) {
-    //     if (subjectArr[i].checked) {
-          
-    //     }
-    //   }
-    // }
+    // [3]. 오른쪽에 있는 item의 높이 이동
+    if (!e.target.checked) {
+      const idx = _.findIndex(checkedItem, {id: e.target.id});
+
+      for (let i = idx + 1; i <= checkedItem.length - 1; i++) {
+        const j = _.findIndex(updatedSubjectArr, {id: checkedItem[i].id});
+        updatedSubjectArr[j] = {
+          ...updatedSubjectArr[j],
+          top: `${Number(updatedSubjectArr[j].top.split("vh")[0]) - 9.5}vh`
+        };
+      }
+    }
 
     setSubjectArr(updatedSubjectArr);
   }
