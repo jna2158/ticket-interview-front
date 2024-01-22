@@ -14,12 +14,13 @@ interface ISubject {
   left: string;
   top: string;
 };
+const checkedItem: ISubject[] = [];
 
 export default function InterviewSetting() {
   const [subjectArr, setSubjectArr] = useState([
     {
       id: "structure",
-      title: "자료구조",
+      title: "1",
       checked: false,
       problems: 0,
       left: "0%",
@@ -27,7 +28,7 @@ export default function InterviewSetting() {
     },
     {
       id: "algorithm",
-      title: "알고리즘",
+      title: "2",
       checked: false,
       problems: 0,
       left: "0%",
@@ -35,7 +36,7 @@ export default function InterviewSetting() {
     },
     {
       id: "network",
-      title: "네트워크",
+      title: "3",
       checked: false,
       problems: 0,
       left: "0%",
@@ -43,7 +44,7 @@ export default function InterviewSetting() {
     },
     {
       id: "os",
-      title: "운영체제",
+      title: "4",
       checked: false,
       problems: 0,
       left: "0%",
@@ -51,7 +52,7 @@ export default function InterviewSetting() {
     },
     {
       id: "database",
-      title: "데이터베이스",
+      title: "5",
       checked: false,
       problems: 0,
       left: "0%",
@@ -59,7 +60,7 @@ export default function InterviewSetting() {
     },
     {
       id: "python",
-      title: "Python",
+      title: "6",
       checked: false,
       problems: 0,
       left: "0%",
@@ -67,7 +68,7 @@ export default function InterviewSetting() {
     },
     {
       id: "javascript",
-      title: "Javascript",
+      title: "7",
       checked: false,
       problems: 0,
       left: "0%",
@@ -75,7 +76,7 @@ export default function InterviewSetting() {
     },
     {
       id: "programming",
-      title: "프로그래밍 공통",
+      title: "8",
       checked: false,
       problems: 0,
       left: "0%",
@@ -83,7 +84,7 @@ export default function InterviewSetting() {
     },
     {
       id: "personal",
-      title: "인성",
+      title: "9",
       checked: false,
       problems: 0,
       left: "0%",
@@ -110,9 +111,7 @@ const SubjectItem = ({el, subjectArr, setSubjectArr}: any) => {
     xys: [0, 0, 1],
     config: { mass: 5, tension: 350, friction: 40 },
     onRest: () => {
-      setTimeout(() => {
-        set({ xys: [0, 0, 1] });
-      }, 800);
+      set({ xys: [0, 0, 1] });
     }
   }));
 
@@ -128,7 +127,18 @@ const SubjectItem = ({el, subjectArr, setSubjectArr}: any) => {
     e.target.checked ? set({ xys: calc(1000, 500)}) : set({ xys: [0, 0, 1] });
 
     const clickedIndex = _.findIndex(subjectArr, {id: e.target.id});
-    const checkedItem = _.filter(subjectArr, {checked: true});
+
+    if (e.target.checked) {
+      checkedItem.push({
+        id: subjectArr[clickedIndex].id,
+        title: subjectArr[clickedIndex].title,
+        checked: subjectArr[clickedIndex].checked,
+        problems: subjectArr[clickedIndex].problems,
+        left: subjectArr[clickedIndex].left,
+        top: subjectArr[clickedIndex].top
+      });
+    }
+    
     const updatedSubjectArr = [...subjectArr];
 
     // [1]. 오른쪽 또는 왼쪽으로 위치 이동
@@ -143,7 +153,7 @@ const SubjectItem = ({el, subjectArr, setSubjectArr}: any) => {
 
       let top = "0vh";
       if (e.target.checked) {
-        top = `${-(clickedIndex * 9.5) + (checkedItem.length * 9.5)}vh`;
+        top = `${-(clickedIndex * 9.5) + ((checkedItem.length - 1) * 9.5)}vh`;
       } else {
         top = `${(cnt * 9.5) - (clickedIndex * 9.5)}vh`;
       }
@@ -168,6 +178,7 @@ const SubjectItem = ({el, subjectArr, setSubjectArr}: any) => {
 
     // [3]. 오른쪽에 있는 item의 높이 이동
     if (!e.target.checked) {
+      
       const idx = _.findIndex(checkedItem, {id: e.target.id});
 
       for (let i = idx + 1; i <= checkedItem.length - 1; i++) {
@@ -177,6 +188,7 @@ const SubjectItem = ({el, subjectArr, setSubjectArr}: any) => {
           top: `${Number(updatedSubjectArr[j].top.split("vh")[0]) - 9.5}vh`
         };
       }
+      checkedItem.splice(idx, 1);
     }
 
     setSubjectArr(updatedSubjectArr);
@@ -200,16 +212,6 @@ const SubjectItem = ({el, subjectArr, setSubjectArr}: any) => {
     </animated.div>
   );
 }
-
-const SettingTitle = styled.div`
-  font-size: 2rem;
-  text-align: center;
-  align-items: center;
-  padding: 1%;
-  height: 10vh;
-  font-family: 'Gowun Dodum';
-`;
-
 const SectionWrapper = styled.div`
   display: flex;
   margin-left: 17px;
@@ -226,7 +228,7 @@ const LeftSection = styled.div`
 const CheckBoxWrapper = styled.div<{box: ISubject}>`
   margin: 2vh;
   height: 7.5vh;
-  transition: left 2s, top .5s, transform 2s;
+  transition: left .4s, top .5s, transform .5s;
   left: ${(props: any) => {
     return props.box.left;
   }};
