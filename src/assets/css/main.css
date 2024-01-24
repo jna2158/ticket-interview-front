@@ -1,0 +1,29 @@
+/* font */
+@import "../fonts/fontawesome-webfont.eot";
+@import "../fonts/fontawesome-webfont.svg";
+@import "../fonts/fontawesome-webfont.ttf";
+@import "../fonts/fontawesome-webfont.woff";
+@import "../fonts/fontawesome-webfont.woff2";
+@import "../fonts/FontAwesome.otf";
+@import "../fonts/glyphicons-halflings-regular.eot";
+@import "../fonts/glyphicons-halflings-regular.svg";
+@import "../fonts/glyphicons-halflings-regular.ttf";
+@import "../fonts/glyphicons-halflings-regular.woff";
+@import "../fonts/glyphicons-halflings-regular.woff2";
+
+/* style */
+@import "../css/bootstrap.min.css";
+@import "../css/colors.css";
+@import "../css/colors_2.css";
+@import "../css/colors_3.css";
+@import "../css/colors_4.css";
+@import "../css/font-awesome.min.css";
+@import "../css/hallooou.css";
+@import "../css/parallax.css";
+
+@import "../css/plugins/animate.css";
+@import "../css/plugins/jquery.mb.YTPlayer.min.css";
+@import "../css/plugins/magnific-popup.css";
+@import "../css/plugins/owl.carousel.css";
+@import "../css/plugins/owl.theme.css";
+@import "../css/plugins/style.css";
