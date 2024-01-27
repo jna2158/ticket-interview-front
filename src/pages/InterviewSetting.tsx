@@ -26,70 +26,70 @@ export default function InterviewSetting() {
       left: "0%",
       top: "0vh"
     },
-    {
-      id: "algorithm",
-      title: "알고리즘",
-      checked: false,
-      problems: 0,
-      left: "0%",
-      top: "0vh"
-    },
-    {
-      id: "network",
-      title: "네트워크",
-      checked: false,
-      problems: 0,
-      left: "0%",
-      top: "0vh"
-    },
-    {
-      id: "os",
-      title: "운영체제",
-      checked: false,
-      problems: 0,
-      left: "0%",
-      top: "0vh"
-    },
-    {
-      id: "database",
-      title: "데이터베이스",
-      checked: false,
-      problems: 0,
-      left: "0%",
-      top: "0vh"
-    },
-    {
-      id: "python",
-      title: "Python",
-      checked: false,
-      problems: 0,
-      left: "0%",
-      top: "0vh"
-    },
-    {
-      id: "javascript",
-      title: "Javascript",
-      checked: false,
-      problems: 0,
-      left: "0%",
-      top: "0vh"
-    },
-    {
-      id: "programming",
-      title: "프로그래밍 일반",
-      checked: false,
-      problems: 0,
-      left: "0%",
-      top: "0vh"
-    },
-    {
-      id: "personal",
-      title: "인성",
-      checked: false,
-      problems: 0,
-      left: "0%",
-      top: "0vh"
-    }
+    // {
+    //   id: "algorithm",
+    //   title: "알고리즘",
+    //   checked: false,
+    //   problems: 0,
+    //   left: "0%",
+    //   top: "0vh"
+    // },
+    // {
+    //   id: "network",
+    //   title: "네트워크",
+    //   checked: false,
+    //   problems: 0,
+    //   left: "0%",
+    //   top: "0vh"
+    // },
+    // {
+    //   id: "os",
+    //   title: "운영체제",
+    //   checked: false,
+    //   problems: 0,
+    //   left: "0%",
+    //   top: "0vh"
+    // },
+    // {
+    //   id: "database",
+    //   title: "데이터베이스",
+    //   checked: false,
+    //   problems: 0,
+    //   left: "0%",
+    //   top: "0vh"
+    // },
+    // {
+    //   id: "python",
+    //   title: "Python",
+    //   checked: false,
+    //   problems: 0,
+    //   left: "0%",
+    //   top: "0vh"
+    // },
+    // {
+    //   id: "javascript",
+    //   title: "Javascript",
+    //   checked: false,
+    //   problems: 0,
+    //   left: "0%",
+    //   top: "0vh"
+    // },
+    // {
+    //   id: "programming",
+    //   title: "프로그래밍 일반",
+    //   checked: false,
+    //   problems: 0,
+    //   left: "0%",
+    //   top: "0vh"
+    // },
+    // {
+    //   id: "personal",
+    //   title: "인성",
+    //   checked: false,
+    //   problems: 0,
+    //   left: "0%",
+    //   top: "0vh"
+    // }
   ]);   
   
   return (
@@ -199,7 +199,7 @@ const SubjectItem = ({el, subjectArr, setSubjectArr}: any) => {
       onClick={(e: any) => handleCheckBoxClick(e)}
       style={{ transform: props.xys.to(trans) }}
     >
-      <CheckBoxWrapper box={el} className="form-check">
+      {/* <CheckBoxWrapper box={el} className="form-check">
         <CheckInput
           className="form-check-input"
           type="checkbox"
@@ -208,7 +208,25 @@ const SubjectItem = ({el, subjectArr, setSubjectArr}: any) => {
         <CheckLabel className="form-check-label border-bottom" htmlFor={el.id}>
           {el.title}
         </CheckLabel>
+      </CheckBoxWrapper> */}
+
+      <CheckBoxWrapper box={el} className="container">
+        <CheckInput
+          className="form-check-input"
+          type="checkbox"
+          id={el.id}
+        />
+        <CheckLabel className="container">
+          <div className="col-md-4">
+            <div className="row services-item sans-shadow text-center">
+              <i className="fa fa-cogs fa-3x"></i>
+              <h4>{el.title}</h4>
+              {/* <p>We build Wordpress and custom plugins and back-end solutions.</p> */}
+            </div>
+          </div>
+        </CheckLabel>
       </CheckBoxWrapper>
+
     </animated.div>
   );
 }
@@ -250,10 +268,10 @@ const CheckLabel = styled.label`
   margin-left: 30px;
   cursor: pointer;
 
-  &:hover {
+  /* &:hover {
     transition: all .5s;
     transform: scale(1.05);
-  }
+  } */
 `;
 /* // LeftSection -- */
 
