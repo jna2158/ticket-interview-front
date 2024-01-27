@@ -11,7 +11,6 @@ module.exports = {
   mode: 'development',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js', // JavaScript 파일의 이름 설정
   },
   module: {
     rules: [
@@ -22,6 +21,9 @@ module.exports = {
           loader: 'babel-loader'
         },
         resolve: {
+          alias: {
+            'jquery': path.resolve(__dirname, 'node_modules/jquery/dist/jquery.js')
+          },
           extensions: ['.js', '.jsx', '.ts', '.tsx'],
         },
       },
@@ -30,15 +32,18 @@ module.exports = {
         use: [MiniCssExtractPlugin.loader, 'css-loader'],
       },
       {
-        test: /\.(png|jp(e*)g|svg|gif)$/,
-        use: ['file-loader'],
+        test: /\.(png|jpg|jpeg|svg|gif)$/,
+        loader: 'file-loader',
+        options: {
+          outputPath: 'images/'
+        }
       },
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/,
-        include: path.resolve(__dirname, 'src/assets/fonts'),
-        use: [
-          'file-loader',
-        ],
+        loader: 'file-loader',
+        options: {
+          outputPath: 'fonts/'
+        }
       },
     ],
   },
@@ -53,7 +58,11 @@ module.exports = {
       process: "process/browser.js"
     }),
     new MiniCssExtractPlugin({
-      filename: '[name].css', // CSS 파일의 이름 설정
+      filename: '[name].css',
+    }),
+    new webpack.ProvidePlugin({
+      $: 'jquery',
+      jQuery: 'jquery',
     }),
   ],
   performance: {

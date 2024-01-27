@@ -4,6 +4,9 @@ import App from "./App";
 import { ThemeProvider } from "styled-components";
 import GlobalStyle from "./styles/GlobalStyles";
 import theme from "./styles/Theme";
+// import "../src/assets/js/main.js";
+import "../src/assets/css/main.css";
+
 // react-query
 import { QueryClient, QueryClientProvider } from 'react-query';
 // route
