@@ -3,6 +3,10 @@ import styled from "styled-components";
 import LoginModal from "./LoginModal";
 import logo from "../assets/images/logo.svg";
 
+import coverone from "../assets/images/cover-one.jpg";
+import covertwo from "../src/assets/images/cover-two.jpg";
+import coverthree from "../src/assets/images/cover-three.jpg";
+
 export default function Navbar() {
   /** state */
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
@@ -26,7 +30,7 @@ export default function Navbar() {
     //     isLoginModalOpen ? <LoginModal setIsLoginModalOpen={setIsLoginModalOpen}/> : null
     //   }
     // </section>
-    <nav className="navbar navbar-custom navbar-fixed-top" role="navigation">
+    <nav className="navbar navbar-custom top-nav-collapse" role="navigation">
       <div className="container">
         <div className="navbar-header pull-left">
           <a className="navbar-brand page-scroll" href="#page-top">

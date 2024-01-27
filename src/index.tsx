@@ -26,7 +26,6 @@ root.render(
         <ThemeProvider theme={theme}>
           <GlobalStyle />
           <BrowserRouter>
-            {/* route */}
             <Routes>
               <Route path="/" element={<App />}></Route>
               <Route path="accounts/google/login/" element={<GoogleOauthRedirect />}></Route>

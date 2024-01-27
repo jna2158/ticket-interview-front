@@ -12,7 +12,7 @@ import "../js/plugins/jquery.easing.min.js";
 import "../js/plugins/jquery.validate.min.js";
 import "../js/plugins/additional-methods.min.js";
 
-import "../js/hallooou.js";
+// import "../js/hallooou.js";
 
 import "../js/jquery.min.js";
 import "../js/bootstrap.js";
