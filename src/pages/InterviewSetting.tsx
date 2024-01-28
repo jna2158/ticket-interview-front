@@ -219,7 +219,7 @@ const SubjectItem = ({el, subjectArr, setSubjectArr}: any) => {
         <CheckLabel className="container">
           <div className="col-md-4">
             <div className="row services-item sans-shadow text-center">
-              <i className="fa fa-cogs fa-2x"></i>
+              <i className="fa fa-cogs fa-3x"></i>
               <h4>{el.title}</h4>
             </div>
           </div>
@@ -245,6 +245,7 @@ const LeftSection = styled.div`
 const CheckBoxWrapper = styled.div<{box: ISubject}>`
   margin: 3vh 0 7vh;
   height: 9.5vh;
+  max-width: 50%;
   transition: left .4s, top .5s, transform .5s;
   left: ${(props: any) => {
     return props.box.left;
@@ -258,15 +259,15 @@ const CheckInput = styled.input`
   width: 30px;
   height: 30px;
   border-radius: .25rem;
-  margin: 3.5% 0 0 !important;
+  margin: 7% 0 0 !important;
 `;
 
 const CheckLabel = styled.label`
   font-family: 'Gowun Dodum';
   font-weight: 600;
   font-size: 1.6rem;
-  margin-left: 5%;
-  max-width: 63vw;
+  margin-left: 15%;
+  max-width: 50%;
   cursor: pointer;
 `;
 /* // LeftSection -- */

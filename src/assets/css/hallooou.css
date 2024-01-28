@@ -757,8 +757,10 @@ video {
 
 
 .services-item{
+    width: 30vw;
+    height: 12vh;
     background: #f9f9f9;
-    padding: 7% 10% 7%;
+    padding: 3vh 10% 7%;
     margin: 5% 0;
     position: relative;
     color: #fff;
@@ -770,9 +772,9 @@ video {
 }
 
 .services-item h4{
-    margin: 0 0 0 15%;
+    margin: 0 0 0 18%;
     padding: 0;
-    font-size: 20px;
+    font-size: 24px;
     font-weight: 700;
     -webkit-transition: all .5s ease-in-out;
        -moz-transition: all .5s ease-in-out;
@@ -794,7 +796,7 @@ video {
 .services-item i{
     color: rgba(25,124,217, 1); /* Primary color, can be changed via colors.css */
     padding: 0;
-    margin: 0 0 10px 0;
+    margin: 0 0 10px 20px;
      -webkit-transition: all .2s ease-in-out;
         -moz-transition: all .2s ease-in-out;
              transition: all .2s ease-in-out;
