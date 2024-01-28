@@ -95,9 +95,9 @@ export default function InterviewSetting() {
   return (
     <SectionWrapper>
       <LeftSection>
-        {subjectArr.map((el: ISubject) => {
+        {subjectArr.map((el: ISubject, idx: number) => {
           return (
-            <SubjectItem el={el} subjectArr={subjectArr} setSubjectArr={setSubjectArr}/>
+            <SubjectItem key={idx} el={el} subjectArr={subjectArr} setSubjectArr={setSubjectArr}/>
           );
         })}
       </LeftSection>
@@ -153,9 +153,9 @@ const SubjectItem = ({el, subjectArr, setSubjectArr}: any) => {
 
       let top = "0vh";
       if (e.target.checked) {
-        top = `${-(clickedIndex * 9.5) + ((checkedItem.length - 1) * 9.5)}vh`;
+        top = `${-(clickedIndex * 16.5) + ((checkedItem.length - 1) * 16.5)}vh`;
       } else {
-        top = `${(cnt * 9.5) - (clickedIndex * 9.5)}vh`;
+        top = `${(cnt * 16.5) - (clickedIndex * 16.5)}vh`;
       }
       updatedSubjectArr[clickedIndex] = {
         ...updatedSubjectArr[clickedIndex],
@@ -166,7 +166,7 @@ const SubjectItem = ({el, subjectArr, setSubjectArr}: any) => {
     }
 
     // [2]. 왼쪽에 있는 item의 높이 이동
-    const num = e.target.checked ? -9.5 : 9.5;
+    const num = e.target.checked ? -16.5 : 16.5;
     for (let i = clickedIndex + 1; i <= subjectArr.length - 1; i++) {
       if (!subjectArr[i].checked && subjectArr[i].id !== e.target.id) {
         updatedSubjectArr[i] = {
@@ -185,7 +185,7 @@ const SubjectItem = ({el, subjectArr, setSubjectArr}: any) => {
         const j = _.findIndex(updatedSubjectArr, {id: checkedItem[i].id});
         updatedSubjectArr[j] = {
           ...updatedSubjectArr[j],
-          top: `${Number(updatedSubjectArr[j].top.split("vh")[0]) - 9}vh`
+          top: `${Number(updatedSubjectArr[j].top.split("vh")[0]) - 16.5}vh`
         };
       }
       checkedItem.splice(idx, 1);
@@ -210,7 +210,7 @@ const SubjectItem = ({el, subjectArr, setSubjectArr}: any) => {
         </CheckLabel>
       </CheckBoxWrapper> */}
 
-      <CheckBoxWrapper box={el} className="container">
+      <CheckBoxWrapper box={el} className="form-check container">
         <CheckInput
           className="form-check-input"
           type="checkbox"
@@ -236,14 +236,14 @@ const SectionWrapper = styled.div`
 
 /* Left Section */
 const LeftSection = styled.div`
-  width: 50%;
+  width: 45%;
   height: auto;
   border-right: 1px solid gray;
   margin-left: 7%;
 `;
 
 const CheckBoxWrapper = styled.div<{box: ISubject}>`
-  margin: 3vh 4vh 3vh;
+  margin: 3vh 0 7vh;
   height: 9.5vh;
   transition: left .4s, top .5s, transform .5s;
   left: ${(props: any) => {
@@ -258,27 +258,23 @@ const CheckInput = styled.input`
   width: 30px;
   height: 30px;
   border-radius: .25rem;
-  margin: 4.5% 0 0 !important;
+  margin: 3.5% 0 0 !important;
 `;
 
 const CheckLabel = styled.label`
   font-family: 'Gowun Dodum';
   font-weight: 600;
   font-size: 1.6rem;
-  margin-left: 4%;
+  margin-left: 5%;
+  max-width: 63vw;
   cursor: pointer;
-
-  /* &:hover {
-    transition: all .5s;
-    transform: scale(1.05);
-  } */
 `;
 /* // LeftSection -- */
 
 
 /* Right Section */
 const RightSection = styled.div`
-  width: 50%;
+  width: 65%;
   height: auto;
 `;
 /* // RightSection -- */

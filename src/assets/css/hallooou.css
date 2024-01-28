@@ -763,7 +763,6 @@ video {
     position: relative;
     color: #fff;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-    height: 9.5vh;
     overflow: hidden;
      -webkit-transition: background .5s ease-in-out;
         -moz-transition: background .5s ease-in-out;
@@ -771,9 +770,9 @@ video {
 }
 
 .services-item h4{
-    margin: 0 0 0 18%;
+    margin: 0 0 0 15%;
     padding: 0;
-    font-size: 17px;
+    font-size: 20px;
     font-weight: 700;
     -webkit-transition: all .5s ease-in-out;
        -moz-transition: all .5s ease-in-out;
