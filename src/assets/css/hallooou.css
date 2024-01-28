@@ -741,7 +741,7 @@ video {
     position: absolute;
     top: 0;
     right: 0;
-    border-width: 0 30px 30px 0;
+    border-width: 0 20px 20px 0;
     border-style: solid;
     border-color: #fff #fff rgba(25,124,217, 1) rgba(25,124,217, 1); /* Primary color, can be changed via colors.css */
     -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3), -1px 1px 1px rgba(0, 0, 0, 0.2);
@@ -758,10 +758,12 @@ video {
 
 .services-item{
     background: #f9f9f9;
-    padding: 30px 20px 20px;
-    margin: 15px 0;
+    padding: 7% 10% 7%;
+    margin: 5% 0;
     position: relative;
     color: #fff;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    height: 9.5vh;
     overflow: hidden;
      -webkit-transition: background .5s ease-in-out;
         -moz-transition: background .5s ease-in-out;
@@ -769,10 +771,10 @@ video {
 }
 
 .services-item h4{
-    margin: 0 0 10px 0;
+    margin: 0 0 0 18%;
     padding: 0;
-    font-size: 20px;
-    font-weight: 600;
+    font-size: 17px;
+    font-weight: 700;
     -webkit-transition: all .5s ease-in-out;
        -moz-transition: all .5s ease-in-out;
             transition: all .5s ease-in-out;

@@ -26,70 +26,70 @@ export default function InterviewSetting() {
       left: "0%",
       top: "0vh"
     },
-    // {
-    //   id: "algorithm",
-    //   title: "알고리즘",
-    //   checked: false,
-    //   problems: 0,
-    //   left: "0%",
-    //   top: "0vh"
-    // },
-    // {
-    //   id: "network",
-    //   title: "네트워크",
-    //   checked: false,
-    //   problems: 0,
-    //   left: "0%",
-    //   top: "0vh"
-    // },
-    // {
-    //   id: "os",
-    //   title: "운영체제",
-    //   checked: false,
-    //   problems: 0,
-    //   left: "0%",
-    //   top: "0vh"
-    // },
-    // {
-    //   id: "database",
-    //   title: "데이터베이스",
-    //   checked: false,
-    //   problems: 0,
-    //   left: "0%",
-    //   top: "0vh"
-    // },
-    // {
-    //   id: "python",
-    //   title: "Python",
-    //   checked: false,
-    //   problems: 0,
-    //   left: "0%",
-    //   top: "0vh"
-    // },
-    // {
-    //   id: "javascript",
-    //   title: "Javascript",
-    //   checked: false,
-    //   problems: 0,
-    //   left: "0%",
-    //   top: "0vh"
-    // },
-    // {
-    //   id: "programming",
-    //   title: "프로그래밍 일반",
-    //   checked: false,
-    //   problems: 0,
-    //   left: "0%",
-    //   top: "0vh"
-    // },
-    // {
-    //   id: "personal",
-    //   title: "인성",
-    //   checked: false,
-    //   problems: 0,
-    //   left: "0%",
-    //   top: "0vh"
-    // }
+    {
+      id: "algorithm",
+      title: "알고리즘",
+      checked: false,
+      problems: 0,
+      left: "0%",
+      top: "0vh"
+    },
+    {
+      id: "network",
+      title: "네트워크",
+      checked: false,
+      problems: 0,
+      left: "0%",
+      top: "0vh"
+    },
+    {
+      id: "os",
+      title: "운영체제",
+      checked: false,
+      problems: 0,
+      left: "0%",
+      top: "0vh"
+    },
+    {
+      id: "database",
+      title: "데이터베이스",
+      checked: false,
+      problems: 0,
+      left: "0%",
+      top: "0vh"
+    },
+    {
+      id: "python",
+      title: "Python",
+      checked: false,
+      problems: 0,
+      left: "0%",
+      top: "0vh"
+    },
+    {
+      id: "javascript",
+      title: "Javascript",
+      checked: false,
+      problems: 0,
+      left: "0%",
+      top: "0vh"
+    },
+    {
+      id: "programming",
+      title: "프로그래밍 일반",
+      checked: false,
+      problems: 0,
+      left: "0%",
+      top: "0vh"
+    },
+    {
+      id: "personal",
+      title: "인성",
+      checked: false,
+      problems: 0,
+      left: "0%",
+      top: "0vh"
+    }
   ]);   
   
   return (
@@ -185,7 +185,7 @@ const SubjectItem = ({el, subjectArr, setSubjectArr}: any) => {
         const j = _.findIndex(updatedSubjectArr, {id: checkedItem[i].id});
         updatedSubjectArr[j] = {
           ...updatedSubjectArr[j],
-          top: `${Number(updatedSubjectArr[j].top.split("vh")[0]) - 9.5}vh`
+          top: `${Number(updatedSubjectArr[j].top.split("vh")[0]) - 9}vh`
         };
       }
       checkedItem.splice(idx, 1);
@@ -219,9 +219,8 @@ const SubjectItem = ({el, subjectArr, setSubjectArr}: any) => {
         <CheckLabel className="container">
           <div className="col-md-4">
             <div className="row services-item sans-shadow text-center">
-              <i className="fa fa-cogs fa-3x"></i>
+              <i className="fa fa-cogs fa-2x"></i>
               <h4>{el.title}</h4>
-              {/* <p>We build Wordpress and custom plugins and back-end solutions.</p> */}
             </div>
           </div>
         </CheckLabel>
@@ -244,8 +243,8 @@ const LeftSection = styled.div`
 `;
 
 const CheckBoxWrapper = styled.div<{box: ISubject}>`
-  margin: 2vh;
-  height: 7.5vh;
+  margin: 3vh 4vh 3vh;
+  height: 9.5vh;
   transition: left .4s, top .5s, transform .5s;
   left: ${(props: any) => {
     return props.box.left;
@@ -259,13 +258,14 @@ const CheckInput = styled.input`
   width: 30px;
   height: 30px;
   border-radius: .25rem;
+  margin: 4.5% 0 0 !important;
 `;
 
 const CheckLabel = styled.label`
   font-family: 'Gowun Dodum';
   font-weight: 600;
   font-size: 1.6rem;
-  margin-left: 30px;
+  margin-left: 4%;
   cursor: pointer;
 
   /* &:hover {
