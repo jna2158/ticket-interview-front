@@ -1431,8 +1431,8 @@ img {
 
 /* lets have some constraints shall we */
 .container-fluid {
-  width: 93%;
-  max-width: 1200px;
+  width: 95vw;
+  /* max-width: 1500px; */
   margin-left: auto;
   margin-right: auto; }
 
