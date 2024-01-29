@@ -30,33 +30,16 @@ export default function Navbar() {
     //     isLoginModalOpen ? <LoginModal setIsLoginModalOpen={setIsLoginModalOpen}/> : null
     //   }
     // </section>
-    <nav className="navbar navbar-custom top-nav-collapse" role="navigation">
-      <div className="container">
+    <nav className="navbar-custom top-nav-collapse" role="navigation">
+      <div className="container-fluid">
         <div className="navbar-header pull-left">
           <a className="navbar-brand page-scroll" href="#page-top">
-            <span className="brand-logo"><img src={logo} alt="Hallooou - HTML5 Template" title="Hallooou - HTML5 Template" className="img-responsive"></img></span>
+            <span className="brand-logo"><img src={logo} alt="logo" title="logo" className="img-responsive"></img></span>
           </a>
         </div>
-        <div className="main-nav pull-right">
-          <div className="button_container toggle">
-            <span className="top"></span>
-            <span className="middle"></span>
-            <span className="bottom"></span>
-          </div>
-        </div>
-        <div className="overlay" id="overlay">
-          <nav className="overlay-menu">
-            <ul>
-              <li><a href="#about">About us</a></li>
-              <li><a href="#services">What we do</a></li>
-              <li><a href="#products">Why choose us</a></li>
-              <li><a href="#team">Our Team</a></li>
-              <li><a href="#portfolio">Portfolio</a></li>
-              <li><a href="#clients">Our clients</a></li>
-              <li><a href="#contact">Contact us</a></li>
-            </ul>
-          </nav>
-        </div>
+        <LoginButtonContainer className="main-nav pull-right">
+          <i className="bi bi-box-arrow-in-left"></i>
+        </LoginButtonContainer>
       </div>
     </nav>
   );
@@ -69,4 +52,11 @@ const Nav = styled.nav`
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.12);
   font-family: "Gowun Dodum";
   font-weight: 600;
+`;
+
+const LoginButtonContainer = styled.div`
+  color: white;
+  font-size: 35px;
+  cursor: pointer;
+  border: 1px solid black;
 `;
