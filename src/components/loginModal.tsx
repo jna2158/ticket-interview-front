@@ -54,7 +54,7 @@ const Modal = styled.div`
   width: 20vw;
   min-height: 50vh;
   transform: translate(-50%, -50%);
-  box-shadow: 1px 1px 108.8px 19.2px rgb(25,31,53);
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   background-color: rgb( 33, 41, 66 );
   border-radius: 9px;
   transform: translateX(-50%);
