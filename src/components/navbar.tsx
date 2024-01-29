@@ -1,11 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import LoginModal from "./LoginModal";
-import logo from "../assets/images/logo.svg";
-
-import coverone from "../assets/images/cover-one.jpg";
-import covertwo from "../src/assets/images/cover-two.jpg";
-import coverthree from "../src/assets/images/cover-three.jpg";
+import logo from "../assets/image/logo.svg";
 
 export default function Navbar() {
   /** state */
