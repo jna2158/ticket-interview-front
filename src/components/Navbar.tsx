@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import LoginModal from "./LoginModal";
-import logo from "../assets/images/logo.svg";
+import logo from "../assets/image/logo.svg";
 
 export default function Navbar() {
   /** state */
