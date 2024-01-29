@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import mainLogo from "../assets/image/account_baby.png";
+
 // oauth
 import GoogleButton from "./oauth/login/GoogleButton";
 import KakaoButton from "./oauth/login/KakaoButton";
@@ -12,19 +12,20 @@ export default function LoginModal({setIsLoginModalOpen}: {setIsLoginModalOpen: 
     <LoginModalOverlay>
       <Modal>
         <SpanBox><i className="fa-solid fa-circle-xmark" onClick={() => setIsLoginModalOpen(false)}></i></SpanBox>
-        <Header>Ticket Interview</Header>
-        <Title>지금 로그인하여<br /><span>Ticket Interview에서</span> 당신의 면접을<br />더욱 효과적으로 준비하세요.</Title>
-        <MainLogo>
-          <img src={ mainLogo }></img>
-        </MainLogo>
-        <Hr />
-
-        <SocialLoginInfo>간편하게 SNS 로그인</SocialLoginInfo>
-        <SocialLoginSection>
-          <GoogleButton />
-          <KakaoButton />
-          <NaverButton />
-        </SocialLoginSection>
+        <div className="animated bounceInDown">
+            <span className="error animated tada" id="msg"></span>
+              <Form name="form1" className="box">
+                <h4>Ticket<span> Interview</span></h4>
+                <h5>Sign in to your account.</h5>
+                <Hr />
+                <SocialLoginInfo>간편하게 SNS 로그인</SocialLoginInfo>
+                <SocialLoginSection>
+                  <GoogleButton />
+                  <KakaoButton />
+                  <NaverButton />
+                </SocialLoginSection>
+              </Form>
+          </div>
       </Modal>
     </LoginModalOverlay>
   )
@@ -48,13 +49,40 @@ const Modal = styled.div`
   position: fixed;
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  top: 50%;
+  top: 25%;
   left: 50%;
-  width: 28vw;
-  height: auto;
+  width: 20vw;
+  min-height: 50vh;
   transform: translate(-50%, -50%);
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  box-shadow: 1px 1px 108.8px 19.2px rgb(25,31,53);
+  background-color: rgb( 33, 41, 66 );
+  border-radius: 9px;
+  transform: translateX(-50%);
+  border-top: 10px solid #79a6fe;
+  border-bottom: 10px solid #8BD17C;
+  text-align: center;
+  margin: 0;
+`;
+
+const Form = styled.form`
+  & h4 {
+    color: #5c6bc0; 
+    font-size: 25px;
+    margin-top: 5%;
+  }
+
+  & span {
+    color: #dfdeee;
+    font-weight: lighter;
+  }
+
+  & h5 {
+    font-size: 18px;
+    color: #a1a4ad;
+    letter-spacing: 1.5px;
+    margin-top: -15px;
+    margin-bottom: 10%;
+  }
 `;
 
 const SpanBox = styled.span`
@@ -67,54 +95,28 @@ const SpanBox = styled.span`
   }
 `;
 
-const Header = styled.div`
-  font-family: 'Nano Sans Korean';
-  text-align: center;
-  font-size: 1.2rem;
-  color: ${({theme}) => theme.colors.gray5};
-`;
-
-const Title = styled.div`
-  font-family: 'Nano Sans Korean';
-  font-size: 1.3rem;
-  font-weight: 600;
-  line-height: 2.8rem;
-  margin-top: 1%;
-  color: ${({theme}) => theme.colors.white};
-    & span {
-      font-weight: 700;
-      color: #ff922b;
-    }
-`;
-
-const MainLogo = styled.div`
-    text-align: center;
-    & img {
-      width: 40%;
-    }
-`;
-
 const Hr = styled.hr`
   border: none;
   height: 1px;
+  margin-top: 18vh;
   background-color: ${({theme}) => theme.colors.gray7};
 `;
 
 const SocialLoginInfo = styled.div`
-    font-family: 'Nano Sans Korean';
-    text-align: center;
-    font-size: .7rem;
-    color: ${({theme}) => theme.colors.gray5};
+  font-family: 'Nano Sans Korean';
+  text-align: center;
+  font-size: 13px;
+  color: ${({theme}) => theme.colors.gray5};
 `
 
 const SocialLoginSection = styled.div`
-    height: 5vh;
-    display: flex;
-    gap: 3%;
-    justify-content: center;
-    margin-top: 1%;
-    & img {
-      width: 3vw;
-      cursor: pointer;
-    }
+  height: 5vh;
+  display: flex;
+  gap: 3%;
+  justify-content: center;
+  margin-top: 1%;
+  & img {
+    width: 3vw;
+    cursor: pointer;
+  }
 `;
