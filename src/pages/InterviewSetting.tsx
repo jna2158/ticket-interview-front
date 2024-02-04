@@ -199,17 +199,6 @@ const SubjectItem = ({el, subjectArr, setSubjectArr}: any) => {
       onClick={(e: any) => handleCheckBoxClick(e)}
       style={{ transform: props.xys.to(trans) }}
     >
-      {/* <CheckBoxWrapper box={el} className="form-check">
-        <CheckInput
-          className="form-check-input"
-          type="checkbox"
-          id={el.id}
-        />
-        <CheckLabel className="form-check-label border-bottom" htmlFor={el.id}>
-          {el.title}
-        </CheckLabel>
-      </CheckBoxWrapper> */}
-
       <CheckBoxWrapper box={el} className="form-check container">
         <CheckInput
           className="form-check-input"
@@ -224,6 +213,16 @@ const SubjectItem = ({el, subjectArr, setSubjectArr}: any) => {
             </div>
           </div>
         </CheckLabel>
+        {
+          el.checked
+          ? (
+            <CheckNumberInput className="input-group">
+              <input type="number" className="form-control" placeholder="1"/>
+            </CheckNumberInput>
+          )
+          : null
+        }
+        
       </CheckBoxWrapper>
 
     </animated.div>
@@ -243,6 +242,7 @@ const LeftSection = styled.div`
 `;
 
 const CheckBoxWrapper = styled.div<{box: ISubject}>`
+  display: flex;
   margin: 3vh 0 7vh;
   height: 9.5vh;
   max-width: 50%;
@@ -270,6 +270,14 @@ const CheckLabel = styled.label`
   max-width: 50%;
   cursor: pointer;
 `;
+
+const CheckNumberInput = styled.div`
+  min-width: 6vw;
+  min-height: 2vh;
+  margin-left: 22vw;
+  padding-top: 3vh;
+`;
+
 /* // LeftSection -- */
 
 
