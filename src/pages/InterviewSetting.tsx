@@ -118,7 +118,7 @@ const SubjectItem = ({el, subjectArr, setSubjectArr}: any) => {
   /**
    * 체크박스 클릭했을 때 애니메이션
    * 
-   * @params e: event
+   * @params e event
    */
   const handleCheckBoxClick = (e: any) => {
     if (!e.target || !e.target.id) return;
@@ -194,6 +194,37 @@ const SubjectItem = ({el, subjectArr, setSubjectArr}: any) => {
     setSubjectArr(updatedSubjectArr);
   }
 
+  /**
+   * input number를 변경했을 때 호출
+   * 
+   * @param e event
+   */
+  const changeNumberInput = (e: any) => {
+    console.log("changeNumberInput >> ");
+    console.log(e.target.value);
+    
+    const value = Number(e.target.value);
+    const isLogged = localStorage.getItem("username");
+  
+    if (value < 1) return;
+    
+    if (isLogged) {
+      if (value >= 10) {
+        console.log("로그인 한 유저 - 최대 10개까지 요청 가능합니다.");
+      } else {
+        console.log("로그인 한 유저 - 적절한 요청입니다.");
+      }
+    } else {
+      if (value > 1) {
+        console.log("로그인 하지 않은 유저 - 1개 이상의 문제를 요청하려면 로그인이 필요합니다.");        
+      } else {
+        console.log("로그인 하지 않은 유저 - 적절한 요청입니다.");
+        
+      }
+    }
+    
+  }
+
   return (
     <animated.div
       onClick={(e: any) => handleCheckBoxClick(e)}
@@ -217,7 +248,7 @@ const SubjectItem = ({el, subjectArr, setSubjectArr}: any) => {
           el.checked
           ? (
             <CheckNumberInput className="input-group">
-              <input type="number" className="form-control" placeholder="1"/>
+              <input type="number" className="form-control" placeholder="1" onChange={(e) => changeNumberInput(e)}/>
             </CheckNumberInput>
           )
           : null
@@ -228,6 +259,7 @@ const SubjectItem = ({el, subjectArr, setSubjectArr}: any) => {
     </animated.div>
   );
 }
+
 const SectionWrapper = styled.div`
   display: flex;
   margin-left: 17px;
