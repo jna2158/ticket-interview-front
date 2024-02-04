@@ -5,6 +5,7 @@ import * as _ from "lodash";
 
 const calc = (x: number, y: number) => [-(y - window.innerHeight / 2) / 20, (x - window.innerWidth / 2) / 20, 1.3];
 const trans = (x: number, y: number, s: number) => `perspective(600px) rotateX(${x}deg) rotateY(${y}deg) scale(${s})`;
+const isLogged = localStorage.getItem("username");
 
 interface ISubject {
   readonly id: string;
@@ -141,7 +142,7 @@ const SubjectItem = ({el, subjectArr, setSubjectArr}: any) => {
     
     const updatedSubjectArr = [...subjectArr];
 
-    // [1]. 오른쪽 또는 왼쪽으로 위치 이동
+    // [1]. 오른쪽 또는 왼쪽으로 위치 이동 & 문제 수 0 -> 1개로 변경
     if (clickedIndex !== -1) {
       const left = subjectArr[clickedIndex].left === "0%" ? "110%" : "0%";
       let cnt = 0;
@@ -161,7 +162,8 @@ const SubjectItem = ({el, subjectArr, setSubjectArr}: any) => {
         ...updatedSubjectArr[clickedIndex],
         left,
         top,
-        checked: e.target.checked
+        checked: e.target.checked,
+        problems: 1
       };
     }
 
@@ -195,16 +197,14 @@ const SubjectItem = ({el, subjectArr, setSubjectArr}: any) => {
   }
 
   /**
-   * input number를 변경했을 때 호출
+   * input number를 변경했을 때
    * 
    * @param e event
    */
   const changeNumberInput = (e: any) => {
-    console.log("changeNumberInput >> ");
-    console.log(e.target.value);
-    
     const value = Number(e.target.value);
-    const isLogged = localStorage.getItem("username");
+    const updatedSubjectArr = [...subjectArr];
+    const clickedIndex = _.findIndex(subjectArr, {id: e.target.id});
   
     if (value < 1) return;
     
@@ -213,16 +213,24 @@ const SubjectItem = ({el, subjectArr, setSubjectArr}: any) => {
         console.log("로그인 한 유저 - 최대 10개까지 요청 가능합니다.");
       } else {
         console.log("로그인 한 유저 - 적절한 요청입니다.");
+    
+        updatedSubjectArr[clickedIndex] = {
+          ...updatedSubjectArr[clickedIndex],
+          problems: value
+        };
       }
     } else {
       if (value > 1) {
         console.log("로그인 하지 않은 유저 - 1개 이상의 문제를 요청하려면 로그인이 필요합니다.");        
       } else {
         console.log("로그인 하지 않은 유저 - 적절한 요청입니다.");
-        
+        updatedSubjectArr[clickedIndex] = {
+          ...updatedSubjectArr[clickedIndex],
+          problems: value
+        };
       }
     }
-    
+    setSubjectArr(updatedSubjectArr);
   }
 
   return (
@@ -248,7 +256,7 @@ const SubjectItem = ({el, subjectArr, setSubjectArr}: any) => {
           el.checked
           ? (
             <CheckNumberInput className="input-group">
-              <input type="number" className="form-control" placeholder="1" onChange={(e) => changeNumberInput(e)}/>
+              <input type="number" disabled={!isLogged} className="form-control" value={el.problems} onChange={(e) => changeNumberInput(e)}/>
             </CheckNumberInput>
           )
           : null
