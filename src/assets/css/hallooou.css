@@ -584,7 +584,7 @@ blockquote span{
 
 .overlay-detail {
     width: 100%;
-    height: 100%;
+    height: 92vh;
     position: absolute;
     background: #000; /* Set to black, can be changed via colors.css */
     opacity: 0.5;
@@ -641,7 +641,7 @@ blockquote span{
 /* Background images are set within the HTML using inline CSS, not here */
 .fill {
     width: 100%;
-    height: 100%;
+    height: 92vh;
     background-position: center;
     -webkit-background-size: cover;
        -moz-background-size: cover;
