@@ -215,7 +215,7 @@ const SubjectItem = ({el, subjectArr, setSubjectArr}: any) => {
         </CheckLabel>
         {
           el.checked
-          ? (
+           ? (
             <CheckNumberInput className="input-group">
               <input type="number" className="form-control" placeholder="1"/>
             </CheckNumberInput>
