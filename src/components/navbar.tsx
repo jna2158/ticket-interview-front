@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import LoginModal from "./LoginModal";
+import LoginModal from "./loginModal";
 import logo from "../assets/image/logo.svg";
-
 export default function Navbar() {
   /** state */
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
