@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { useSpring, animated } from "react-spring";
 import * as _ from "lodash";
+import { API_HOST } from "../shared/ApiConstant";
+import axios from "axios";
 
 const calc = (x: number, y: number) => [-(y - window.innerHeight / 2) / 20, (x - window.innerWidth / 2) / 20, 1.3];
 const trans = (x: number, y: number, s: number) => `perspective(600px) rotateX(${x}deg) rotateY(${y}deg) scale(${s})`;
@@ -20,7 +22,7 @@ const checkedItem: ISubject[] = [];
 export default function InterviewSetting() {
   const [subjectArr, setSubjectArr] = useState([
     {
-      id: "structure",
+      id: "DataStructure",
       title: "자료구조",
       checked: false,
       problems: 0,
@@ -28,7 +30,7 @@ export default function InterviewSetting() {
       top: "0vh"
     },
     {
-      id: "algorithm",
+      id: "Algorithm",
       title: "알고리즘",
       checked: false,
       problems: 0,
@@ -36,7 +38,7 @@ export default function InterviewSetting() {
       top: "0vh"
     },
     {
-      id: "network",
+      id: "Networking",
       title: "네트워크",
       checked: false,
       problems: 0,
@@ -44,7 +46,7 @@ export default function InterviewSetting() {
       top: "0vh"
     },
     {
-      id: "os",
+      id: "OperatingSystem",
       title: "운영체제",
       checked: false,
       problems: 0,
@@ -52,7 +54,7 @@ export default function InterviewSetting() {
       top: "0vh"
     },
     {
-      id: "database",
+      id: "Database",
       title: "데이터베이스",
       checked: false,
       problems: 0,
@@ -60,7 +62,7 @@ export default function InterviewSetting() {
       top: "0vh"
     },
     {
-      id: "python",
+      id: "Python",
       title: "Python",
       checked: false,
       problems: 0,
@@ -68,7 +70,7 @@ export default function InterviewSetting() {
       top: "0vh"
     },
     {
-      id: "javascript",
+      id: "Javascript",
       title: "Javascript",
       checked: false,
       problems: 0,
@@ -76,7 +78,7 @@ export default function InterviewSetting() {
       top: "0vh"
     },
     {
-      id: "programming",
+      id: "GeneralProgramming",
       title: "프로그래밍 일반",
       checked: false,
       problems: 0,
@@ -84,14 +86,36 @@ export default function InterviewSetting() {
       top: "0vh"
     },
     {
-      id: "personal",
+      id: "Personality",
       title: "인성",
       checked: false,
       problems: 0,
       left: "0%",
       top: "0vh"
     }
-  ]);   
+  ]);
+
+  /* 문제 선택하고 확인 버튼 눌렀을 때 */
+  const handleClickConfirmBtn = (): void => {
+    const requestArr = _.reject(subjectArr, { problems: 0 });
+    const req: any = {};
+    requestArr.forEach((el): any => {
+      req[el.id] = el.problems;
+    });
+    console.log("req >> ");
+    console.log(req);
+    
+
+    axios.post(`${API_HOST}/api/ticket/nouser`, {
+      ...req
+    })
+    .then(res => {
+      console.log(res);
+    })
+    .catch(err => {
+      console.log(err);
+    })
+  }
   
   return (
     <SectionWrapper>
@@ -102,7 +126,9 @@ export default function InterviewSetting() {
           );
         })}
       </LeftSection>
-      <RightSection></RightSection>
+      <RightSection>
+        <button onClick={handleClickConfirmBtn}>확인</button>
+      </RightSection>
     </SectionWrapper>
   );
 }
@@ -153,17 +179,20 @@ const SubjectItem = ({el, subjectArr, setSubjectArr}: any) => {
       }
 
       let top = "0vh";
+      let problems = 1;
       if (e.target.checked) {
         top = `${-(clickedIndex * 16.5) + ((checkedItem.length - 1) * 16.5)}vh`;
+        problems = ++updatedSubjectArr[clickedIndex].problems;
       } else {
         top = `${(cnt * 16.5) - (clickedIndex * 16.5)}vh`;
+        problems = --updatedSubjectArr[clickedIndex].problems;
       }
       updatedSubjectArr[clickedIndex] = {
         ...updatedSubjectArr[clickedIndex],
         left,
         top,
         checked: e.target.checked,
-        problems: 1
+        problems
       };
     }
 
@@ -207,6 +236,12 @@ const SubjectItem = ({el, subjectArr, setSubjectArr}: any) => {
     const clickedIndex = _.findIndex(subjectArr, {id: e.target.id});
   
     if (value < 1) return;
+
+    // updatedSubjectArr[clickedIndex] = {
+    //   ...updatedSubjectArr[clickedIndex],
+    //   problems: value
+    // };
+    // setSubjectArr(updatedSubjectArr);
     
     if (isLogged) {
       if (value >= 10) {
@@ -234,39 +269,44 @@ const SubjectItem = ({el, subjectArr, setSubjectArr}: any) => {
   }
 
   return (
-    <animated.div
-      onClick={(e: any) => handleCheckBoxClick(e)}
-      style={{ transform: props.xys.to(trans) }}
-    >
-      <CheckBoxWrapper box={el} className="form-check container">
-        <CheckInput
-          className="form-check-input"
-          type="checkbox"
-          id={el.id}
-        />
-        <CheckLabel className="container">
-          <div className="col-md-4">
-            <div className="row services-item sans-shadow text-center">
-              <i className="fa fa-cogs fa-3x"></i>
-              <h4>{el.title}</h4>
+    <>
+      <animated.div
+        onClick={(e: any) => handleCheckBoxClick(e)}
+        style={{ transform: props.xys.to(trans) }}
+      >
+        <CheckBoxWrapper box={el} className="form-check container">
+          <CheckInput
+            className="form-check-input"
+            type="checkbox"
+            id={el.id}
+          />
+          <CheckLabel className="container">
+            <div className="col-md-4">
+              <div className="row services-item sans-shadow text-center">
+                <i className="fa fa-cogs fa-3x"></i>
+                <h4>{el.title}</h4>
+              </div>
             </div>
-          </div>
-        </CheckLabel>
-        {
-          el.checked
-          ? (
-            <CheckNumberInput className="input-group">
-              <input type="number" disabled={!isLogged} className="form-control" value={el.problems} onChange={(e) => changeNumberInput(e)}/>
-            </CheckNumberInput>
-          )
-          : null
-        }
-        
-      </CheckBoxWrapper>
-
-    </animated.div>
+          </CheckLabel>
+        </CheckBoxWrapper>
+      </animated.div>
+      {
+        el.checked
+        ? (
+          <CheckNumberInput className="input-group">
+            <input type="number" disabled={!isLogged} className="form-control" value={el.problems} onChange={(e) => changeNumberInput(e)}/>
+            {/* <input type="number" id={el.id} className="form-control" value={el.problems} onChange={(e) => changeNumberInput(e)}/> */}
+          </CheckNumberInput>
+        )
+        : null
+      }
+    </>
   );
 }
+
+const Wrapper = styled.div`
+
+`;
 
 const SectionWrapper = styled.div`
   display: flex;
