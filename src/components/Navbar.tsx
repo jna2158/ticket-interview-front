@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import LoginModal from "./LoginModal";
 import logo from "../assets/image/logo.svg";
-
 export default function Navbar() {
   /** state */
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
@@ -18,7 +17,11 @@ export default function Navbar() {
             </a>
           </div>
           <LoginButtonContainer className="main-nav pull-right">
-            <i className="bi bi-box-arrow-in-left" onClick={() => setIsLoginModalOpen(true)}></i>
+            {
+              isLogged
+              ? <a>{ localStorage.getItem("username") }</a>
+              : <i className="bi bi-box-arrow-in-left" onClick={() => setIsLoginModalOpen(true)}></i>
+            }
           </LoginButtonContainer>
         </div>
       </nav>
@@ -34,4 +37,8 @@ const LoginButtonContainer = styled.div`
   color: white;
   font-size: 35px;
   cursor: pointer;
+  line-height: normal;
+  & a {
+    font-size: 25px;
+  }
 `;
