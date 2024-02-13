@@ -102,11 +102,9 @@ export default function InterviewSetting() {
     requestArr.forEach((el): any => {
       req[el.id] = el.problems;
     });
-    console.log("req >> ");
-    console.log(req);
     
-
-    axios.post(`${API_HOST}/api/ticket/nouser`, {
+    const apiParam = localStorage.getItem("username") ? "user" : "nouser";
+    axios.post(`${API_HOST}/api/ticket/${apiParam}`, {
       ...req
     })
     .then(res => {
