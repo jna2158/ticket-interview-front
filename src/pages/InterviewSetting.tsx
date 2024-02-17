@@ -5,6 +5,7 @@ import * as _ from "lodash";
 import { API_HOST } from "../shared/ApiConstant";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { reqProblems } from "../services/InterviewSettingService";
 
 const calc = (x: number, y: number) => [-(y - window.innerHeight / 2) / 20, (x - window.innerWidth / 2) / 20, 1.3];
 const trans = (x: number, y: number, s: number) => `perspective(600px) rotateX(${x}deg) rotateY(${y}deg) scale(${s})`;
@@ -98,23 +99,16 @@ export default function InterviewSetting() {
   const navigate = useNavigate();
 
   /* 문제 선택하고 확인 버튼 눌렀을 때 */
-  const handleClickConfirmBtn = (): void => {
+  const handleClickConfirmBtn = async(): Promise<void> => {
     const requestArr = _.reject(subjectArr, { problems: 0 });
     const req: any = {};
     requestArr.forEach((el): any => {
       req[el.id] = el.problems;
     });
     
-    const apiParam = localStorage.getItem("username") ? "user" : "nouser";
-    axios.post(`${API_HOST}/api/ticket/problems/${apiParam}`, {
-      ...req
-    }, {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("ACCESS_TOKEN")}`
-      }
-    })
+    const userType = localStorage.getItem("username") ? "user" : "nouser";
+    await reqProblems(userType, req)
     .then(res => {
-      console.log(res);
       navigate("/problem-solving", { state: res.data });
     })
     .catch(err => {

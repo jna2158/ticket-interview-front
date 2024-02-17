@@ -1,8 +1,12 @@
 import axios from 'axios';
 import { API_HOST } from './ApiConstant';
 
+const instance = axios.create({
+  baseURL: "https://ticket-interview.com"
+});
+
 // 요청 인터셉터 설정
-axios.interceptors.request.use(
+instance.interceptors.request.use(
   (config) => {
     const accessToken = localStorage.getItem('ACCESS_TOKEN');
     if (accessToken) {
@@ -16,7 +20,7 @@ axios.interceptors.request.use(
 );
 
 // 응답 인터셉터 설정
-axios.interceptors.response.use(
+instance.interceptors.response.use(
   (response) => {
     return response;
   },
@@ -55,3 +59,5 @@ const retryOriginalRequest = async (error: any) => {
     return Promise.reject(error);
   }
 };
+
+export default instance;
