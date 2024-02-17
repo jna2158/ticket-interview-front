@@ -109,7 +109,7 @@ export default function InterviewSetting() {
     const userType = localStorage.getItem("username") ? "user" : "nouser";
     await reqProblems(userType, req)
     .then(res => {
-      navigate("/problem-solving", { state: res.data });
+      navigate("/problem-solve", { state: res.data });
     })
     .catch(err => {
       console.log(err);
