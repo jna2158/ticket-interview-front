@@ -108,6 +108,10 @@ export default function InterviewSetting() {
     const apiParam = localStorage.getItem("username") ? "user" : "nouser";
     axios.post(`${API_HOST}/api/ticket/problems/${apiParam}`, {
       ...req
+    }, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("ACCESS_TOKEN")}`
+      }
     })
     .then(res => {
       console.log(res);
