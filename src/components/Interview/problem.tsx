@@ -1,9 +1,9 @@
 import React from "react";
 
-export default function Problem() {
+export default function Problem(data: any) {
   return (
     <div className="col-md-8 contact-form">
-      <h3>Drop us a line</h3>
+      <h3>{ data }</h3>
       <form className="ajax-form" id="contactForm" method="post" action="assets/php/contact.php">
           <div className="form-group">
               <input type="text" className="form-control" id="name" name="name" placeholder="Your Name..." value="" required />
