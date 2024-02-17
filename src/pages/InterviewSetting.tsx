@@ -4,6 +4,7 @@ import { useSpring, animated } from "react-spring";
 import * as _ from "lodash";
 import { API_HOST } from "../shared/ApiConstant";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const calc = (x: number, y: number) => [-(y - window.innerHeight / 2) / 20, (x - window.innerWidth / 2) / 20, 1.3];
 const trans = (x: number, y: number, s: number) => `perspective(600px) rotateX(${x}deg) rotateY(${y}deg) scale(${s})`;
@@ -94,6 +95,7 @@ export default function InterviewSetting() {
       top: "0vh"
     }
   ]);
+  const navigate = useNavigate();
 
   /* 문제 선택하고 확인 버튼 눌렀을 때 */
   const handleClickConfirmBtn = (): void => {
@@ -109,6 +111,7 @@ export default function InterviewSetting() {
     })
     .then(res => {
       console.log(res);
+      navigate("/problem-solving", { state: res.data });
     })
     .catch(err => {
       console.log(err);
@@ -301,10 +304,6 @@ const SubjectItem = ({el, subjectArr, setSubjectArr}: any) => {
     </>
   );
 }
-
-const Wrapper = styled.div`
-
-`;
 
 const SectionWrapper = styled.div`
   display: flex;
