@@ -17,6 +17,7 @@ import GoogleOauthRedirect from "./components/oauth/redirect/GoogleOauthRedirect
 import KakaoOauthRedirect from "./components/oauth/redirect/KakaoOauthRefirect";
 import NaverOauthRedirect from "./components/oauth/redirect/NaverOauthRedirect";
 import ProblemSolve from "./pages/ProblemSolve";
+import InterviewScore from "./pages/InterviewScore";
 
 const rootElement = document.getElementById('root');
 const root = ReactDOM.createRoot(rootElement!);
@@ -33,6 +34,7 @@ root.render(
               <Route path="/" element={<App />}></Route>
               <Route path="/interview-setting" element={<InterviewSetting />}></Route>
               <Route path="/problem-solve" element={<ProblemSolve />}></Route>
+              <Route path="/interview-score" element={<InterviewScore />}></Route>
               <Route path="accounts/google/login/" element={<GoogleOauthRedirect />}></Route>
               <Route path="accounts/kakao/login/" element={<KakaoOauthRedirect />}></Route>
               <Route path="accounts/naver/login/" element={<NaverOauthRedirect />}></Route>
