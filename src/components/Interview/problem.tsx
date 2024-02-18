@@ -9,29 +9,22 @@ export default function Problem({data, nextProblem, isLast}: any) {
 
   /* 답 입력 후 다음 버튼 클릭했을 때 */
   const handleClickNextBtn = async() => {
-    if (isLast) {
-      handleSubmit();
-    } else {
-      const param = {
-        question: data,
-        user_answer: userAnswer,
-        last_problem: isLast
-      }
-      await scoringProblem(param)
-      .then(res => {
-        console.log(res);
-        nextProblem();
-      })
-      .catch(err => {
-        console.log(err);
-        nextProblem();
-      })
+    const param = {
+      question: data,
+      user_answer: userAnswer,
+      last_problem: isLast
     }
-  }
-
-  /* 제출 버튼 클릭했을 때 */
-  const handleSubmit = () => {
-    navigate("/interview-score");
+    await scoringProblem(param)
+    .then(res => {
+      console.log(res);
+      nextProblem();
+      if (isLast) navigate("/interview-score");
+    })
+    .catch(err => {
+      console.log(err);
+      nextProblem();
+    })
+    
   }
 
   return (
