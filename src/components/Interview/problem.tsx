@@ -17,8 +17,11 @@ export default function Problem({data, nextProblem, isLast}: any) {
     await scoringProblem(param)
     .then(res => {
       console.log(res);
-      nextProblem();
-      if (isLast) navigate("/interview-score");
+      if (isLast) {
+        navigate("/interview-score");
+      } else {
+        nextProblem();
+      }
     })
     .catch(err => {
       console.log(err);
