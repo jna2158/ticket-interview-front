@@ -3,7 +3,7 @@ import instance from "../shared/axiosIntercepter";
 interface problem {
   question: string,
   user_answer: string,
-  last_problem: boolean
+  last_problem: string
 }
 
 export const scoringProblem = (param: problem): Promise<any> => {

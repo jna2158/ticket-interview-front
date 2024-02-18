@@ -12,7 +12,7 @@ export default function Problem({data, nextProblem, isLast}: any) {
     const param = {
       question: data,
       user_answer: userAnswer,
-      last_problem: isLast
+      last_problem: isLast ? "True" : "False"
     }
     await scoringProblem(param)
     .then(res => {
