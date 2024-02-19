@@ -5,7 +5,7 @@ import Score from "../components/Interview/score";
 
 export default function InterviewScore() {
   const { state: data } = useLocation();
-
+  
   return (
     <Wrapper>
       <ResultBox>
@@ -20,7 +20,7 @@ export default function InterviewScore() {
         <Result>
           {data.result.map((el: any, idx: number) => {
             return (
-              <Score key={idx} data={el} />
+              <Score key={idx} data={el} idx={idx}/>
             );
           })}
           
@@ -62,6 +62,8 @@ const DescBox = styled.div`
 const Result = styled.div`
   width: 90%;
   margin: 2% 0 0 5%;
+  max-height: 50vh;
+  overflow-y: auto; /* 세로 스크롤 적용 */
 `;
 const SubTitle = styled.span`
 

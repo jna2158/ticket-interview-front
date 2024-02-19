@@ -1,22 +1,30 @@
 import React from "react"
+import styled from "styled-components"
 
-export default function Score({ data }: any) {
+export default function Score({ data, idx }: any) {
+  const textColor = data.score === 0 ? "text-warning" : ""
   return (
-    <div className="accordion" id="accordionExample">
-      <div className="card">
-        <div className="card-header" id="headingOne">
-          <h2 className="mb-0">
-            <button className="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-              Collapsible Group Item #1
-            </button>
-          </h2>
-        </div>
-        <div id="collapseOne" className="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-          <div className="card-body">
-            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+    <Wrapper>
+      <div className="accordion" id="scoreAccordion">
+        <div className="card">
+          <div className="card-header" id={idx}>
+            <h2 className="mb-0">
+              <button className={"btn btn-block text-left" + " " + textColor} type="button" data-toggle="collapse" data-target={"#collapseOne" + idx} aria-expanded="true" aria-controls={"collapseOne" + idx}>
+                { Object.keys(data)[0] }
+              </button>
+            </h2>
+          </div>
+          <div id={"collapseOne" + idx} className="collapse" aria-labelledby={idx} data-parent="#scoreAccordion">
+            <div className="card-body">
+              { data[Object.keys(data)[0]] }
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </Wrapper>
   )
 }
+
+const Wrapper = styled.div`
+  padding-bottom: 2vh;
+`;
