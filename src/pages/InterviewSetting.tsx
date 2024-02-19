@@ -113,7 +113,6 @@ export default function InterviewSetting() {
     })
     .catch(err => {
       console.log(err);
-      navigate("/problem-solve", { state: err.message });
     })
   }
   

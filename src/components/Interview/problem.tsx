@@ -21,13 +21,10 @@ export default function Problem({data, nextProblem, isLast}: any) {
         navigate("/interview-score", { state: res.data });
       } else {
         nextProblem();
-        navigate("/interview-score", { state: res.data });
       }
     })
     .catch(err => {
       console.log(err);
-      // nextProblem();
-      navigate("/interview-score", { state: err.message });
     })
     
   }
