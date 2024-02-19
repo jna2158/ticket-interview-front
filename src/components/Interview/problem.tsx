@@ -18,14 +18,16 @@ export default function Problem({data, nextProblem, isLast}: any) {
     .then(res => {
       console.log(res);
       if (isLast) {
-        navigate("/interview-score");
+        navigate("/interview-score", { state: res.data });
       } else {
         nextProblem();
+        navigate("/interview-score", { state: res.data });
       }
     })
     .catch(err => {
       console.log(err);
-      nextProblem();
+      // nextProblem();
+      navigate("/interview-score", { state: err.message });
     })
     
   }
