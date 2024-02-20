@@ -8,25 +8,26 @@ export default function Problem({data, nextProblem, isLast}: any) {
   const btnName = isLast ? "제출하기" : "다음";
 
   /* 답 입력 후 다음 버튼 클릭했을 때 */
-  const handleClickNextBtn = async() => {
+  const handleClickNextBtn = () => {
     const param = {
       question: data,
       user_answer: userAnswer,
       last_problem: isLast ? "True" : "False"
     }
-    await scoringProblem(param)
+    
+    scoringProblem(param)
     .then(res => {
       console.log(res);
-      if (isLast) {
+      if(isLast) {
         navigate("/interview-score", { state: res.data });
-      } else {
-        nextProblem();
       }
     })
     .catch(err => {
       console.log(err);
     })
-    
+    if (!isLast) {
+      nextProblem(); 
+    }
   }
 
   return (
