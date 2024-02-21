@@ -12,9 +12,9 @@ export default function Problem({data, nextProblem, isLast}: any) {
     const param = {
       question: data,
       user_answer: userAnswer,
-      last_problem: isLast ? "True" : "False"
+      last_problem: isLast ? 1 : 0
     }
-    
+
     scoringProblem(param)
     .then(res => {
       console.log(res);
