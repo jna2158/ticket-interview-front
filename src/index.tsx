@@ -8,6 +8,7 @@ import "../src/assets/css/main.css";
 import Navbar from "./components/navbar";
 import App from "./App";
 import InterviewSetting from "./pages/InterviewSetting";
+import NewInterviewSetting from "./pages/NewInterviewSetting";
 // react-query
 import { QueryClient, QueryClientProvider } from 'react-query';
 // route
@@ -32,7 +33,7 @@ root.render(
           <BrowserRouter>
             <Routes>
               <Route path="/" element={<App />}></Route>
-              <Route path="/interview-setting" element={<InterviewSetting />}></Route>
+              <Route path="/interview-setting" element={<NewInterviewSetting />}></Route>
               <Route path="/problem-solve" element={<ProblemSolve />}></Route>
               <Route path="/interview-score" element={<InterviewScore />}></Route>
               <Route path="accounts/google/login/" element={<GoogleOauthRedirect />}></Route>

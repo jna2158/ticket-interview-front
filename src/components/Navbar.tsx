@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import LoginModal from "./LoginModal";
 import logo from "../assets/image/logo.svg";
+import LoginModal from "./loginModal";
+
 export default function Navbar() {
-  /** state */
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const isLogged = localStorage.getItem("username");
 
   return (
     <>
-      <nav className="navbar-custom top-nav-collapse" role="navigation">
+      <nav className="navbar-custom navbar-fixed-top" role="navigation">
         <div className="container-fluid">
           <div className="navbar-header pull-left">
             <a className="navbar-brand page-scroll" href="#page-top">
@@ -20,7 +20,7 @@ export default function Navbar() {
             {
               isLogged
               ? <a>{ localStorage.getItem("username") }</a>
-              : <i className="bi bi-box-arrow-in-left" onClick={() => setIsLoginModalOpen(true)}></i>
+              : <button type="button" className="btn btn-outline-light" onClick={() => setIsLoginModalOpen(true)}>로그인</button>
             }
           </LoginButtonContainer>
         </div>

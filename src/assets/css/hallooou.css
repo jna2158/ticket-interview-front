@@ -200,6 +200,7 @@ a:focus {
 
 .highlight{
     font-weight: 700;
+    -webkit-text-stroke: 0.5px #1b5e9e;
     color: #197cd9; /* Primary color, can be changed via colors.css */
 }
 
@@ -298,7 +299,7 @@ blockquote span{
 }
 
 .navbar-custom.top-nav-collapse{
-    background: rgba(25,124,217, 0.9); /* Primary color, can be changed via colors.css */
+    background: #4E629A; /* Primary color, can be changed via colors.css */
 }
 
 .navbar-custom .navbar-brand {
@@ -584,7 +585,7 @@ blockquote span{
 
 .overlay-detail {
     width: 100%;
-    height: 92vh;
+    height: 100vh;
     position: absolute;
     background: #000; /* Set to black, can be changed via colors.css */
     opacity: 0.5;
@@ -641,7 +642,7 @@ blockquote span{
 /* Background images are set within the HTML using inline CSS, not here */
 .fill {
     width: 100%;
-    height: 92vh;
+    height: 100vh;
     background-position: center;
     -webkit-background-size: cover;
        -moz-background-size: cover;
@@ -1676,10 +1677,20 @@ footer .social a{
 
 .btn-default {
     color: #fff;
-    border: 1px solid rgba(9,113,178, 0.9); /* Primary color, can be changed via colors.css */
-    background: rgba(9,113,178, 0.9); /* Primary color, can be changed via colors.css */
-    border-radius: 30px;
-}
+    border: 1px solid rgb(7, 57, 88); /* Primary color, can be changed via colors.css */
+    background: rgb(7, 57, 88); /* Primary color, can be changed via colors.css */
+    border-radius: .5rem;
+    -webkit-animation: blink 0.5s ease-in-out infinite alternate;
+  -moz-animation: blink 0.5s ease-in-out infinite alternate;
+  animation: blink 0.5s ease-in-out infinite alternate;
+}   
+
+  @keyframes blink{
+    0% { opacity: 0.6; }
+    50% { opacity: 0.8; }
+    100% { opacity: 1; }
+  }
+  
 
 
 .btn-default:hover,
@@ -1689,7 +1700,6 @@ footer .social a{
     border: 1px solid #fff; /* Hover border color, can be changed via colors.css */
     outline: 0;
     color: #fff;
-    background: #df514c; /* Hover color, can be changed via colors.css */
 }
 
 
@@ -1777,7 +1787,7 @@ footer .social a{
     }
     .navbar-custom.top-nav-collapse {
         padding: 10px 0;
-        background: rgba(9,113,178, 0.9); /* Primary color, can be changed via colors.css */
+        background: rgba(78,98,154); /* Primary color, can be changed via colors.css */
         -webkit-transition: background .5s ease-in-out, padding .5s ease-in-out;
            -moz-transition: background .5s ease-in-out, padding .5s ease-in-out;
                 transition: background .5s ease-in-out, padding .5s ease-in-out;

@@ -1640,13 +1640,31 @@ input.faq-search:focus::-moz-input-placeholder {
   padding: .75em .375em;
   -webkit-appearance: none;
   text-align: center;
-  color: white;
-  border-radius: .0625em;
-  border: 0;
-  background-color: #34495E;
   -webkit-transition: .2s ease-out;
-          transition: .2s ease-out; }
-.btn:hover, button:hover {
+  transition: .2s ease-out;
+}
+
+.btn-outline-light {
+  border: 1px solid white;
+  min-width: 7vw;
+  height: 6vh;
+  line-height: 3px;
+  border-radius: .5em;
+}
+.btn-outline-light:hover {
+  background-color: rgb(255, 255, 255, 0.2);
+  color: white;
+}
+.btn-outline-light:focus {
+  background-color: rgb(255, 255, 255, 0.2);
+  outline: none !important;
+  border: 0px;
+}
+.btn-outline-light:active {
+  background-color: rgb(255, 255, 255, 0.2) !important;
+  color: white !important;
+}
+/* .btn:hover, button:hover {
   background-color: #4a6885;
   text-decoration: none; }
 .btn.active, .btn:active, button.active, button:active {
@@ -1654,7 +1672,9 @@ input.faq-search:focus::-moz-input-placeholder {
   box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3); }
 .btn:active, button:active {
   -webkit-transition: none;
-          transition: none; }
+          transition: none; } */
+
+          
 
 .btn--warning {
   background-color: #E67E22; }
