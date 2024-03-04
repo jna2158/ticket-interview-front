@@ -25,6 +25,15 @@ export default function ProblemSelectCard({ subjectArr, setSubjectArr }) {
   };
   const isLogged = localStorage.getItem("username") ? true : false;
 
+  useEffect(() => {
+    setSubjectArr(subjectArr.map((subject: { id: string; problems: number; }) => {
+      return {
+        ...subject,
+        problems: 1
+      };
+    }));
+  }, []);
+
   const handleChangeInputValue = (value, id) => {
     if (Number(value) < 1 || 10 < Number(value)) {
       return;
@@ -145,7 +154,6 @@ const NumberInput = styled.input`
 const NumberI = styled.i<{isLogged: boolean}>`
   font-size: 35px;
   margin-top: 4vh;
-  /* color: #EFEFF1; */
   color: ${props => props.isLogged ? "#EFEFF1" : "#3e3d3d"}
 `;
 const TitleWrapper = styled.div`
