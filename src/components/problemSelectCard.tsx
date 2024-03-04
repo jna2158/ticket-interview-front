@@ -23,6 +23,26 @@ export default function ProblemSelectCard({ subjectArr, setSubjectArr }) {
     "Algorithm": algorithm,
     "OperatingSystem": operating
   };
+  const isLogged = localStorage.getItem("username") ? true : false;
+
+  const handleChangeInputValue = (value, id) => {
+    if (Number(value) < 1 || 10 < Number(value)) {
+      return;
+    }
+    if (!isLogged) {
+      return;
+    }
+
+    setSubjectArr(subjectArr.map((subject: { id: string; problems: number; }) => {
+      if (subject.id === id) {
+        return {
+          ...subject,
+          problems: Number(value)
+        };
+      }
+      return subject;
+    }));
+  }
 
   return (
     <Wrapper>
@@ -30,7 +50,7 @@ export default function ProblemSelectCard({ subjectArr, setSubjectArr }) {
         subjectArr.map((el, idx) => {
           if (idx % 2 === 0) {
             return (
-              <div className="row">
+              <div className="row" key={el.id}>
                 {
                   subjectArr[idx] && (
                     <Card className="col">
@@ -42,13 +62,13 @@ export default function ProblemSelectCard({ subjectArr, setSubjectArr }) {
                         <Content>{subjectArr[idx].subTitle}</Content>
                       </TitleWrapper>
                       <NumberWrapper>
-                        <NumberI className="bi bi-plus"></NumberI>
-                        <NumberInput type="number"/>
-                        <NumberI className="bi bi-dash"></NumberI>
+                        <NumberI className="bi bi-dash" isLogged={isLogged} onClick={() => handleChangeInputValue(subjectArr[idx].problems - 1, subjectArr[idx].id)}></NumberI>
+                        <NumberInput type="number" value={subjectArr[idx].problems} onChange={(e) => handleChangeInputValue(e.target.value, el.id)}/>
+                        <NumberI className="bi bi-plus" isLogged={isLogged} onClick={() => handleChangeInputValue(subjectArr[idx].problems + 1, subjectArr[idx].id)}></NumberI>
                       </NumberWrapper>
                       <div>
                         <Label htmlFor={subjectArr[idx].id}>
-                          <Input type="checkbox" id={subjectArr[idx].id} name={subjectArr[idx].id} />
+                          <Input type="checkbox" id={subjectArr[idx].id} name={subjectArr[idx].id}/>
                         </Label>
                       </div>
                     </Card>
@@ -65,9 +85,9 @@ export default function ProblemSelectCard({ subjectArr, setSubjectArr }) {
                         <Content>{subjectArr[idx + 1].subTitle}</Content>
                       </TitleWrapper>
                       <NumberWrapper>
-                        <NumberI className="bi bi-plus"></NumberI>
-                        <NumberInput type="number"/>
-                        <NumberI className="bi bi-dash"></NumberI>
+                        <NumberI className="bi bi-dash" isLogged={isLogged} onClick={() => handleChangeInputValue(subjectArr[idx].problems - 1, subjectArr[idx].id)}></NumberI>
+                        <NumberInput type="number" value={subjectArr[idx + 1].problems}/>
+                        <NumberI className="bi bi-plus" isLogged={isLogged} onClick={() => handleChangeInputValue(subjectArr[idx].problems + 1, subjectArr[idx].id)}></NumberI>
                       </NumberWrapper>
                       <div>
                         <Label htmlFor={subjectArr[idx + 1].id}>
@@ -120,11 +140,13 @@ const NumberInput = styled.input`
   margin-top: 5vh;
   text-align: center;
   background-color: #2A2A2A;
+  color: white;
 `;
-const NumberI = styled.i`
+const NumberI = styled.i<{isLogged: boolean}>`
   font-size: 35px;
   margin-top: 4vh;
-  color: #EFEFF1;
+  /* color: #EFEFF1; */
+  color: ${props => props.isLogged ? "#EFEFF1" : "#3e3d3d"}
 `;
 const TitleWrapper = styled.div`
   margin-top: 4%;
