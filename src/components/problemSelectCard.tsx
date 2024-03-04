@@ -77,6 +77,11 @@ export default function ProblemSelectCard({ subjectArr, setSubjectArr }) {
                     </Card>
                   )
                 }
+                {
+                  !subjectArr[idx + 1] && (
+                    <div className="col"></div>
+                  )
+                }
               </div>
             )
           }
