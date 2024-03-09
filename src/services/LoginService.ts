@@ -1,5 +1,6 @@
 import { API_HOST } from "../shared/ApiConstant";
 import axios from "axios";
+import instance from "../shared/axiosIntercepter";
 
 /**
  * google login 요청
@@ -31,5 +32,5 @@ export const naverLogin = (query: any): Promise<any> => {
 }
 
 export const logout = (): Promise<any> => {
-  return axios.post(`${API_HOST}/api/accounts/logout`);
+  return instance.post(`${API_HOST}/api/accounts/logout`);
 }
