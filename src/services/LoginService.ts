@@ -32,5 +32,5 @@ export const naverLogin = (query: any): Promise<any> => {
 }
 
 export const logout = (): Promise<any> => {
-  return instance.post(`${API_HOST}/api/accounts/logout`);
+  return instance.post(`/api/accounts/logout`);
 }
