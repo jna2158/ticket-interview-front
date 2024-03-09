@@ -13,6 +13,7 @@ export default function Navbar() {
     await logout().then(res => {
       localStorage.clear();
       setIsLogged(false);
+      setClickProfile(false);
     })
     .catch(err => {
       console.log(err);
