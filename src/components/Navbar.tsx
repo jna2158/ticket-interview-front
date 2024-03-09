@@ -6,13 +6,13 @@ import { logout } from "../services/LoginService";
 
 export default function Navbar() {
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
-  let isLogged = localStorage.getItem("username");
+  const [isLogged, setIsLogged] = useState(localStorage.getItem("username") ? true : false);
   const [clickProfile, setClickProfile] = useState(false);
 
   const handleClickLogoutBtn = async () => {
     await logout().then(res => {
       localStorage.clear();
-      isLogged = undefined;
+      setIsLogged(false);
     })
     .catch(err => {
       console.log(err);
