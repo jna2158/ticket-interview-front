@@ -29,3 +29,7 @@ export const kakaoLogin = (code: string): Promise<any> => {
 export const naverLogin = (query: any): Promise<any> => {
   return axios.get(`${API_HOST}/api/accounts/naverlogin?code=${query.authCode}&state=${query.state}`);
 }
+
+export const logout = (): Promise<any> => {
+  return axios.post(`${API_HOST}/api/accounts/logont`);
+}
