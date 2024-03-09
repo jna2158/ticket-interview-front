@@ -6,7 +6,7 @@ import { logout } from "../services/LoginService";
 
 export default function Navbar() {
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
-  const isLogged = localStorage.getItem("username") || "jiwon";
+  const isLogged = localStorage.getItem("username");
   const [clickProfile, setClickProfile] = useState(false);
 
   const handleClickLogoutBtn = async () => {
@@ -29,7 +29,7 @@ export default function Navbar() {
           <LoginButtonContainer className="main-nav pull-right">
             {
               isLogged
-              ? <a onClick={() => setClickProfile(!clickProfile)}>{ localStorage.getItem("username") || "jiwon" }</a>
+              ? <a onClick={() => setClickProfile(!clickProfile)}>{ localStorage.getItem("username")}</a>
               : <button type="button" className="btn btn-outline-light" onClick={() => setIsLoginModalOpen(true)}>로그인</button>
             }
           </LoginButtonContainer>
