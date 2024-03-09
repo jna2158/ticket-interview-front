@@ -94,9 +94,9 @@ export default function ProblemSelectCard({ subjectArr, setSubjectArr }) {
                         <Content>{subjectArr[idx + 1].subTitle}</Content>
                       </TitleWrapper>
                       <NumberWrapper>
-                        <NumberI className="bi bi-dash" isLogged={isLogged} onClick={() => handleChangeInputValue(subjectArr[idx].problems - 1, subjectArr[idx].id)}></NumberI>
+                        <NumberI className="bi bi-dash" isLogged={isLogged} onClick={() => handleChangeInputValue(subjectArr[idx + 1].problems - 1, subjectArr[idx + 1].id)}></NumberI>
                         <NumberInput type="number" value={subjectArr[idx + 1].problems}/>
-                        <NumberI className="bi bi-plus" isLogged={isLogged} onClick={() => handleChangeInputValue(subjectArr[idx].problems + 1, subjectArr[idx].id)}></NumberI>
+                        <NumberI className="bi bi-plus" isLogged={isLogged} onClick={() => handleChangeInputValue(subjectArr[idx + 1].problems + 1, subjectArr[idx + 1].id)}></NumberI>
                       </NumberWrapper>
                       <div>
                         <Label htmlFor={subjectArr[idx + 1].id}>
