@@ -9,6 +9,7 @@ export default function Navbar() {
   const [isLogged, setIsLogged] = useState(localStorage.getItem("username") ? true : false);
   const [clickProfile, setClickProfile] = useState(false);
 
+  /* 로그아웃 버튼 클릭했을 때 */
   const handleClickLogoutBtn = async () => {
     await logout().then(res => {
       localStorage.clear();
