@@ -2,7 +2,7 @@ import React from "react"
 import styled from "styled-components"
 
 export default function Score({ data, idx }: any) {
-  const textColor = data.score === 0 ? "text-warning" : ""
+  const textColor = data.score === 0 ? "text-danger" : ""
   return (
     <Wrapper>
       <div className="accordion" id="scoreAccordion">

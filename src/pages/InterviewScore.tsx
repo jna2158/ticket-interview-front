@@ -30,12 +30,17 @@ export default function InterviewScore() {
     <Wrapper>
       <ResultBox>
         <Header>
-          <Title>INTERVIEW</Title>
+          <Title>INTERVIEW 결과</Title>
           <Username>{localStorage.getItem("username")}</Username>
         </Header>
         <Hr />
+        <ResultTitle>
+          6문제중 2문제 맞췄어요 <i className="bi bi-emoji-smile"></i>
+        </ResultTitle>
         <DescBox>
-          <SubTitle>인터뷰 결과</SubTitle>
+          <SubTitle>이름: 유지원</SubTitle> <br />
+          <SubTitle>점수: 33점</SubTitle> <br />
+          <SubTitle>소요시간: 10분 33초</SubTitle> <br />
         </DescBox>
         <Result>
           {data.result.map((el: any, idx: number) => {
@@ -43,7 +48,6 @@ export default function InterviewScore() {
               <Score key={idx} data={el} idx={idx}/>
             );
           })}
-          
         </Result>
       </ResultBox>
     </Wrapper>
@@ -73,11 +77,20 @@ const Hr = styled.hr`
   margin-left: 5%;
   background-color: #568BDF;
 `;
+const ResultTitle = styled.div`
+  font-size: 2rem;
+  font-weight: 600;
+  margin-left: 5%;
+  color: #07124c;
+`;
 const DescBox = styled.div`
   background-color: #F6F9FE;
   width: 90%;
   height: 15vh;
   margin-left: 5%;
+  margin-top: 1%;
+  padding: .8%;
+  line-height: 30px;
 `;
 const Result = styled.div`
   width: 90%;
@@ -86,7 +99,7 @@ const Result = styled.div`
   overflow-y: auto;
 `;
 const SubTitle = styled.span`
-
+  font-size: 1.9rem;
 `;
 const Title = styled.span`
   font-size: 20px;
