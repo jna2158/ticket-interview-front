@@ -17,7 +17,6 @@ export default function Navbar() {
       localStorage.clear();
       setIsLogged(false);
       setClickProfile(false);
-      navigate("/");
     })
     .catch(err => {
       console.log(err);
