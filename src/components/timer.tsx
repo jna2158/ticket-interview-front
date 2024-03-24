@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
-export default function Timer(setTime) {
+export default function Timer({setTime}) {
   const [totalSeconds, setTotalSeconds] = useState(0);
 
   useEffect(() => {
@@ -27,7 +27,7 @@ export default function Timer(setTime) {
     } else {
       result = `${seconds}초`;
     }
-    
+
     setTime(result);
     return result;
   };
