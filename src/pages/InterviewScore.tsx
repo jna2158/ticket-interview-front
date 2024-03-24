@@ -2,6 +2,7 @@ import React from "react";
 import { useLocation } from "react-router-dom";
 import styled from "styled-components";
 import Score from "../components/Interview/score";
+import clap from "../assets/image/clap.png";
 
 export default function InterviewScore() {
   // const { state: data } = useLocation();
@@ -24,8 +25,10 @@ export default function InterviewScore() {
             "Python에서 데코레이터는 어떤 목적으로 사용되나요?": " Python의 데코레이터는 함수의 기능을 확장하거나 수정하기 위해 사용됩니다. 래핑 된 함수에 추가적인 기능을 쉽게 삽입할 수 있도록 해줍니다. 데코레이터는 코드의 재사용성과 가독성을 높이는 데 도움이 됩니다. 함수의 실행 시간 측정 뿐만 아니라 인증, 로깅, 캐싱 등 다양한 기능을 더할 수 있습니다. 따라서 데코레이터는 파이썬에서 매우 강력하고 유용한 기능 중 하나입니다.",
             "score": 0
         }
-    ]
+    ],
+    "time": "1시간 3분 33초"
   };
+  const correctAnswer = data.result.filter(el => el.score !== 0);
   return (
     <Wrapper>
       <ResultBox>
@@ -35,12 +38,12 @@ export default function InterviewScore() {
         </Header>
         <Hr />
         <ResultTitle>
-          6문제중 2문제 맞췄어요 <i className="bi bi-emoji-smile"></i>
+          {data.result.length}문제중 {correctAnswer.length}문제 맞췄어요 <Clap src={clap} alt="clap image" width={25}/>
         </ResultTitle>
         <DescBox>
           <SubTitle>이름: 유지원</SubTitle> <br />
-          <SubTitle>점수: 33점</SubTitle> <br />
-          <SubTitle>소요시간: 10분 33초</SubTitle> <br />
+          <SubTitle>점수: {Math.round((correctAnswer.length / data.result.length) * 100)}점</SubTitle> <br />
+          <SubTitle>소요시간: {data.time}</SubTitle> <br />
         </DescBox>
         <Result>
           {data.result.map((el: any, idx: number) => {
@@ -61,13 +64,11 @@ const Wrapper = styled.div`
   height: 100vh;
   background-color: #568BDF;
 `;
-
 const ResultBox = styled.div`
   background-color: #fff;
   width: 90%;
   height: 80%;
 `;
-
 const Header = styled.div`
   padding-top: 2%;
 `;
@@ -83,6 +84,9 @@ const ResultTitle = styled.div`
   margin-left: 5%;
   color: #07124c;
 `;
+const Clap = styled.img`
+  margin-bottom: .3%;
+`;
 const DescBox = styled.div`
   background-color: #F6F9FE;
   width: 90%;
@@ -95,7 +99,7 @@ const DescBox = styled.div`
 const Result = styled.div`
   width: 90%;
   margin: 2% 0 0 5%;
-  max-height: 50vh;
+  max-height: 43vh;
   overflow-y: auto;
 `;
 const SubTitle = styled.span`

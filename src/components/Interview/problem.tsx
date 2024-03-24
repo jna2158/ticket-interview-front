@@ -8,6 +8,7 @@ export default function Problem({data, nextProblem, isLast, totalLength, current
   const [userAnswer, setUserAnswer] = useState("");
   const navigate = useNavigate();
   const btnName = isLast ? "제출하기" : "다음";
+  const [time, setTime] = useState('');
 
   /* 답 입력 후 다음 버튼 클릭했을 때 */
   const handleClickNextBtn = () => {
@@ -20,8 +21,9 @@ export default function Problem({data, nextProblem, isLast, totalLength, current
     scoringProblem(param)
     .then(res => {
       console.log(res);
+      res.data.time = time;
       if(isLast) {
-        navigate("/interview-score", { state: res.data });
+        navigate("/interview-score", { state: res.data});
       }
     })
     .catch(err => {
@@ -38,7 +40,7 @@ export default function Problem({data, nextProblem, isLast, totalLength, current
       <ProblemSection>
         <SubWrapper>
           <Badge className="badge-info">{totalLength}개 중 {currentIndex + 1}번째 문제</Badge>
-          <Timer />
+          <Timer setTime={setTime}/>
         </SubWrapper>
         <ProblemTitle>{ data }</ProblemTitle>
         <TextArea className="form-control" name="message" placeholder="여기에 답을 입력하세요." value={userAnswer} onChange={e => setUserAnswer(e.target.value)}></TextArea>

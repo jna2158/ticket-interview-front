@@ -28,7 +28,6 @@ export default function Score({ data, idx }: any) {
 const Wrapper = s_styled.div`
   padding-bottom: 2vh;
 `;
-
 const Accordion = styled((props: AccordionProps) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
 ))(({ theme }) => ({
@@ -44,7 +43,6 @@ const Accordion = styled((props: AccordionProps) => (
     display: 'none',
   }
 }));
-
 const AccordionSummary = styled((props: AccordionSummaryProps) => (
   <MuiAccordionSummary
     expandIcon={<ArrowForwardIosSharpIcon sx={{ fontSize: '0.9rem' }} />}
@@ -59,7 +57,6 @@ const AccordionSummary = styled((props: AccordionSummaryProps) => (
     marginLeft: theme.spacing(1),
   },
 }));
-
 const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
   padding: theme.spacing(2),
   borderTop: '1px solid rgba(0, 0, 0, .125)',

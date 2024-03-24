@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
-
-
-export default function Timer() {
+export default function Timer(setTime) {
   const [totalSeconds, setTotalSeconds] = useState(0);
 
   useEffect(() => {
@@ -21,7 +19,17 @@ export default function Timer() {
     const minutes = Math.floor((totalSeconds % 3600) / 60);
     const seconds = totalSeconds % 60;
 
-    return `${hours}h ${minutes}m ${seconds}s`;
+    let result = '';
+    if (hours) {
+      result = `${hours}시간 ${minutes}분 ${seconds}초`;
+    } else if (minutes) {
+      result = `${minutes}분 ${seconds}초`;
+    } else {
+      result = `${seconds}초`;
+    }
+    
+    setTime(result);
+    return result;
   };
 
   return (
