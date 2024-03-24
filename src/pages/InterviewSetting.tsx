@@ -338,7 +338,6 @@ const CheckInput = styled.input`
 `;
 
 const CheckLabel = styled.label`
-  font-family: 'Gowun Dodum';
   font-weight: 600;
   font-size: 1.6rem;
   margin-left: 15%;

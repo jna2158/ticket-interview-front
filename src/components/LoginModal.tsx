@@ -63,7 +63,6 @@ const Modal = styled.div`
   text-align: center;
   margin: 0;
 `;
-
 const Form = styled.form`
   & h4 {
     color: #5c6bc0; 
@@ -84,7 +83,6 @@ const Form = styled.form`
     margin-bottom: 10%;
   }
 `;
-
 const SpanBox = styled.span`
   i.fa-solid.fa-circle-xmark {
     display: flex;
@@ -94,21 +92,17 @@ const SpanBox = styled.span`
     color: ${({theme}) => theme.colors.gray4};
   }
 `;
-
 const Hr = styled.hr`
   border: none;
   height: 1px;
   margin-top: 18vh;
   background-color: ${({theme}) => theme.colors.gray7};
 `;
-
 const SocialLoginInfo = styled.div`
-  font-family: 'Nano Sans Korean';
   text-align: center;
   font-size: 13px;
   color: ${({theme}) => theme.colors.gray5};
-`
-
+`;
 const SocialLoginSection = styled.div`
   height: 5vh;
   display: flex;

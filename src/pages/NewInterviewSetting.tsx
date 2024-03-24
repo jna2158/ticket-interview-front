@@ -123,10 +123,11 @@ export default function NewInterviewSetting() {
 }
 
 const Wrapper = styled.div`
-  background-color: #171717;
+  background-color: #181818f6;
   width: 100vw;
   height: auto;
   min-height: 100vh;
+  font-family: "Nanum Gothic", sans-serif;
 `;
 const InterviewSection = styled.div`
   width: 100vw;
@@ -136,8 +137,7 @@ const Title = styled.div`
   text-align: center;
   font-size: 30px;
   font-weight: 600;
-  color: #ffd43b;
-  font-family: "Gowun Dodum", sans-serif;
+  color: #ffbc42;
 `;
 const Button = styled.button<{buttonDisabled: boolean}>`
   border-radius: 7px;

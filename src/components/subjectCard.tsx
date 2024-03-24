@@ -179,7 +179,7 @@ const Card = styled.div<{checked: any}>`
   border-radius: 15px;
   display: flex;
   border: ${props => props.checked ? "3px" : null} solid ${props => props.checked ? "#364fc7" : null};
-  background-color: #2A2A2A;
+  background-color: #2a2a2ae9;
   margin: 2%;
   cursor: pointer;
 `;
@@ -197,8 +197,11 @@ const TitleWrapper = styled.div`
 const Title = styled.div`
   font-size: 27px;
   font-weight: 600;
+  color: #ffffff;
 `;
-const Content = styled.div``;
+const Content = styled.div`
+  color: #e1e5f2;
+`;
 const Input = styled.input`
   width: 1.6em;
   height: 1.6em;
