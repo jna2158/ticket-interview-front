@@ -8,10 +8,13 @@ import MuiAccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 
 export default function Score({ data, idx }: any) {
+  const color = data.score === 0 ? '#c92a2a' : '#212529';
+  const backgroundColor = data.score === 0 ? 'rgba(255, 0, 0, 0.03)' : '#f8f9fa';
+
   return (
     <Wrapper>
-      <Accordion>
-        <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
+      <Accordion> 
+        <AccordionSummary aria-controls="panel1d-content" id="panel1d-header" style={{color, backgroundColor}}>
           <Typography style={{fontSize: '18px'}}>{Object.keys(data)[0]}</Typography>
         </AccordionSummary>
         <AccordionDetails>
@@ -42,17 +45,12 @@ const Accordion = styled((props: AccordionProps) => (
   }
 }));
 
-
 const AccordionSummary = styled((props: AccordionSummaryProps) => (
   <MuiAccordionSummary
     expandIcon={<ArrowForwardIosSharpIcon sx={{ fontSize: '0.9rem' }} />}
     {...props}
   />
 ))(({ theme }) => ({
-  backgroundColor:
-    theme.palette.mode === 'dark'
-      ? 'rgba(255, 255, 255, .05)'
-      : 'rgba(0, 0, 0, .03)',
   flexDirection: 'row-reverse',
   '& .MuiAccordionSummary-expandIconWrapper.Mui-expanded': {
     transform: 'rotate(90deg)',
