@@ -91,14 +91,12 @@ export default function NewInterviewSetting() {
   }
   
   const handleClickConfirmBtn = async(): Promise<void> => {
-    const requestArr = _.reject(subjectArr, { problems: 0 });
     const req: any = {};
     subjectArr.forEach((el): any => {
       req[el.id] = el.problems;
     });
     
-    const userType = localStorage.getItem("username") ? "user" : "nouser";
-    await reqProblems(userType, req)
+    await reqProblems('user', req)
     .then(res => {
       navigate("/problem-solve", { state: res.data });
     })
@@ -113,7 +111,6 @@ export default function NewInterviewSetting() {
         <Title>
           { currentStep === "selectCategory" ? "문제 선택하기" : "문제 수 선택하기" }
         </Title>
-        <SubTitle>로그인을 하면 한 카테고리 당 최대 10개의 문제를 풀 수 있어요.</SubTitle>
         { currentStep === "selectCategory"
           ? <SubjectCard subjectArr={ subjectArr } setSubjectArr={ setSubjectArr }/>
           : <ProblemSelectCard subjectArr={ subjectArr.filter(el => el.checked) } setSubjectArr={ setSubjectArr }/>}
@@ -141,11 +138,6 @@ const Title = styled.div`
   font-weight: 600;
   color: #ffd43b;
   font-family: "Gowun Dodum", sans-serif;
-`
-const SubTitle = styled.div`
-  text-align: center;
-  margin-bottom: 50px;
-  color: #fff4e6;
 `;
 const Button = styled.button<{buttonDisabled: boolean}>`
   border-radius: 7px;

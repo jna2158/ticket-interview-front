@@ -3,11 +3,13 @@ import styled from "styled-components";
 import logo from "../assets/image/logo.svg";
 import LoginModal from "./loginModal";
 import { logout } from "../services/LoginService";
+import { useNavigate } from "react-router-dom";
 
 export default function Navbar() {
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const [isLogged, setIsLogged] = useState(localStorage.getItem("username") ? true : false);
   const [clickProfile, setClickProfile] = useState(false);
+  const navigate = useNavigate();
 
   /* 로그아웃 버튼 클릭했을 때 */
   const handleClickLogoutBtn = async () => {
@@ -15,6 +17,7 @@ export default function Navbar() {
       localStorage.clear();
       setIsLogged(false);
       setClickProfile(false);
+      navigate("/");
     })
     .catch(err => {
       console.log(err);
@@ -83,5 +86,6 @@ const Profile = styled.section`
 
   & li:hover {
     background-color: rgb(72, 72, 72);
+    border-radius: 5px;
   }
 `;
