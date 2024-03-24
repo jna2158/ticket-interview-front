@@ -9,7 +9,7 @@ import Typography from '@mui/material/Typography';
 
 export default function Score({ data, idx }: any) {
   const color = data.score === 0 ? '#520000' : '#212529';
-  const backgroundColor = data.score === 0 ? '#9028232f' : '#d8d9db43';
+  const backgroundColor = data.score === 0 ? '#9028232f' : '#75747443';
 
   return (
     <Wrapper>
