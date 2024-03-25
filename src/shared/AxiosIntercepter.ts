@@ -40,7 +40,7 @@ instance.interceptors.response.use(
 
 // refreshToken 업데이트
 const updateRefreshToken = async () => {
-  return axios.post(`${API_HOST}/api/accounts/refresh_token/`)
+  return instance.post(`${API_HOST}/api/accounts/refresh_token`)
   .then(res => {
     localStorage.setItem('ACCESS_TOKEN', res.data.access_token);
     return 'success';
@@ -54,7 +54,7 @@ const updateRefreshToken = async () => {
 const retryOriginalRequest = async (error: any) => {
   try {
     const originalRequest = error.config;
-    return axios(originalRequest);
+    return instance(originalRequest);
   } catch (refreshError) {
     return Promise.reject(error);
   }
