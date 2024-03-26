@@ -2,9 +2,9 @@ import React from "react";
 import styled from "styled-components";
 
 // oauth
-import GoogleButton from "./oauth/login/GoogleButton";
-import KakaoButton from "./oauth/login/KakaoButton";
-import NaverButton from "./oauth/login/NaverButton";
+import GoogleButton from "./oauth/loginbutton/GoogleButton";
+import KakaoButton from "./oauth/loginbutton/KakaoButton";
+import NaverButton from "./oauth/loginbutton/NaverButton";
 import logo from "../assets/image/app_logo_with_name.png";
 import { useDispatch } from "react-redux";
 import { isOpen } from "../redux/loginSlice";
