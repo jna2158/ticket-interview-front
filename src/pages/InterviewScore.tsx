@@ -34,7 +34,6 @@ export default function InterviewScore() {
       <ResultBox>
         <Header>
           <Title>INTERVIEW 결과</Title>
-          <Username>{localStorage.getItem("username")}</Username>
         </Header>
         <Hr />
         <ResultTitle>

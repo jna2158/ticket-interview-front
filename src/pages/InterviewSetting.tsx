@@ -4,7 +4,7 @@ import SubjectCard from "../components/subjectCard";
 import ProblemSelectCard from "../components/problemSelectCard";
 import * as _ from "lodash";
 import { reqProblems } from "../services/InterviewSettingService";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export default function NewInterviewSetting() {
   const [subjectArr, setSubjectArr] = useState([
@@ -73,6 +73,7 @@ export default function NewInterviewSetting() {
   ]);
   const [buttonDisabled, setButtonDisabled] = useState(false);
   const [currentStep, setCurrentStep] = useState("selectCategory");
+  const { state: type } = useLocation();
 
   const navigate = useNavigate();
 

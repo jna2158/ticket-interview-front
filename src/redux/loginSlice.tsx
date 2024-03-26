@@ -1,14 +1,17 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 export const loginSlice = createSlice({
-    name: "loginmodal",
-    initialState: { isOpen: false},
+    name: "login",
+    initialState: { isLoginModalOpen: false, isLogin: false},
     reducers: {
-        isOpen: (state, action) => {
-            state.isOpen = action.payload
+        isLoginModalOpen: (state, action) => {
+            state.isLoginModalOpen = action.payload
         },
+        isLogin: (state, action) => {
+            state.isLogin = action.payload
+        }
     },
 });
 
 export default loginSlice.reducer;
-export const { isOpen } = loginSlice.actions;
+export const { isLoginModalOpen, isLogin } = loginSlice.actions;

@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
+import { useSelector } from "react-redux";
 import styled from "styled-components";
 import "../assets/image/check-21.svg";
 import dataStructure from "../assets/image/data-structure-icon.png";
@@ -23,7 +24,8 @@ export default function ProblemSelectCard({ subjectArr, setSubjectArr }) {
     "Algorithm": algorithm,
     "OperatingSystem": operating
   };
-  const isLogged = localStorage.getItem("username") ? true : false;
+  const isLogin = useSelector((state: any) => state.login.isLogin);
+
 
   useEffect(() => {
     setSubjectArr(subjectArr.map((subject: { id: string; problems: number; }) => {
@@ -38,7 +40,7 @@ export default function ProblemSelectCard({ subjectArr, setSubjectArr }) {
     if (Number(value) < 1 || 10 < Number(value)) {
       return;
     }
-    if (!isLogged) {
+    if (!isLogin) {
       return;
     }
 
@@ -71,9 +73,9 @@ export default function ProblemSelectCard({ subjectArr, setSubjectArr }) {
                         <Content>{subjectArr[idx].subTitle}</Content>
                       </TitleWrapper>
                       <NumberWrapper>
-                        <NumberI className="bi bi-dash" isLogged={isLogged} onClick={() => handleChangeInputValue(subjectArr[idx].problems - 1, subjectArr[idx].id)}></NumberI>
+                        <NumberI className="bi bi-dash" isLogged={isLogin} onClick={() => handleChangeInputValue(subjectArr[idx].problems - 1, subjectArr[idx].id)}></NumberI>
                         <NumberInput type="number" value={subjectArr[idx].problems} onChange={(e) => handleChangeInputValue(e.target.value, el.id)}/>
-                        <NumberI className="bi bi-plus" isLogged={isLogged} onClick={() => handleChangeInputValue(subjectArr[idx].problems + 1, subjectArr[idx].id)}></NumberI>
+                        <NumberI className="bi bi-plus" isLogged={isLogin} onClick={() => handleChangeInputValue(subjectArr[idx].problems + 1, subjectArr[idx].id)}></NumberI>
                       </NumberWrapper>
                       <div>
                         <Label htmlFor={subjectArr[idx].id}>
@@ -94,9 +96,9 @@ export default function ProblemSelectCard({ subjectArr, setSubjectArr }) {
                         <Content>{subjectArr[idx + 1].subTitle}</Content>
                       </TitleWrapper>
                       <NumberWrapper>
-                        <NumberI className="bi bi-dash" isLogged={isLogged} onClick={() => handleChangeInputValue(subjectArr[idx + 1].problems - 1, subjectArr[idx + 1].id)}></NumberI>
+                        <NumberI className="bi bi-dash" isLogged={isLogin} onClick={() => handleChangeInputValue(subjectArr[idx + 1].problems - 1, subjectArr[idx + 1].id)}></NumberI>
                         <NumberInput type="number" value={subjectArr[idx + 1].problems}/>
-                        <NumberI className="bi bi-plus" isLogged={isLogged} onClick={() => handleChangeInputValue(subjectArr[idx + 1].problems + 1, subjectArr[idx + 1].id)}></NumberI>
+                        <NumberI className="bi bi-plus" isLogged={isLogin} onClick={() => handleChangeInputValue(subjectArr[idx + 1].problems + 1, subjectArr[idx + 1].id)}></NumberI>
                       </NumberWrapper>
                       <div>
                         <Label htmlFor={subjectArr[idx + 1].id}>
