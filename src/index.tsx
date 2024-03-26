@@ -5,7 +5,7 @@ import GlobalStyle from "./styles/GlobalStyles";
 import theme from "./styles/Theme";
 import Navbar from "./components/navbar";
 import App from "./App";
-import NewInterviewSetting from "./pages/NewInterviewSetting";
+import NewInterviewSetting from "./pages/InterviewSetting";
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import GoogleOauthRedirect from "./components/oauth/redirect/GoogleOauthRedirect";
