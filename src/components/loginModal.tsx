@@ -6,13 +6,15 @@ import GoogleButton from "./oauth/login/GoogleButton";
 import KakaoButton from "./oauth/login/KakaoButton";
 import NaverButton from "./oauth/login/NaverButton";
 import logo from "../assets/image/app_logo_with_name.png";
+import { useDispatch } from "react-redux";
+import { isOpen } from "../redux/loginSlice";
 
-export default function LoginModal({setIsLoginModalOpen}: {setIsLoginModalOpen: any}) {
-
+export default function LoginModal() {
+  const dispatch = useDispatch();
   return(
     <LoginModalOverlay>
       <Modal>
-        <SpanBox><i className="fa-solid fa-circle-xmark" onClick={() => setIsLoginModalOpen(false)}></i></SpanBox>
+        <SpanBox><i className="fa-solid fa-circle-xmark" onClick={() => dispatch(isOpen(false))}></i></SpanBox>
         <div className="animated bounceInDown">
             <span className="error animated tada" id="msg"></span>
               <Form name="form1" className="box">

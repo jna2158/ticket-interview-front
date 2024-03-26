@@ -3,11 +3,14 @@ import styled from "styled-components";
 import logo from "../assets/image/logo.svg";
 import LoginModal from "./loginModal";
 import { logout } from "../services/LoginService";
+import { useDispatch, useSelector } from "react-redux";
+import { isOpen } from "../redux/loginSlice";
 
 export default function Navbar() {
-  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const [isLogged, setIsLogged] = useState(localStorage.getItem("username") ? true : false);
   const [clickProfile, setClickProfile] = useState(false);
+  const isModalOpen = useSelector((state: any) => state.login.isOpen);
+  const dispatch = useDispatch();
 
   /* 로그아웃 버튼 클릭했을 때 */
   const handleClickLogoutBtn = async () => {
@@ -33,7 +36,7 @@ export default function Navbar() {
             {
               isLogged
               ? <a onClick={() => setClickProfile(!clickProfile)}>{ localStorage.getItem("username")}</a>
-              : <button type="button" className="btn btn-outline-light" onClick={() => setIsLoginModalOpen(true)}>로그인</button>
+              : <button type="button" className="btn btn-outline-light" onClick={() => dispatch(isOpen(true))}>로그인</button>
             }
           </LoginButtonContainer>
           {
@@ -47,7 +50,7 @@ export default function Navbar() {
         </div>
       </nav>
       {
-        isLoginModalOpen ? <LoginModal setIsLoginModalOpen={setIsLoginModalOpen}/> : null
+        isModalOpen ? <LoginModal /> : null
       }
     </>
   );
