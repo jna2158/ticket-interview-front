@@ -5,14 +5,12 @@ import LoginModal from "./loginModal";
 import { logout } from "../services/LoginService";
 import { useDispatch, useSelector } from "react-redux";
 import { isOpen } from "../redux/loginSlice";
-import { useNavigate } from "react-router-dom";
 
 export default function Navbar() {
   const [isLogged, setIsLogged] = useState(localStorage.getItem("username") ? true : false);
   const [clickProfile, setClickProfile] = useState(false);
   const isModalOpen = useSelector((state: any) => state.login.isOpen);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   /* 로그아웃 버튼 클릭했을 때 */
   const handleClickLogoutBtn = async () => {
@@ -20,7 +18,6 @@ export default function Navbar() {
       localStorage.clear();
       setIsLogged(false);
       setClickProfile(false);
-      navigate("/");
     })
     .catch(err => {
       console.log(err);
