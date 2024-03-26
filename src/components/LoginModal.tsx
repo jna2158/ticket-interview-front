@@ -5,6 +5,7 @@ import styled from "styled-components";
 import GoogleButton from "./oauth/login/GoogleButton";
 import KakaoButton from "./oauth/login/KakaoButton";
 import NaverButton from "./oauth/login/NaverButton";
+import logo from "../assets/image/app_logo_with_name.png";
 
 export default function LoginModal({setIsLoginModalOpen}: {setIsLoginModalOpen: any}) {
 
@@ -15,8 +16,8 @@ export default function LoginModal({setIsLoginModalOpen}: {setIsLoginModalOpen: 
         <div className="animated bounceInDown">
             <span className="error animated tada" id="msg"></span>
               <Form name="form1" className="box">
-                <h4>Ticket<span> Interview</span></h4>
-                <h5>Sign in to your account.</h5>
+                <img src={logo} alt="TInterview logo" width={170}/>
+                <h5>간편 로그인을 통해 당신의 면접 실력을<br/> 향상시킬 AI 면접 파트너를 만나봐요.</h5>
                 <Hr />
                 <SocialLoginInfo>간편하게 SNS 로그인</SocialLoginInfo>
                 <SocialLoginSection>
@@ -31,7 +32,6 @@ export default function LoginModal({setIsLoginModalOpen}: {setIsLoginModalOpen: 
   )
 }
 
-/** Style */
 const LoginModalOverlay = styled.section`
   position: fixed;
   top: 0;
@@ -41,7 +41,6 @@ const LoginModalOverlay = styled.section`
   background-color: rgba(0, 0, 0, 0.7);
   z-index: 999;
 `;
-
 const Modal = styled.div`
   padding: 2rem;
   background-color: ${({theme}) => theme.colors.gray9};
@@ -69,17 +68,15 @@ const Form = styled.form`
     font-size: 25px;
     margin-top: 5%;
   }
-
   & span {
     color: #dfdeee;
     font-weight: lighter;
   }
-
   & h5 {
-    font-size: 18px;
+    font-size: 16px;
     color: #a1a4ad;
     letter-spacing: 1.5px;
-    margin-top: -15px;
+    margin-top: 15px;
     margin-bottom: 10%;
   }
 `;
@@ -95,7 +92,7 @@ const SpanBox = styled.span`
 const Hr = styled.hr`
   border: none;
   height: 1px;
-  margin-top: 18vh;
+  margin-top: 8vh;
   background-color: ${({theme}) => theme.colors.gray7};
 `;
 const SocialLoginInfo = styled.div`
@@ -108,7 +105,7 @@ const SocialLoginSection = styled.div`
   display: flex;
   gap: 3%;
   justify-content: center;
-  margin-top: 1%;
+  margin-top: 2vh;
   & img {
     width: 3vw;
     cursor: pointer;
