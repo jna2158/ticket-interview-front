@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import Timer from "../timer";
 
-export default function Problem({data, nextProblem, isLast, totalLength, currentIndex}: any) {
+export default function TicketSolveProblem({data, nextProblem, isLast, totalLength, currentIndex}: any) {
   const [userAnswer, setUserAnswer] = useState("");
   const navigate = useNavigate();
   const btnName = isLast ? "제출하기" : "다음";

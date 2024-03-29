@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { isLoginModalOpen } from "../redux/login_slice";
 import ticketIntro from "../assets/image/ticket_intro.png";
 import ticketIntro2 from "../assets/image/ticket_intro2.png";
+import { interviewType } from "../redux/interview_slice";
 
 export default function Landing() {
   const navigate = useNavigate();
@@ -16,6 +17,7 @@ export default function Landing() {
       dispatch(isLoginModalOpen(true));
       return;
     }
+    dispatch(interviewType(type));
     navigate("/interview-setting", {state: type});
   };
 

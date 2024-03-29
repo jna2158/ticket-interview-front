@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 export const loginSlice = createSlice({
     name: "login",
-    initialState: { isLoginModalOpen: false, isLogin: localStorage.getItem("username")},
+    initialState: {isLoginModalOpen: false, isLogin: localStorage.getItem("username")},
     reducers: {
         isLoginModalOpen: (state, action) => {
             state.isLoginModalOpen = action.payload
