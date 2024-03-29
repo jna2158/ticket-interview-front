@@ -1,105 +1,64 @@
-import React, { useState } from "react";
-import { scoringProblem } from "../../services/interview_service";
-import { useNavigate } from "react-router-dom";
-import styled from "styled-components";
-import Timer from "../timer";
+import * as React from 'react';
+import { styled } from '@mui/material/styles';
+import s_styled from "styled-components";
+import ArrowForwardIosSharpIcon from '@mui/icons-material/ArrowForwardIosSharp';
+import MuiAccordion, { AccordionProps } from '@mui/material/Accordion';
+import MuiAccordionSummary, { AccordionSummaryProps } from '@mui/material/AccordionSummary';
+import MuiAccordionDetails from '@mui/material/AccordionDetails';
+import Typography from '@mui/material/Typography';
 
-export default function Problem({data, nextProblem, isLast, totalLength, currentIndex}: any) {
-  const [userAnswer, setUserAnswer] = useState("");
-  const navigate = useNavigate();
-  const btnName = isLast ? "제출하기" : "다음";
-  const [time, setTime] = useState('');
-
-  /* 답 입력 후 다음 버튼 클릭했을 때 */
-  const handleClickNextBtn = () => {
-    const param = {
-      question: data,
-      user_answer: userAnswer,
-      last_problem: isLast ? 1 : 0
-    }
-
-    scoringProblem(param)
-    .then(res => {
-      console.log(res);
-      res.data.time = time;
-      if(isLast) {
-        navigate("/interview-score", { state: res.data});
-      }
-    })
-    .catch(err => {
-      console.log(err);
-    })
-    if (!isLast) {
-      setUserAnswer("");
-      nextProblem(); 
-    }
-  }
+export default function Score({ data, idx }: any) {
+  const color = data.score === 0 ? '#c92a2a' : '#1864ab';
+  const backgroundColor = data.score === 0 ? '#ff0d0037' : '#0048ff29';
 
   return (
     <Wrapper>
-      <ProblemSection>
-        <SubWrapper>
-          <Badge className="badge-info">{totalLength}개 중 {currentIndex + 1}번째 문제</Badge>
-          <Timer setTime={setTime}/>
-        </SubWrapper>
-        <ProblemTitle>{ data }</ProblemTitle>
-        <TextArea className="form-control" name="message" placeholder="여기에 답을 입력하세요." value={userAnswer} onChange={e => setUserAnswer(e.target.value)}></TextArea>
-        <SubmitBtn type="button" className="btn" onClick={handleClickNextBtn}>{ btnName }</SubmitBtn>
-      </ProblemSection>
+      <Accordion> 
+        <AccordionSummary aria-controls="panel1d-content" id="panel1d-header" style={{color, backgroundColor}}>
+          <Typography style={{fontSize: '18px'}}>{Object.keys(data)[0]}</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography style={{fontSize: '15px'}}>{data[Object.keys(data)[0]]}</Typography>
+        </AccordionDetails>
+      </Accordion>
     </Wrapper>
-  )
+  );
 }
 
-const Wrapper = styled.div`
-  background-color: #171717;
-  width: 100vw;
-  height: auto;
-  min-height: 100vh;
+const Wrapper = s_styled.div`
+  padding-bottom: 2vh;
 `;
-const ProblemSection = styled.div`
-  width: 100vw;
-  padding: 2% 2% 2% 4%;
-`;
-const SubWrapper = styled.div`
-  display: flex;
-  align-items: baseline;
-`;
-const Badge = styled.span`
-  padding: 5px;
-  border-radius: 10px;
-  margin-right: 2%;
-`;
-const ProblemTitle = styled.div`
-  font-size: 30px;
-  padding: 1% 0% 2% 0%;
-  color: #E1E2E8;
-`;
-const TextArea = styled.textarea`
-  width: 65vw;
-  height: 50vh !important;
-  background-color: #1F2325;
-  border: 2px solid #495057;
-  color: #cbc8c8 !important;
-  line-height: 3vh;
-  &:hover {
-    background-color: #1F2325;
+const Accordion = styled((props: AccordionProps) => (
+  <MuiAccordion disableGutters elevation={0} square {...props} />
+))(({ theme }) => ({
+  border: `1px solid ${theme.palette.divider}`,
+  boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)',
+  borderRadius: '8px',
+  width: '100%',
+  height: 'fit-content',
+  '&:not(:last-child)': {
+    borderBottom: 0,
+  },
+  '&::before': {
+    display: 'none',
   }
-  &:focus {
-    background-color: #1F2325;
-  }
-`;
-const SubmitBtn = styled.button`
-  width: 65vw;
-  margin-top: 5vh;
-  border: none;
-  background-color: #1864ab;
-  color: #cbc8c8;
-  &:hover {
-    color: #cbc8c8;
-    background-color: #1864ab;
-  }
-  &:focus {
-    color: #cbc8c8;
-    background-color: #1864ab;
-  }
-`;
+}));
+const AccordionSummary = styled((props: AccordionSummaryProps) => (
+  <MuiAccordionSummary
+    expandIcon={<ArrowForwardIosSharpIcon sx={{ fontSize: '0.9rem' }} />}
+    {...props}
+  />
+))(({ theme }) => ({
+  flexDirection: 'row-reverse',
+  '& .MuiAccordionSummary-expandIconWrapper.Mui-expanded': {
+    transform: 'rotate(90deg)',
+  },
+  '& .MuiAccordionSummary-content': {
+    marginLeft: theme.spacing(1),
+  },
+}));
+const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
+  padding: theme.spacing(2),
+  borderTop: '1px solid rgba(0, 0, 0, .125)',
+  backgroundColor: theme.palette.background.default,
+}));
