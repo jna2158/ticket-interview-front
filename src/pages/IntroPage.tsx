@@ -53,7 +53,7 @@ const TicketSection = styled.section<{image, image2}>`
   width: 33.3vw;
   background-image: url(${props => props.image}),url(${props => props.image2});
   background-size: contain;
-  background-position: 0px 55vh, 0px 65px;
+  background-position: 15px 55vh, 15px 67px;
   background-repeat: no-repeat;
   opacity: 0.4;
   &:hover {
