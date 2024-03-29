@@ -10,7 +10,9 @@ export default function ProblemSolve() {
     setCurrentProblemIndex(currentProblemIndex + 1);
   };
   const type = useSelector((state: any) => state.interview.interviewType);
-
+  console.log("type >>> ");
+  console.log(type);
+  
   return (
     <>
       <TicketSolveProblem
