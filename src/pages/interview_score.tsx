@@ -1,7 +1,7 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
 import styled from "styled-components";
-import Score from "../components/Interview/score";
+import Score from "../components/interview/score";
 import clap from "../assets/image/clap.png";
 
 export default function InterviewScore() {

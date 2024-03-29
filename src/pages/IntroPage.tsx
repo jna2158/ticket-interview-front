@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
-import { isLoginModalOpen } from "../redux/loginSlice";
+import { isLoginModalOpen } from "../redux/login_slice";
 import ticketIntro from "../assets/image/ticket_intro.png";
 import ticketIntro2 from "../assets/image/ticket_intro2.png";
 

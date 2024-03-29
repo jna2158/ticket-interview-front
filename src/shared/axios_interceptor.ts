@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { API_HOST } from './ApiConstant';
+import { API_HOST } from './api_constant';
 
 const instance = axios.create({
   baseURL: "https://ticket-interview.com"

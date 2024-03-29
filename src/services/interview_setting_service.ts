@@ -1,4 +1,4 @@
-import instance from "../shared/axiosIntercepter";
+import instance from "../shared/axios_interceptor";
 
 type userType = "user" | "nouser";
 

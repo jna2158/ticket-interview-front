@@ -1,6 +1,6 @@
-import { API_HOST } from "../shared/ApiConstant";
+import { API_HOST } from "../shared/api_constant";
 import axios from "axios";
-import instance from "../shared/axiosIntercepter";
+import instance from "../shared/axios_interceptor";
 
 /**
  * google login 요청

@@ -2,8 +2,8 @@ import React, { useEffect } from "react";
 // react-query
 import { useMutation } from "react-query";
 // oauth
-import { naverLogin } from "../../../services/LoginService";
-import { HOME_URL } from "../../../shared/ApiConstant";
+import { naverLogin } from "../../../services/login_service";
+import { HOME_URL } from "../../../shared/api_constant";
 
 export default function NaverOauthRedirect() {
   const authCode: string = new URL(window.location.href).searchParams.get("code")!;

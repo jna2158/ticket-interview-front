@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import logo from "../assets/image/logo.svg";
-import LoginModal from "./loginModal";
-import { logout } from "../services/LoginService";
+import LoginModal from "./login_modal";
+import { logout } from "../services/login_service";
 import { useDispatch, useSelector } from "react-redux";
-import { isLoginModalOpen } from "../redux/loginSlice";
+import { isLoginModalOpen } from "../redux/login_slice";
 
 export default function Navbar() {
   const [clickProfile, setClickProfile] = useState(false);

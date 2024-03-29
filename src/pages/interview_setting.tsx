@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import SubjectCard from "../components/subjectCard";
-import ProblemSelectCard from "../components/problemSelectCard";
+import SubjectCard from "../components/subject_card";
+import ProblemSelectCard from "../components/problem_select_card";
 import * as _ from "lodash";
-import { reqProblems } from "../services/InterviewSettingService";
+import { reqProblems } from "../services/interview_setting_service";
 import { useLocation, useNavigate } from "react-router-dom";
 
 export default function NewInterviewSetting() {
