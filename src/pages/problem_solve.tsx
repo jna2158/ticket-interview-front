@@ -14,14 +14,33 @@ export default function ProblemSolve() {
   console.log(type);
   
   return (
+    // <>
+    //   <TicketSolveProblem
+    //     data={data[Object.keys(data)[currentProblemIndex]]}
+    //     nextProblem={nextProblem}
+    //     isLast={Object.keys(data).length - 1 === currentProblemIndex}
+    //     totalLength={Object.keys(data).length}
+    //     currentIndex={currentProblemIndex}
+    //   />
+    // </>
     <>
-      <TicketSolveProblem
-        data={data[Object.keys(data)[currentProblemIndex]]}
-        nextProblem={nextProblem}
-        isLast={Object.keys(data).length - 1 === currentProblemIndex}
-        totalLength={Object.keys(data).length}
-        currentIndex={currentProblemIndex}
-      />
+      {(() => {
+        switch (type) {
+          case "Ticket":
+            return (
+              <TicketSolveProblem
+              data={data[Object.keys(data)[currentProblemIndex]]}
+              nextProblem={nextProblem}
+              isLast={Object.keys(data).length - 1 === currentProblemIndex}
+              totalLength={Object.keys(data).length}
+              currentIndex={currentProblemIndex}
+            />
+            )
+          default:
+            return null;
+        }
+      })()}
     </>
+
   )
 }
