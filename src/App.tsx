@@ -1,5 +1,5 @@
 import React from 'react';
-import IntroCarousel from './pages/IntroPage';
+import IntroCarousel from './pages/landing';
 
 
 class App extends React.Component {

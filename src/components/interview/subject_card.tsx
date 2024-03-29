@@ -1,15 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
+import dataStructure from "../../assets/image/data-structure-icon.png";
+import python from "../../assets/image/python-icon.svg";
+import database from "../../assets/image/database-icon.png";
+import javascript from "../../assets/image/javascript-icon.png";
+import person from "../../assets/image/person-icon.png";
+import programming from "../../assets/image/programming-icon.png";
+import network from "../../assets/image/network-icon.png";
+import algorithm from "../../assets/image/algorithm-icon.png";
+import operating from "../../assets/image/operating-icon.png";
 import styled from "styled-components";
-import "../assets/image/check-21.svg";
-import dataStructure from "../assets/image/data-structure-icon.png";
-import python from "../assets/image/python-icon.svg";
-import database from "../assets/image/database-icon.png";
-import javascript from "../assets/image/javascript-icon.png";
-import person from "../assets/image/person-icon.png";
-import programming from "../assets/image/programming-icon.png";
-import network from "../assets/image/network-icon.png";
-import algorithm from "../assets/image/algorithm-icon.png";
-import operating from "../assets/image/operating-icon.png";
 
 export default function SubjectCard({ subjectArr, setSubjectArr }: any) {
   const handleCheckboxChange = (target: string) => {

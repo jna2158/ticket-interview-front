@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Problem from "../components/Interview/problem";
+import Problem from "../components/interview/solve_problem/ticket_solve_problem";
 import { useLocation } from "react-router-dom";
 
 export default function ProblemSolve() {

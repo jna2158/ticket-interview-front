@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { scoringProblem } from "../../services/interview_service";
+import { scoringProblem } from "../../../services/interview_service";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import Timer from "../timer";

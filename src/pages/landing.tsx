@@ -6,7 +6,7 @@ import { isLoginModalOpen } from "../redux/login_slice";
 import ticketIntro from "../assets/image/ticket_intro.png";
 import ticketIntro2 from "../assets/image/ticket_intro2.png";
 
-export default function IntroPage() {
+export default function Landing() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const isLogin = useSelector((state: any) => state.login.isLogin);

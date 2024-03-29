@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import styled from "styled-components";
-import SubjectCard from "../components/subject_card";
-import ProblemSelectCard from "../components/problem_select_card";
+import SubjectCard from "../components/interview/subject_card";
+import ProblemSelectCard from "../components/interview/select_number_card";
 import * as _ from "lodash";
 import { reqProblems } from "../services/interview_setting_service";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import styled from "styled-components";
 
-export default function NewInterviewSetting() {
+export default function InterviewSetting() {
   const [subjectArr, setSubjectArr] = useState([
     {
       id: "DataStructure",
@@ -73,25 +73,25 @@ export default function NewInterviewSetting() {
   ]);
   const [buttonDisabled, setButtonDisabled] = useState(false);
   const [currentStep, setCurrentStep] = useState("selectCategory");
-  const { state: type } = useLocation();
-
   const navigate = useNavigate();
 
   useEffect(() => {
     setButtonDisabled(subjectArr.filter(el => el.checked)?.length === 0 ? true : false);
   }, [subjectArr]);
-
+ 
+  /** 문제 수 선택하러가기 or 면접보러 가기 버튼 클릭 */
   const handleClickButton = () => {
     if (buttonDisabled) return;
 
-    if (currentStep === "selectProblemNumber") {
-      handleClickConfirmBtn();
+    if (currentStep === "setNumber") {
+      handleClickSetNumberBtn();
     } else {
-      setCurrentStep("selectProblemNumber");
+      setCurrentStep("setNumber");
     }    
   }
   
-  const handleClickConfirmBtn = async(): Promise<void> => {
+  /** 문제 수 선택하러가기 버튼 클릭 */
+  const handleClickSetNumberBtn = async(): Promise<void> => {
     const req: any = {};
     subjectArr.forEach((el): any => {
       req[el.id] = el.problems;
