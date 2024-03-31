@@ -7,6 +7,7 @@ import ticketIntro from "../assets/image/ticket_intro.png";
 import ticketIntro2 from "../assets/image/ticket_intro2.png";
 import { interviewType } from "../redux/interview_slice";
 import ChattingSolveProblem from "../components/interview/solve_problem/chatting_solve_problem";
+import Agreement from "./agreement";
 
 export default function Landing() {
   const navigate = useNavigate();
@@ -34,7 +35,8 @@ export default function Landing() {
     //     <p className="intro-text animated slideInUp">다양한 카테고리별 예상 질문과 문제풀이로 당신을 돕습니다. TInterview와 함께 더 나은 미래를 준비해보세요!</p>
     //   </div>
     // </Wrapper>
-    <ChattingSolveProblem />
+    // <ChattingSolveProblem />
+    <Agreement />
   );
 }
 
