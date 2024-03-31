@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 export const interviewSlice = createSlice({
     name: "interview",
-    initialState: {interviewType: null},
+    initialState: {interviewType: "Chatting"},
     reducers: {
         interviewType: (state, action) => {
             state.interviewType = action.payload
