@@ -99,7 +99,7 @@ export default function InterviewSetting() {
     
     await reqProblems('user', req)
     .then(res => {
-      navigate("/problem-solve", { state: res.data });
+      navigate("/agreement", { state: res.data });
     })
     .catch(err => {
       console.log(err);

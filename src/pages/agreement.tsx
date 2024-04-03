@@ -4,8 +4,11 @@ import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import Box from '@mui/material/Box';
+import { useLocation, useNavigate } from "react-router-dom";
 
 export default function Agreement() {
+  const { state: data } = useLocation();
+  const navigate = useNavigate();
   const [agreement1, setAgreement1] = useState(false);
   const [agreement2, setAgreement2] = useState(false);
   const [agreement3, setAgreement3] = useState(false);
@@ -14,22 +17,37 @@ export default function Agreement() {
   const [agreement6, setAgreement6] = useState(false);
   const [agreement7, setAgreement7] = useState(false);
 
-  const handleCheckboxChange = (event, setState) => {
-
-    setState(event.target.checked);
+  const handleCheckboxChange = (event, setState, dependentStates) => {
+    const bool = event.target.checked;
+  
+    // 만약 이 체크박스가 메인 동의 체크박스인 경우
     if (setState === setAgreement1) {
-      const bool = !agreement1;
-      setAgreement1(bool);
-      setAgreement2(bool);
-      setAgreement3(bool);
-      setAgreement4(bool);
-      setAgreement5(bool);
-      setAgreement6(bool);
+      // 메인 동의 체크박스 상태 설정
+      setState(bool);
+      // 메인 동의 체크박스에 따라 모든 하위 체크박스 상태 설정
+      dependentStates.forEach(setState => setState(bool));
+    } else {
+      // 만약 이 체크박스가 하위 체크박스인 경우
+      // 만약 체크가 해제되면 메인 동의 체크박스도 해제
+      if (!bool) {
+        setAgreement1(false);
+      } else {
+        // 모든 하위 체크박스가 체크되어 있는지 확인
+        const allChecked = dependentStates.every(state => state);
+        console.log(dependentStates);
+        
+        // 모든 하위 체크박스가 체크되어 있으면 메인 동의 체크박스도 체크
+        if (allChecked) {
+          setAgreement1(true);
+        }
+      }
+      // 현재 체크박스 상태 설정
+      setState(bool);
     }
+  };
 
-    if (!event.target.checked) {
-      setAgreement1(false);
-    }
+  const handleClickSubmitBtn = () => {
+    navigate("/problem-solve", { state: data });
   };
 
   return (
@@ -40,28 +58,28 @@ export default function Agreement() {
           <FormGroup>
             <CenteredFormGroup>
             <FormControlLabel
-                control={<Checkbox checked={agreement1} onChange={(e) => handleCheckboxChange(e, setAgreement1)} sx={{ '& .MuiSvgIcon-root': { fontSize: 35 }, color: "#616161" }} />}
-                label={<LabelTitle><span>[필수]</span> TInterview 이용약관</LabelTitle>} />
+              control={<Checkbox checked={agreement1} onChange={(e) => handleCheckboxChange(e, setAgreement1, [setAgreement2, setAgreement3, setAgreement4, setAgreement5, setAgreement6])} sx={{ '& .MuiSvgIcon-root': { fontSize: 35 }, color: "#616161" }} />}
+              label={<LabelTitle><span>[필수]</span> TInterview 이용약관</LabelTitle>} />
               <Box sx={{ display: 'flex', flexDirection: 'column', ml: 3 }}>
                 <FormControlLabel
                   label={<SubLabel>면접문제는 <span>무작위</span>로 선별됩니다.</SubLabel>}
-                  control={<Checkbox checked={agreement2} onChange={(e) => handleCheckboxChange(e, setAgreement2)} sx={{ '& .MuiSvgIcon-root': { fontSize: 28 }, color: "#616161" }} />}
+                  control={<Checkbox checked={agreement2} onChange={(e) => handleCheckboxChange(e, setAgreement2, [agreement3, agreement4, agreement5, agreement6])} sx={{ '& .MuiSvgIcon-root': { fontSize: 28 }, color: "#616161" }} />}
                 />
                 <FormControlLabel
                   label={<SubLabel>통계적으로 빈번한 면접 질문들을 선별했습니다. 하지만 실제 면접의 질문과 <span>다를 수</span> 있습니다.</SubLabel>}
-                  control={<Checkbox checked={agreement3} onChange={(e) => handleCheckboxChange(e, setAgreement3)} sx={{ '& .MuiSvgIcon-root': { fontSize: 28 }, color: "#616161" }} />}
+                  control={<Checkbox checked={agreement3} onChange={(e) => handleCheckboxChange(e, setAgreement3, [agreement2, agreement4, agreement5, agreement6])} sx={{ '& .MuiSvgIcon-root': { fontSize: 28 }, color: "#616161" }} />}
                 />
                 <FormControlLabel
                   label={<SubLabel>면접 결과와 실제 면접관이 희망하는 답변은 다를 수 있습니다. 본 면접의 주요 목적은 <span>면접 스킬 향상</span>에 있음을 기억해주세요.</SubLabel>}
-                  control={<Checkbox checked={agreement4} onChange={(e) => handleCheckboxChange(e, setAgreement4)} sx={{ '& .MuiSvgIcon-root': { fontSize: 28 }, color: "#616161" }} />}
+                  control={<Checkbox checked={agreement4} onChange={(e) => handleCheckboxChange(e, setAgreement4, [agreement2, agreement3, agreement5, agreement6])} sx={{ '& .MuiSvgIcon-root': { fontSize: 28 }, color: "#616161" }} />}
                 />
                 <FormControlLabel
                   label={<SubLabel>다음 문제로 넘어간 경우 이전 문제의 정답을 <span>수정할 수 없습니다.</span></SubLabel>}
-                  control={<Checkbox checked={agreement5} onChange={(e) => handleCheckboxChange(e, setAgreement5)} sx={{ '& .MuiSvgIcon-root': { fontSize: 28 }, color: "#616161" }} />}
+                  control={<Checkbox checked={agreement5} onChange={(e) => handleCheckboxChange(e, setAgreement5, [agreement2, agreement3, agreement4, agreement6])} sx={{ '& .MuiSvgIcon-root': { fontSize: 28 }, color: "#616161" }} />}
                 />
                 <FormControlLabel
                   label={<SubLabel>면접 내용은 <span>저장할 수 없습니다.</span></SubLabel>}
-                  control={<Checkbox checked={agreement6} onChange={(e) => handleCheckboxChange(e, setAgreement6)} sx={{ '& .MuiSvgIcon-root': { fontSize: 28 }, color: "#616161" }} />}
+                  control={<Checkbox checked={agreement6} onChange={(e) => handleCheckboxChange(e, setAgreement6, [agreement2, agreement3, agreement4, agreement5])} sx={{ '& .MuiSvgIcon-root': { fontSize: 28 }, color: "#616161" }} />}
                 />
               </Box>
             </CenteredFormGroup>
@@ -70,7 +88,7 @@ export default function Agreement() {
           <FormGroup>
             <CenteredFormGroup>
               <FormControlLabel
-                control={<Checkbox checked={agreement7} onChange={(e) => handleCheckboxChange(e, setAgreement7)} sx={{ '& .MuiSvgIcon-root': { fontSize: 35 }, color: "#616161" }} />}
+                control={<Checkbox checked={agreement7} onChange={(e) => handleCheckboxChange(e, setAgreement7, [agreement7])} sx={{ '& .MuiSvgIcon-root': { fontSize: 35 }, color: "#616161" }} />}
                 label={<LabelTitle><span>[필수]</span> TInterview 콘텐츠 이용약관</LabelTitle>} />
 
               <Box sx={{ display: "flex", flexDirection: "column", textAlign: "left", ml: 3, border: "1px solid #616161", width: "25vw", maxHeight: "40vh", overflowY: "scroll", padding: "2%", color: "#727272", borderRadius: "10px"}}>
@@ -85,7 +103,7 @@ export default function Agreement() {
               </Box>
             </CenteredFormGroup>
           </FormGroup>
-          <SubmitBtn disabled={!agreement1 || !agreement7}>계속하기</SubmitBtn>
+          <SubmitBtn disabled={!agreement1 || !agreement7} onClick={handleClickSubmitBtn}>계속하기</SubmitBtn>
         </SubWrapper>
       </Wrapper>
     </>

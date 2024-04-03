@@ -16,6 +16,7 @@ import InterviewScore from "./pages/interview_score";
 import { Provider } from "react-redux";
 import store from "./redux/store";
 import "../src/assets/css/main.css";
+import Agreement from "./pages/agreement";
 
 const rootElement = document.getElementById('root');
 const root = ReactDOM.createRoot(rootElement!);
@@ -33,6 +34,7 @@ root.render(
                 <Route path="/" element={<App />}></Route>
                 <Route path="/interview-setting" element={<NewInterviewSetting />}></Route>
                 <Route path="/problem-solve" element={<ProblemSolve />}></Route>
+                <Route path="/agreement" element={<Agreement />}></Route>
                 <Route path="/interview-score" element={<InterviewScore />}></Route>
                 <Route path="accounts/google/login/" element={<GoogleOauthRedirect />}></Route>
                 <Route path="accounts/kakao/login/" element={<KakaoOauthRedirect />}></Route>

@@ -2,8 +2,11 @@ import { createSlice } from '@reduxjs/toolkit';
 
 export const interviewSlice = createSlice({
     name: "interview",
-    initialState: {interviewType: "Chatting"},
+    initialState: {agreementInterview: false, interviewType: "Chatting"},
     reducers: {
+        agreementInterview: (state, action) => {
+            state.agreementInterview = action.payload;
+        },
         interviewType: (state, action) => {
             state.interviewType = action.payload
         }
@@ -11,4 +14,4 @@ export const interviewSlice = createSlice({
 });
 
 export default interviewSlice.reducer;
-export const {interviewType} = interviewSlice.actions;
+export const { agreementInterview, interviewType } = interviewSlice.actions;

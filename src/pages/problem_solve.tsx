@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import TicketSolveProblem from "../components/interview/solve_problem/ticket_solve_problem";
 import { useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -11,7 +11,6 @@ export default function ProblemSolve() {
     setCurrentProblemIndex(currentProblemIndex + 1);
   };
   const type = useSelector((state: any) => state.interview.interviewType);
-
   return (
     <>
       {(() => {
