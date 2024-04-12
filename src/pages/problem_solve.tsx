@@ -10,7 +10,8 @@ export default function ProblemSolve() {
   const nextProblem = () => {
     setCurrentProblemIndex(currentProblemIndex + 1);
   };
-  const type = useSelector((state: any) => state.interview.interviewType);
+  // const type = useSelector((state: any) => state.interview.interviewType);
+  const type = "Chatting";
   return (
     <>
       {(() => {
@@ -18,12 +19,12 @@ export default function ProblemSolve() {
           case "Ticket":
             return (
               <TicketSolveProblem
-              data={data[Object.keys(data)[currentProblemIndex]]}
-              nextProblem={nextProblem}
-              isLast={Object.keys(data).length - 1 === currentProblemIndex}
-              totalLength={Object.keys(data).length}
-              currentIndex={currentProblemIndex}
-            />
+                data={data[Object.keys(data)[currentProblemIndex]]}
+                nextProblem={nextProblem}
+                isLast={Object.keys(data).length - 1 === currentProblemIndex}
+                totalLength={Object.keys(data).length}
+                currentIndex={currentProblemIndex}
+              />
             )
           case "Chatting":
             return (

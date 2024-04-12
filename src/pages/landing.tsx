@@ -15,12 +15,13 @@ export default function Landing() {
   const isLogin = useSelector((state: any) => state.login.isLogin);
 
   const startInterview = (type: "Ticket" | "Video" | "Chatting") => {
-    if (!isLogin) {
-      dispatch(isLoginModalOpen(true));
-      return;
-    }
-    dispatch(interviewType(type));
-    navigate("/interview-setting", {state: type});
+    // if (!isLogin) {
+    //   dispatch(isLoginModalOpen(true));
+    //   return;
+    // }
+    // dispatch(interviewType(type));
+    // navigate("/interview-setting", {state: type});
+    navigate("/problem-solve");
   };
 
   return (
