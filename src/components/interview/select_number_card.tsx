@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import dataStructure from "../../assets/image/data-structure-icon.png";
 import python from "../../assets/image/python-icon.svg";
@@ -10,8 +10,9 @@ import programming from "../../assets/image/programming-icon.png";
 import network from "../../assets/image/network-icon.png";
 import algorithm from "../../assets/image/algorithm-icon.png";
 import operating from "../../assets/image/operating-icon.png";
+import { selectedCategory } from "../../redux/interview_slice";
 
-export default function ProblemSelectCard({ subjectArr, setSubjectArr }) {
+export default function ProblemSelectCard({ subjectArr }) {
   const imageMapping = {
     "DataStructure": dataStructure,
     "Python": python,
@@ -24,15 +25,16 @@ export default function ProblemSelectCard({ subjectArr, setSubjectArr }) {
     "OperatingSystem": operating
   };
   const isLogin = useSelector((state: any) => state.login.isLogin);
-
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    setSubjectArr(subjectArr.map((subject: { id: string; problems: number; }) => {
+    const subject = subjectArr.map((subject: { id: string; problems: number; }) => {
       return {
         ...subject,
         problems: 1
       };
-    }));
+    })
+    dispatch(selectedCategory(subject));
   }, []);
 
   const handleChangeInputValue = (value, id) => {
@@ -43,7 +45,7 @@ export default function ProblemSelectCard({ subjectArr, setSubjectArr }) {
       return;
     }
 
-    setSubjectArr(subjectArr.map((subject: { id: string; problems: number; }) => {
+    const subject = subjectArr.map((subject: { id: string; problems: number; }) => {
       if (subject.id === id) {
         return {
           ...subject,
@@ -51,7 +53,8 @@ export default function ProblemSelectCard({ subjectArr, setSubjectArr }) {
         };
       }
       return subject;
-    }));
+    })
+    dispatch(selectedCategory(subject));
   }
 
   return (

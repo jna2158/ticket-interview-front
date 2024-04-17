@@ -2,3 +2,7 @@
 /node_modules
 /build
 /dist
+/mysql-data
+/docker-compose.yml
+.DS_Store
+/pull_dev.sh

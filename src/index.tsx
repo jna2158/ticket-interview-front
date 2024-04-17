@@ -24,25 +24,23 @@ const queryClient = new QueryClient();
 
 root.render(
   <QueryClientProvider client={queryClient}>
-      <React.StrictMode>
-        <Provider store={store}>
-          <ThemeProvider theme={theme}>
-            <GlobalStyle />
-            <Navbar />
-            <BrowserRouter>
-              <Routes>
-                <Route path="/" element={<App />}></Route>
-                <Route path="/interview-setting" element={<NewInterviewSetting />}></Route>
-                <Route path="/problem-solve" element={<ProblemSolve />}></Route>
-                <Route path="/agreement" element={<Agreement />}></Route>
-                <Route path="/interview-score" element={<InterviewScore />}></Route>
-                <Route path="accounts/google/login/" element={<GoogleOauthRedirect />}></Route>
-                <Route path="accounts/kakao/login/" element={<KakaoOauthRedirect />}></Route>
-                <Route path="accounts/naver/login/" element={<NaverOauthRedirect />}></Route>
-              </Routes>
-            </BrowserRouter>
-          </ThemeProvider>
-        </Provider>
-      </React.StrictMode>
+    <Provider store={store}>
+      <ThemeProvider theme={theme}>
+        <GlobalStyle />
+        <Navbar />
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<App />}></Route>
+            <Route path="/interview-setting" element={<NewInterviewSetting />}></Route>
+            <Route path="/problem-solve" element={<ProblemSolve />}></Route>
+            <Route path="/agreement" element={<Agreement />}></Route>
+            <Route path="/interview-score" element={<InterviewScore />}></Route>
+            <Route path="/accounts/google/login/" element={<GoogleOauthRedirect />}></Route>
+            <Route path="accounts/kakao/login/" element={<KakaoOauthRedirect />}></Route>
+            <Route path="accounts/naver/login/" element={<NaverOauthRedirect />}></Route>
+          </Routes>
+        </BrowserRouter>
+      </ThemeProvider>
+    </Provider>
   </QueryClientProvider>
 );

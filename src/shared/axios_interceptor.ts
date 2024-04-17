@@ -1,13 +1,17 @@
 import axios from 'axios';
 import { API_HOST } from './api_constant';
 
+// const instance = axios.create({
+//   baseURL: "https://ticket-interview.com"
+// });
 const instance = axios.create({
-  baseURL: "https://ticket-interview.com"
+  baseURL: "http://localhost:8001"
 });
 
 // 요청 인터셉터 설정
 instance.interceptors.request.use(
   (config) => {
+    console.log("config >>> ", config);
     const accessToken = localStorage.getItem('ACCESS_TOKEN');
     if (accessToken) {
       config.headers['Authorization'] = `Bearer ${accessToken}`;

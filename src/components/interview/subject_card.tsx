@@ -9,18 +9,25 @@ import network from "../../assets/image/network-icon.png";
 import algorithm from "../../assets/image/algorithm-icon.png";
 import operating from "../../assets/image/operating-icon.png";
 import styled from "styled-components";
+import { useDispatch } from "react-redux";
+import { selectedCategory } from "../../redux/interview_slice";
 
-export default function SubjectCard({ subjectArr, setSubjectArr }: any) {
+export default function SubjectCard({ subjectArr }: any) {
+  const dispatch = useDispatch();
+
   const handleCheckboxChange = (target: string) => {
-    setSubjectArr(subjectArr.map((subject: { id: string; checked: any; }) => {
+    const subject = subjectArr.map((subject: { id: string; checked: any; }) => {
       if (subject.id === target) {
         return {
           ...subject,
           checked: !subject.checked
         };
       }
+      dispatch(selectedCategory(subject));
       return subject;
-    }));
+    })
+
+    dispatch(selectedCategory(subject));
   }
 
   return (

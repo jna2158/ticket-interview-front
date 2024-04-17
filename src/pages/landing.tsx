@@ -15,13 +15,13 @@ export default function Landing() {
   const isLogin = useSelector((state: any) => state.login.isLogin);
 
   const startInterview = (type: "Ticket" | "Video" | "Chatting") => {
-    // if (!isLogin) {
-    //   dispatch(isLoginModalOpen(true));
-    //   return;
-    // }
-    // dispatch(interviewType(type));
-    // navigate("/interview-setting", {state: type});
-    navigate("/problem-solve");
+    if (!isLogin) {
+      dispatch(isLoginModalOpen(true));
+      return;
+    }
+    dispatch(interviewType(type));
+    navigate("/interview-setting", {state: type});
+    // navigate("/problem-solve");
   };
 
   return (
@@ -29,7 +29,7 @@ export default function Landing() {
       <CategorySelectWrapper>
         <TicketSection onClick={() => startInterview("Ticket")} image={ticketIntro} image2={ticketIntro2} />
         {/* <VideoSection onClick={() => startInterview("Video")}>Video</VideoSection> */}
-        {/* <ChatSection onClick={() => startInterview("Chatting")}>Chatting</ChatSection> */}
+        <ChatSection onClick={() => startInterview("Chatting")}>Chatting</ChatSection>
       </CategorySelectWrapper>
       <div className="carousel-caption">
         <Title className="animated slideInDown">IT 면접에 자신감을 가지고 싶나요? <span className="highlight">이제는 준비할 때입니다.</span></Title>

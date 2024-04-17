@@ -4,38 +4,95 @@ import profile from "../../../assets/image/profile.svg";
 import logo from "../../../assets/image/app_logo_small.png";
 import logoName from "../../../assets/image/app_name.png";
 import SendIcon from "@mui/icons-material/Send";
+import { getUserInfo } from "../../../services/login_service";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 export default function ChattingSolveProblem() {
+  const navigate = useNavigate();
   const [message, setMessage] = useState("");
   const [chats, setChats] = useState([]);
   const [isTyping, setIsTyping] = useState(false);
   const inputRef = useRef(null);
   const [socket, setSocket] = useState(null);
-
-  const newSocket = new WebSocket("ws://your-websocket-url");
+  const selectedCatetory = useSelector((state: any) => state.interview.selectedCategory);
+  const problem = {};
+  const [current, setCurrent] = useState(null);
 
   useEffect(() => {
+    const fetchData = async () => {
+      // setIsTyping(true);
+      await userInfo();
+      await connectWS();
+      reqProblem();
+    };
+    fetchData();
+  }, []);
+  
+  const userInfo = async () => {
+    try {
+      const res = await getUserInfo();
+      const pkNumber = res.data.pk;8
+      localStorage.setItem("ACCESS_TOKEN", res.data.access_token);
+      return pkNumber;
+    } catch (err) {
+      console.log(err);
+      return null;
+    }
+  };
+  
+  const connectWS = async () => {
+    const pkNumber = await userInfo();
+    
+    if (!pkNumber) return;
+  
+    const newSocket = new WebSocket(`wss://ticket-interview.com/ws/chat/${pkNumber}`);
     newSocket.onopen = () => {
       console.log("웹소켓 연결이 열렸습니다.");
       setSocket(newSocket);
+      sendFirstMessage(newSocket, pkNumber);
     };
-
+  
     newSocket.onmessage = (event) => {
-      console.log("웹소켓 메시지를 받았습니다:", event.data);
-      receiveMessage(event.data);
-      setIsTyping(false);
+      const data = JSON.parse(JSON.parse(event.data));
+      console.log("웹소켓 메시지를 받았습니다:", data);
+      receiveMessage(data);
+      setCurrent({
+        category: data.category,
+        question: data.question,
+        user_answer: ""
+      });
+      if (data.scoring) {
+        setTimeout(() => {
+          navigate("/interview-score", { state: data.scoring});
+        }, 3000);
+      }
     };
-
+  
     newSocket.onclose = () => {
       console.log("웹소켓 연결이 닫혔습니다.");
     };
-
+  
     return () => {
       if (socket) {
         socket.close();
       }
     };
-  }, []);
+  };
+  
+
+  const reqProblem = () => {
+    selectedCatetory.map(el => problem[el.id] = el.problems);
+  };
+
+  const sendFirstMessage = (socket, pkNumber) => {
+    const message = {
+      userName: localStorage.getItem("username"),
+      userPK: pkNumber,
+      options: problem
+    };
+    socket.send(JSON.stringify(message));
+  };
 
   useEffect(() => {
     if (!isTyping && inputRef.current) {
@@ -45,24 +102,30 @@ export default function ChattingSolveProblem() {
 
   const sendMessage = async () => {
     if (message.trim() !== "") {
-      setChats(prevChats => [{ message, fromMe: true }, ...prevChats]);
-      setMessage("");
-
+      setChats(prevChats => [{ message, type: "user" }, ...prevChats]);
       try {
-        await socket.send(message);
+        console.log("웹소켓 메시지를 보냈습니다.", JSON.stringify(message));
+        await socket.send(JSON.stringify({
+          category: current.category,
+          question: current.question,
+          user_answer: message
+        }));
+        setMessage("");
       } catch(e) {
         console.log("웹소켓 연결이 없습니다.");
-        newSocket.onopen = () => {
-          console.log("웹소켓 연결이 열렸습니다.");
-          setSocket(newSocket);
-        };
+        setMessage("");
+        connectWS();
       }
-      setIsTyping(true);
     }
   };
 
-  const receiveMessage = (message) => {
-    setChats(prevChats => [{ message, fromMe: false }, ...prevChats]);
+  const receiveMessage = (data) => {
+    setChats(prevChats => [{ message: data.text, type: data.type }, ...prevChats]);
+    setCurrent({
+      category: data.category, 
+      question: data.questing, 
+      user_answer: ""
+    });
   };
 
   return (
@@ -85,7 +148,7 @@ export default function ChattingSolveProblem() {
           </TitleSection>
           <ChatSection>
             {chats.map((chat, index) => (
-              <ChatBubble key={index} fromMe={chat.fromMe}>{chat.message}</ChatBubble>
+              <ChatBubble key={index} type={chat.type}>{chat.message}</ChatBubble>
             ))}
           </ChatSection>
           <TypeSection>
@@ -182,14 +245,14 @@ const ChatSection = styled.div`
   overflow-y: auto;
   padding: 10px;
 `;
-const ChatBubble = styled.div<{fromMe: boolean}>`
+const ChatBubble = styled.div<{type: string}>`
   background-color: #3f4041;
   color: #e0e0e0;
   border-radius: 10px;
   padding: 8px 12px;
   margin-bottom: 10px;
-  align-self: ${({ fromMe }) => fromMe ? "flex-end" : "flex-start"};
-  ${({ fromMe }) => fromMe && css`
+  align-self: ${({ type }) => type === "user" ? "flex-end" : "flex-start"};
+  ${({ type }) => type === "user" && css`
     background-color: #2979ff;
     color: #fff;
   `}
@@ -223,15 +286,5 @@ const SendIconWrapper = styled.div`
   align-items: center;
   justify-content: center;
   color: #e0e0e0;
-`;
-const LoadingWrapper = styled.div`
-  display: flex;
-  align-items: center;
-`;
-
-const TypingFeedback = styled.div`
-  margin-left: 10px;
-  font-size: 14px;
-  color: #9a9a9a;
 `;
 

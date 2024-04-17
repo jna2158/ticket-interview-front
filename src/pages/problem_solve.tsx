@@ -10,8 +10,10 @@ export default function ProblemSolve() {
   const nextProblem = () => {
     setCurrentProblemIndex(currentProblemIndex + 1);
   };
-  // const type = useSelector((state: any) => state.interview.interviewType);
-  const type = "Chatting";
+  const type = useSelector((state: any) => state.interview.interviewType);
+
+  console.log("type >>> ", type);
+
   return (
     <>
       {(() => {

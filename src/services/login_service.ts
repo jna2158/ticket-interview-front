@@ -34,3 +34,8 @@ export const naverLogin = (query: any): Promise<any> => {
 export const logout = (): Promise<any> => {
   return instance.post(`/api/accounts/logout`);
 }
+
+/** user 정보 요청 */
+export const getUserInfo = () => {
+  return instance.post("http://localhost:8000/api/accounts/app/userinfo");
+}

@@ -84,14 +84,14 @@ export default function Agreement() {
               </Box>
             </CenteredFormGroup>
           </FormGroup>
-          <br /><br /><br />
+          <br />
           <FormGroup>
             <CenteredFormGroup>
               <FormControlLabel
                 control={<Checkbox checked={agreement7} onChange={(e) => handleCheckboxChange(e, setAgreement7, [agreement7])} sx={{ '& .MuiSvgIcon-root': { fontSize: 35 }, color: "#616161" }} />}
                 label={<LabelTitle><span>[필수]</span> TInterview 콘텐츠 이용약관</LabelTitle>} />
 
-              <Box sx={{ display: "flex", flexDirection: "column", textAlign: "left", ml: 3, border: "1px solid #616161", width: "25vw", maxHeight: "40vh", overflowY: "scroll", padding: "2%", color: "#727272", borderRadius: "10px"}}>
+              <Box sx={{ display: "flex", flexDirection: "column", textAlign: "left", ml: 3, border: "1px solid #616161", width: "50vw", maxHeight: "20vh", overflowY: "scroll", padding: "2%", color: "#727272", borderRadius: "10px"}}>
                 내용.<br />
                 - 본 서비스에서 제공되는 모든 면접 질문 및 관련 콘텐츠는 저작권 및 기타 지적 재산권으로 보호받고 있습니다. 이에 동의함으로써, 사용자는 다음과 같은 조건 하에 콘텐츠를 사용하기로 동의합니다.<br /><br />
 
@@ -120,7 +120,7 @@ const Wrapper = styled.div`
   justify-content: center;
 `;
 const SubWrapper = styled.div`
-  width: 50vw;
+  width: 70vw;
   height: 85vh;
   margin-top: 3%;
   border-radius: 6px;
@@ -131,11 +131,11 @@ const SubWrapper = styled.div`
 `;
 const Title = styled.div`
   color: #e0e0e0;
-  font-size: 28px;
-  margin-bottom: 5%;
+  font-size: 22px;
+  margin-bottom: 1%;
 `;
 const LabelTitle = styled.div`
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 700;
   color: #bfbebe;
   & span {
@@ -143,7 +143,7 @@ const LabelTitle = styled.div`
 }
 `;
 const SubLabel = styled.div`
-  font-size: 18px;
+  font-size: 16px;
   color: #bfbebe;
   & span {
     color: #a30303;
