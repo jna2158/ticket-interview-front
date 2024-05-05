@@ -37,5 +37,5 @@ export const logout = (): Promise<any> => {
 
 /** user 정보 요청 */
 export const getUserInfo = () => {
-  return instance.post("http://localhost:8000/api/accounts/app/userinfo");
+  return instance.post("https://ticket-interview.com/api/accounts/app/userinfo");
 }

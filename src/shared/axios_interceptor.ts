@@ -1,17 +1,14 @@
 import axios from 'axios';
 import { API_HOST } from './api_constant';
 
-// const instance = axios.create({
-//   baseURL: "https://ticket-interview.com"
-// });
 const instance = axios.create({
-  baseURL: "http://localhost:8001"
+  baseURL: process.env.NODE_ENV === "development" ? "http://localhost:8001" : "https://ticket-interview.com"
 });
 
 // 요청 인터셉터 설정
 instance.interceptors.request.use(
   (config) => {
-    console.log("config >>> ", config);
+    console.log("NODE_ENV", process.env.NODE_ENV);
     const accessToken = localStorage.getItem('ACCESS_TOKEN');
     if (accessToken) {
       config.headers['Authorization'] = `Bearer ${accessToken}`;

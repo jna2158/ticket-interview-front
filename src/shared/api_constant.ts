@@ -1,2 +1,2 @@
-export const HOME_URL = "https://ticket-interview.com";
-export const API_HOST = 'https://ticket-interview.com';
+export const HOME_URL = process.env.NODE_ENV === "development" ? "http://localhost:3001" : "https://ticket-interview.com";
+export const API_HOST = process.env.NODE_ENV === "development" ? "http://localhost:3001" : "https://ticket-interview.com";

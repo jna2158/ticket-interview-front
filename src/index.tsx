@@ -26,9 +26,9 @@ root.render(
   <QueryClientProvider client={queryClient}>
     <Provider store={store}>
       <ThemeProvider theme={theme}>
-        <GlobalStyle />
-        <Navbar />
         <BrowserRouter>
+          <GlobalStyle />
+          <Navbar />
           <Routes>
             <Route path="/" element={<App />}></Route>
             <Route path="/interview-setting" element={<NewInterviewSetting />}></Route>
