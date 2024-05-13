@@ -40,7 +40,7 @@ export default function Navbar() {
             {
               isLogin
               ? <a onClick={() => setClickProfile(!clickProfile)}>{ localStorage.getItem("username")}</a>
-              : <button type="button" className="btn btn-outline-light" onClick={() => dispatch(isLoginModalOpen(true))}>로그인</button>
+              : <button className="btn btn-outline-light" onClick={() => dispatch(isLoginModalOpen(true))}>로그인</button>
             }
           </LoginButtonContainer>
           {
@@ -62,11 +62,17 @@ export default function Navbar() {
 
 const LoginButtonContainer = styled.div`
   color: white;
-  font-size: 35px;
   cursor: pointer;
   line-height: normal;
   & a {
     font-size: 25px;
+  }
+  & button {
+    font-size: 18px;
+    height: 5vh !important;
+  }
+  & button:focus {
+    color: white;
   }
 `;
 const Profile = styled.section`

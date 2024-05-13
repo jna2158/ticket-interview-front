@@ -8,6 +8,7 @@ import ticketIntro2 from "../assets/image/ticket_intro2.png";
 import { interviewType } from "../redux/interview_slice";
 import ChattingSolveProblem from "../components/interview/solve_problem/chatting_solve_problem";
 import Agreement from "./agreement";
+import landingImage from "../assets/image/landing-image.jpg";
 
 export default function Landing() {
   const navigate = useNavigate();
@@ -26,66 +27,58 @@ export default function Landing() {
 
   return (
     <Wrapper>
-      <CategorySelectWrapper>
-        <TicketSection onClick={() => startInterview("Ticket")} image={ticketIntro} image2={ticketIntro2} />
-        {/* <VideoSection onClick={() => startInterview("Video")}>Video</VideoSection> */}
-        <ChatSection onClick={() => startInterview("Chatting")}>Chatting</ChatSection>
-      </CategorySelectWrapper>
-      <div className="carousel-caption">
-        <Title className="animated slideInDown">IT 면접에 자신감을 가지고 싶나요? <span className="highlight">이제는 준비할 때입니다.</span></Title>
-        <p className="intro-text animated slideInUp">다양한 카테고리별 예상 질문과 문제풀이로 당신을 돕습니다. TInterview와 함께 더 나은 미래를 준비해보세요!</p>
-      </div>
-    </Wrapper>
+      <LandingSection image={landingImage}>
+        <div className="carousel-caption">
+          <Title className="animated slideInDown">IT 면접에 자신감을 가지고 싶나요? <span className="highlight">이제는 준비할 때입니다.</span></Title>
+          <SubTitle className="intro-text animated slideInUp">다양한 카테고리별 예상 질문과 문제풀이로 당신을 돕습니다. TInterview와 함께 더 나은 미래를 준비해보세요!</SubTitle>
+          <InterviewButton onClick={() => startInterview("Ticket")}>시작하기</InterviewButton>
+        </div>
+      </LandingSection>
+    </Wrapper> 
   );
 }
 
-const Title = styled.div`
-  font-size: 4rem;
-  & span {
-    color: #fcdb59;
-  }
-`;
 const Wrapper = styled.div`
-  background-color: #181818f6;
   height: 100vh;
   width: 100vw;
 `;
-const CategorySelectWrapper = styled.div`
-  display: flex;
+const Title = styled.div`
+  font-size: 4.5rem;
+  color: white;
+  font-weight: 500;
+  & span {
+    color: #ffd43b;
+  }
 `;
-const TicketSection = styled.section<{image, image2}>`
+const SubTitle = styled.p`
+  font-size: 1.9rem;
+  font-weight: 500;
+  color: #adb5bd;
+`;
+const LandingSection = styled.section<{image}>`
+  position: relative;
+  width: 100%;
   height: 100vh;
-  width: 33.3vw;
-  background-image: url(${props => props.image}),url(${props => props.image2});
-  background-size: contain;
-  background-position: 15px 55vh, 15px 67px;
+  background-image: url(${props => props.image});
+  background-size: cover;
   background-repeat: no-repeat;
-  opacity: 0.4;
-  &:hover {
-    transform: scale(1.02);
-    transition: transform .5s;
-    opacity: 0.8;
-    transition: .4s ease-out;
-    cursor: pointer;
+  background-position: center;
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(20, 20, 20, 0.75);
   }
 `;
-const VideoSection = styled.section`
-  border: .1px solid white;
-  height: 100vh;
-  width: 33.3vw;
-  &:hover {
-    background-color: red;
-    transform: scale(1.02);
-    transition: transform .5s;
-  }
-`;
-const ChatSection = styled.section`
-  border: .1px solid white;
-  height: 100vh;
-  width: 33.3vw;
-  &:hover {
-    background-color: red;
-    transform: scale(1.02);
-    transition: transform .5s;
-  }
+const InterviewButton = styled.button`
+  width: 5vw;
+  font-size: 16px;
+  background-color: transparent;
+  border: 1px solid #dee2e6;
+  color: #dee2e6;
+  border-radius: 30px;
+  cursor: pointer;
 `;
