@@ -3,11 +3,6 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { isLoginModalOpen } from "../redux/login_slice";
-import ticketIntro from "../assets/image/ticket_intro.png";
-import ticketIntro2 from "../assets/image/ticket_intro2.png";
-import { interviewType } from "../redux/interview_slice";
-import ChattingSolveProblem from "../components/interview/solve_problem/chatting_solve_problem";
-import Agreement from "./agreement";
 import landingImage from "../assets/image/landing-image.jpg";
 
 export default function Landing() {
@@ -15,14 +10,12 @@ export default function Landing() {
   const dispatch = useDispatch();
   const isLogin = useSelector((state: any) => state.login.isLogin);
 
-  const startInterview = (type: "Ticket" | "Video" | "Chatting") => {
+  const handleClickStartBtn = () => {
     if (!isLogin) {
       dispatch(isLoginModalOpen(true));
       return;
     }
-    dispatch(interviewType(type));
-    navigate("/interview-setting", {state: type});
-    // navigate("/problem-solve");
+    navigate("/select-category");
   };
 
   return (
@@ -31,7 +24,7 @@ export default function Landing() {
         <div className="carousel-caption">
           <Title className="animated slideInDown">IT 면접에 자신감을 가지고 싶나요? <span className="highlight">이제는 준비할 때입니다.</span></Title>
           <SubTitle className="intro-text animated slideInUp">다양한 카테고리별 예상 질문과 문제풀이로 당신을 돕습니다. TInterview와 함께 더 나은 미래를 준비해보세요!</SubTitle>
-          <InterviewButton onClick={() => startInterview("Ticket")}>시작하기</InterviewButton>
+          <InterviewButton onClick={handleClickStartBtn}>시작하기</InterviewButton>
         </div>
       </LandingSection>
     </Wrapper> 
@@ -43,7 +36,7 @@ const Wrapper = styled.div`
   width: 100vw;
 `;
 const Title = styled.div`
-  font-size: 4.5rem;
+  font-size: 4.3rem;
   color: white;
   font-weight: 500;
   & span {

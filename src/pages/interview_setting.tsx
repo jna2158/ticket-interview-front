@@ -48,7 +48,7 @@ export default function InterviewSetting() {
     <Wrapper>
       <InterviewSection>
         <Title>
-          { currentStep === "selectCategory" ? "문제 선택하기" : "문제 수 선택하기" }
+          { currentStep === "selectCategory" ? "STEP2. 면접을 보고자 하는 카테고리를 선택 해 주세요." : "STEP3. 카테고리별로 원하는 문제 갯수를 선택 해 주세요." }
         </Title>
         { currentStep === "selectCategory"
           ? <SubjectCard subjectArr={ subjectArr }/>
@@ -62,11 +62,10 @@ export default function InterviewSetting() {
 }
 
 const Wrapper = styled.div`
-  background-color: #181818f6;
   width: 100vw;
   height: auto;
   min-height: 100vh;
-  font-family: "Nanum Gothic", sans-serif;
+  background-image: linear-gradient(to bottom, #1e1e1e, #000000);
 `;
 const InterviewSection = styled.div`
   width: 100vw;
@@ -75,8 +74,8 @@ const InterviewSection = styled.div`
 const Title = styled.div`
   text-align: center;
   font-size: 30px;
-  font-weight: 600;
-  color: #ffbc42;
+  font-weight: 500;
+  color: #b3d2ff;
 `;
 const Button = styled.button<{buttonDisabled: boolean}>`
   border-radius: 7px;
@@ -85,6 +84,6 @@ const Button = styled.button<{buttonDisabled: boolean}>`
   width: 15vw;
   height: 6vh;
   margin-left: 40%;
-  background-color: ${props => props.buttonDisabled ? "#fff4e6" : "#ffe066"};
+  background-color: ${props => props.buttonDisabled ? "#e6f0ff" : "#74a4eb"};
   color: ${props => props.buttonDisabled ? "#868e96" : "#212529"};
 `;

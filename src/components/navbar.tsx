@@ -32,7 +32,7 @@ export default function Navbar() {
       <nav className="navbar-custom navbar-fixed-top" role="navigation">
         <div className="container-fluid">
           <div className="navbar-header pull-left">
-            <a className="navbar-brand page-scroll" href="#page-top">
+            <a className="navbar-brand page-scroll" href="/">
               <span className="brand-logo"><img src={logo} alt="logo" title="logo" className="img-responsive"></img></span>
             </a>   
           </div>
