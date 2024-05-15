@@ -1,4 +1,4 @@
-import { API_HOST } from "../shared/api_constant";
+import { API_HOST, LOGIN_URL } from "../shared/api_constant";
 import axios from "axios";
 import instance from "../shared/axios_interceptor";
 
@@ -37,5 +37,5 @@ export const logout = (): Promise<any> => {
 
 /** user 정보 요청 */
 export const getUserInfo = () => {
-  return instance.post("https://ticket-interview.com/api/accounts/app/userinfo");
+  return instance.post(`${LOGIN_URL}/api/accounts/app/userinfo`);
 }

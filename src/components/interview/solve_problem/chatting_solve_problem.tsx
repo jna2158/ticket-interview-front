@@ -7,6 +7,7 @@ import SendIcon from "@mui/icons-material/Send";
 import { getUserInfo } from "../../../services/login_service";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { WS_URL } from "../../../shared/api_constant";
 
 export default function ChattingSolveProblem() {
   const navigate = useNavigate();
@@ -46,7 +47,7 @@ export default function ChattingSolveProblem() {
     
     if (!pkNumber) return;
   
-    const newSocket = new WebSocket(`wss://ticket-interview.com/ws/chat/${pkNumber}`);
+    const newSocket = new WebSocket(`${WS_URL}/ws/chat/${pkNumber}`);
     newSocket.onopen = () => {
       console.log("웹소켓 연결이 열렸습니다.");
       setSocket(newSocket);
