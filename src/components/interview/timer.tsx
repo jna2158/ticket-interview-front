@@ -40,11 +40,9 @@ export default function Timer({setTime}) {
 };
 
 const TimerContainer = styled.div`
-  text-align: center;
-  margin-top: 50px;
 `;
-const TimerText = styled.h1`
+const TimerText = styled.p`
   font-size: 3rem;
-  color: #e6fcf5 !important;
+  color: #ffec99 !important;
   font-weight: 400;
 `;

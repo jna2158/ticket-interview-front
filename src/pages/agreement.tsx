@@ -102,11 +102,11 @@ export default function Agreement() {
 const Wrapper = styled.div`
   width: 100vw;
   height: auto;
-  padding: 2% 2% 2% 4%;
-  min-height: 100vh;
-  background-color: #171717;
   display: flex;
   justify-content: center;
+  padding: 2% 2% 2% 4%;
+  min-height: 100vh;
+  background-image: linear-gradient(to bottom, #1e1e1e, #000000);
 `;
 const SubWrapper = styled.div`
   width: 70vw;
