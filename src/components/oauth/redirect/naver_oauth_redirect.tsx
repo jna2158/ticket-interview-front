@@ -15,8 +15,8 @@ export default function NaverOauthRedirect() {
       localStorage.setItem("email", data.email);
       window.location.href = HOME_URL;
     },
-    onError: (error) => {
-      console.log(error);
+    onError: (err) => {
+      console.log(err);
     },
   });
 

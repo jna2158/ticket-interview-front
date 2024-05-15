@@ -18,7 +18,6 @@ export default function Navbar() {
   const handleClickLogoutBtn = async () => {
     await logout().then(res => {
       localStorage.clear();
-      dispatch(isLogin(false));
       setClickProfile(false);
       navigate("/");
       window.location.reload();

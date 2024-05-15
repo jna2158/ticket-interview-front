@@ -20,7 +20,6 @@ export default function TicketSolveProblem({data, nextProblem, isLast, totalLeng
 
     scoringProblem(param)
     .then(res => {
-      console.log(res);
       res.data.time = time;
       if(isLast) {
         navigate("/interview-score", { state: res.data});

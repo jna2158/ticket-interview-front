@@ -8,7 +8,6 @@ const instance = axios.create({
 // 요청 인터셉터 설정
 instance.interceptors.request.use(
   (config) => {
-    console.log("NODE_ENV", process.env.NODE_ENV);
     const accessToken = localStorage.getItem('ACCESS_TOKEN');
     if (accessToken) {
       config.headers['Authorization'] = `Bearer ${accessToken}`;

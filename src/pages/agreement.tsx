@@ -19,29 +19,18 @@ export default function Agreement() {
 
   const handleCheckboxChange = (event, setState, dependentStates) => {
     const bool = event.target.checked;
-  
-    // 만약 이 체크박스가 메인 동의 체크박스인 경우
     if (setState === setAgreement1) {
-      // 메인 동의 체크박스 상태 설정
       setState(bool);
-      // 메인 동의 체크박스에 따라 모든 하위 체크박스 상태 설정
       dependentStates.forEach(setState => setState(bool));
     } else {
-      // 만약 이 체크박스가 하위 체크박스인 경우
-      // 만약 체크가 해제되면 메인 동의 체크박스도 해제
       if (!bool) {
         setAgreement1(false);
       } else {
-        // 모든 하위 체크박스가 체크되어 있는지 확인
         const allChecked = dependentStates.every(state => state);
-        console.log(dependentStates);
-        
-        // 모든 하위 체크박스가 체크되어 있으면 메인 동의 체크박스도 체크
         if (allChecked) {
           setAgreement1(true);
         }
       }
-      // 현재 체크박스 상태 설정
       setState(bool);
     }
   };
