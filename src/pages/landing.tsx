@@ -36,7 +36,7 @@ const Wrapper = styled.div`
   width: 100vw;
 `;
 const Title = styled.div`
-  font-size: 4.3rem;
+  font-size: 4rem;
   color: white;
   font-weight: 500;
   & span {

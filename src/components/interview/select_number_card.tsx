@@ -1,15 +1,15 @@
 import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch} from "react-redux";
 import styled from "styled-components";
 import dataStructure from "../../assets/image/data-structure-icon.png";
-import python from "../../assets/image/python-icon.svg";
+import python from "../../assets/image/python-icon.png";
 import database from "../../assets/image/database-icon.png";
 import javascript from "../../assets/image/javascript-icon.png";
 import person from "../../assets/image/person-icon.png";
 import programming from "../../assets/image/programming-icon.png";
 import network from "../../assets/image/network-icon.png";
 import algorithm from "../../assets/image/algorithm-icon.png";
-import operating from "../../assets/image/operating-icon.png";
+import operating from "../../assets/image/operating-system-icon.png";
 import { selectedCategory } from "../../redux/interview_slice";
 
 export default function ProblemSelectCard({ subjectArr }) {
@@ -24,7 +24,6 @@ export default function ProblemSelectCard({ subjectArr }) {
     "Algorithm": algorithm,
     "OperatingSystem": operating
   };
-  const isLogin = useSelector((state: any) => state.login.isLogin);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -38,10 +37,7 @@ export default function ProblemSelectCard({ subjectArr }) {
   }, []);
 
   const handleChangeInputValue = (value, id) => {
-    if (Number(value) < 1 || 10 < Number(value)) {
-      return;
-    }
-    if (!isLogin) {
+    if (10 < Number(value)) {
       return;
     }
 
@@ -68,16 +64,16 @@ export default function ProblemSelectCard({ subjectArr }) {
                   subjectArr[idx] && (
                     <Card className="col">
                       <Icon>
-                        <img src={`${imageMapping[subjectArr[idx].id]}`} width={75}/>
+                        <img src={`${imageMapping[subjectArr[idx].id]}`} width={100}/>
                       </Icon>
                       <TitleWrapper>
                         <Title>{subjectArr[idx].title}</Title>
                         <Content>{subjectArr[idx].subTitle}</Content>
                       </TitleWrapper>
                       <NumberWrapper>
-                        <NumberI className="bi bi-dash" isLogged={isLogin} onClick={() => handleChangeInputValue(subjectArr[idx].problems - 1, subjectArr[idx].id)}></NumberI>
+                        <NumberI className="bi bi-dash" onClick={() => handleChangeInputValue(subjectArr[idx].problems - 1, subjectArr[idx].id)}></NumberI>
                         <NumberInput type="number" value={subjectArr[idx].problems} onChange={(e) => handleChangeInputValue(e.target.value, el.id)}/>
-                        <NumberI className="bi bi-plus" isLogged={isLogin} onClick={() => handleChangeInputValue(subjectArr[idx].problems + 1, subjectArr[idx].id)}></NumberI>
+                        <NumberI className="bi bi-plus" onClick={() => handleChangeInputValue(subjectArr[idx].problems + 1, subjectArr[idx].id)}></NumberI>
                       </NumberWrapper>
                       <div>
                         <Label htmlFor={subjectArr[idx].id}>
@@ -91,16 +87,16 @@ export default function ProblemSelectCard({ subjectArr }) {
                   subjectArr[idx + 1] && (
                     <Card className="col">
                       <Icon>
-                        <img src={`${imageMapping[subjectArr[idx + 1].id]}`} width={75}/>
+                        <img src={`${imageMapping[subjectArr[idx + 1].id]}`} width={100}/>
                       </Icon>
                       <TitleWrapper>
                         <Title>{subjectArr[idx + 1].title}</Title>
                         <Content>{subjectArr[idx + 1].subTitle}</Content>
                       </TitleWrapper>
                       <NumberWrapper>
-                        <NumberI className="bi bi-dash" isLogged={isLogin} onClick={() => handleChangeInputValue(subjectArr[idx + 1].problems - 1, subjectArr[idx + 1].id)}></NumberI>
+                        <NumberI className="bi bi-dash" onClick={() => handleChangeInputValue(subjectArr[idx + 1].problems - 1, subjectArr[idx + 1].id)}></NumberI>
                         <NumberInput type="number" value={subjectArr[idx + 1].problems}/>
-                        <NumberI className="bi bi-plus" isLogged={isLogin} onClick={() => handleChangeInputValue(subjectArr[idx + 1].problems + 1, subjectArr[idx + 1].id)}></NumberI>
+                        <NumberI className="bi bi-plus" onClick={() => handleChangeInputValue(subjectArr[idx + 1].problems + 1, subjectArr[idx + 1].id)}></NumberI>
                       </NumberWrapper>
                       <div>
                         <Label htmlFor={subjectArr[idx + 1].id}>
@@ -112,7 +108,7 @@ export default function ProblemSelectCard({ subjectArr }) {
                 }
                 {
                   !subjectArr[idx + 1] && (
-                    <div className="col"></div>
+                    <Card className="col" style={{visibility: "hidden"}}></Card>
                   )
                 }
               </div>
@@ -134,11 +130,11 @@ const Card = styled.div`
   display: flex;
   background-color: #2A2A2A;
   margin: 2%;
+  padding: 1% 0% 0% 1%;
   cursor: pointer;
 `;
 const Icon = styled.div`
-  font-size: 70px;
-  width: 8vw;
+  width: 15vw;
   text-align: center;
   align-items: center;
   padding-left: 2%;
@@ -155,21 +151,25 @@ const NumberInput = styled.input`
   background-color: #2A2A2A;
   color: white;
 `;
-const NumberI = styled.i<{isLogged: boolean}>`
+const NumberI = styled.i`
   font-size: 35px;
   margin-top: 4vh;
-  color: ${props => props.isLogged ? "#EFEFF1" : "#3e3d3d"}
+  color: #EFEFF1;
 `;
 const TitleWrapper = styled.div`
-  margin-top: 4%;
+  margin-top: 1%;
   width: 100%;
   color: #EFEFF1;
 `;
 const Title = styled.div`
   font-size: 27px;
   font-weight: 600;
+  margin-bottom: 1.5vh;
 `;
-const Content = styled.div``;
+const Content = styled.div`
+  font-size: 1.6rem;
+  color: #6c6c6c;
+`;
 const Input = styled.input`
   width: 1.6em;
   height: 1.6em;

@@ -46,17 +46,15 @@ export default function InterviewSetting() {
 
   return (
     <Wrapper>
-      <InterviewSection>
-        <Title>
-          { currentStep === "selectCategory" ? "STEP2. 면접을 보고자 하는 카테고리를 선택 해 주세요." : "STEP3. 카테고리별로 원하는 문제 갯수를 선택 해 주세요." }
-        </Title>
-        { currentStep === "selectCategory"
-          ? <SubjectCard subjectArr={ subjectArr }/>
-          : <ProblemSelectCard subjectArr={ subjectArr.filter(el => el.checked) } />}
-        <Button buttonDisabled={buttonDisabled} onClick={handleClickButton}>
-          { currentStep === "selectCategory" ? "문제 수 선택하러 가기" : "면접보러 가기" }
-        </Button>
-      </InterviewSection>
+      <Title>
+        { currentStep === "selectCategory" ? "STEP2. 면접을 보고자 하는 카테고리를 선택 해 주세요." : "STEP3. 카테고리별로 원하는 문제 갯수를 선택 해 주세요." }
+      </Title>
+      { currentStep === "selectCategory"
+        ? <SubjectCard subjectArr={ subjectArr }/>
+        : <ProblemSelectCard subjectArr={ subjectArr.filter(el => el.checked) } />}
+      <Button buttonDisabled={buttonDisabled} onClick={handleClickButton}>
+        { currentStep === "selectCategory" ? "문제 수 선택하러 가기" : "면접보러 가기" }
+      </Button>
     </Wrapper>
   )
 }
@@ -75,7 +73,8 @@ const Title = styled.div`
   text-align: center;
   font-size: 30px;
   font-weight: 500;
-  color: #b3d2ff;
+  padding-top: 8vw;
+  color: white;
 `;
 const Button = styled.button<{buttonDisabled: boolean}>`
   border-radius: 7px;
@@ -84,6 +83,6 @@ const Button = styled.button<{buttonDisabled: boolean}>`
   width: 15vw;
   height: 6vh;
   margin-left: 40%;
-  background-color: ${props => props.buttonDisabled ? "#e6f0ff" : "#74a4eb"};
+  background-color: ${props => props.buttonDisabled ? "#fff9db" : "#ffec99"};
   color: ${props => props.buttonDisabled ? "#868e96" : "#212529"};
 `;

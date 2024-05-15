@@ -45,10 +45,7 @@ const Title = styled.p`
   padding-top: 8vw;
   font-size: 30px;
   font-weight: 500;
-  color: #b3d2ff;
-  & span {
-    color: #4089f7;
-  }
+  color: white;
 `;
 const BoxWrapper = styled.div`
   display: flex;
