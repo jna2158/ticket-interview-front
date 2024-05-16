@@ -2,7 +2,7 @@ import axios from 'axios';
 import { API_HOST } from './api_constant';
 
 const instance = axios.create({
-  baseURL: process.env.NODE_ENV === "development" ? "http://localhost:8001" : "https://ticket-interview.com"
+  baseURL: process.env.NODE_ENV === "development" ? "http://localhost:8000" : "https://ticket-interview.com"
 });
 
 // 요청 인터셉터 설정

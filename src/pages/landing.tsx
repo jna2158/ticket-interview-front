@@ -15,7 +15,9 @@ export default function Landing() {
       dispatch(isLoginModalOpen(true));
       return;
     }
-    navigate("/select-category");
+    // navigate("/select-category");
+    navigate("/interview-score");
+
   };
 
   return (
