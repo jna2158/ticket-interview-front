@@ -19,6 +19,7 @@ export default function ProblemSolve() {
             return (
               <TicketSolveProblem
                 data={data[Object.keys(data)[currentProblemIndex]]}
+                subject={Object.keys(data)[currentProblemIndex]}
                 nextProblem={nextProblem}
                 isLast={Object.keys(data).length - 1 === currentProblemIndex}
                 totalLength={Object.keys(data).length}

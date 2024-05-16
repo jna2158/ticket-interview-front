@@ -4,23 +4,29 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import Timer from "../timer";
 import CircularProgress from '@mui/material/CircularProgress';
+import { useSelector } from "react-redux";
 
-export default function TicketSolveProblem({data, nextProblem, isLast, totalLength, currentIndex}: any) {
+export default function TicketSolveProblem({data, subject, nextProblem, isLast, totalLength, currentIndex}: any) {
   const [userAnswer, setUserAnswer] = useState("");
   const navigate = useNavigate();
   const btnName = isLast ? "제출하기" : "다음";
   const [time, setTime] = useState('');
   const [loading, setLoading] = useState(false);
+  const requestedProblem = useSelector((state: any) => state.interview.requestedProblem);
 
   /* 답 입력 후 다음 버튼 클릭했을 때 */
   const handleClickNextBtn = async () => {
-    const param = {
+    const index = subject.indexOf('-');
+    const param: any = {
       question: data,
       user_answer: userAnswer,
-      last_problem: isLast ? 1 : 0
+      last_problem: isLast ? totalLength : 0,
+      subject: subject.slice(0, index).trim()
     }
+    setLoading(true);
     if (isLast) {
-      setLoading(true);
+      param.numberOfQuestion = totalLength;
+      param.subjects = requestedProblem;
     }
     await scoringProblem(param)
     .then(res => {

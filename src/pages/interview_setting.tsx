@@ -5,13 +5,15 @@ import * as _ from "lodash";
 import { reqProblems } from "../services/interview_setting_service";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { requestedProblem } from "../redux/interview_slice";
 
 export default function InterviewSetting() {
   const subjectArr = useSelector((state: any) => state.interview.selectedCategory);
   const [buttonDisabled, setButtonDisabled] = useState(false);
   const [currentStep, setCurrentStep] = useState("selectCategory");
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     setButtonDisabled(subjectArr.filter(el => el.checked)?.length === 0 ? true : false);
@@ -34,7 +36,10 @@ export default function InterviewSetting() {
     subjectArr.forEach((el): any => {
       req[el.id] = el.problems;
     });
+
+    dispatch(requestedProblem(req));
     
+    // 문제 생성 요청
     await reqProblems('user', req)
     .then(res => {
       navigate("/agreement", { state: res.data });

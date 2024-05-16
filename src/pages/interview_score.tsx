@@ -10,30 +10,30 @@ import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
 
 export default function InterviewScore() {
-  // const { state: data } = useLocation();
-  const data = {
-    total_score: 0,
-    result: [
-        {
-            "커널 모드와 사용자 모드의 차이점은 무엇인가요?": " 커널 모드와 사용자 모드의 차이점은 이 컴퓨터 시스템에서 중요한 역할을 하는 개념입니다. 커널 모드는 운영 체제의 핵심 부분으로 시스템 자원에 접근할 수 있는 모드이고, 사용자 모드는 응용 프로그램이 동작하는 모드입니다. 커널 모드에서는 자원 접근이 허용되지만 사용자 모드에서는 허용되지 않습니다. 또한 커널 모드는 특권 명령을 실행할 수 있지만 사용자 모드는 특권 명령을 실행할 수 없습니다. 따라서, 커널 모드와 사용자 모드의 주요 차이점은 권한과 자원 접근에 있습니다.",
-            "score": 0,
-            "subject": "OperatingSystem"
-        }
-    ],
-    score_of_subjects: {
-        "OperatingSystem": 0
-    },
-    graph_data: {
-        "subjects": {
-            "OperatingSystem": 1
-        },
-        "max_subjects_number": 1
-    },
-    username: "지원",
-    datetime: "2024-05-15 14:55",
-    score_100_percent: 0,
-    time: null
-  };
+  const { state: data } = useLocation();
+  // const data = {
+  //   total_score: 0,
+  //   result: [
+  //       {
+  //           "커널 모드와 사용자 모드의 차이점은 무엇인가요?": " 커널 모드와 사용자 모드의 차이점은 이 컴퓨터 시스템에서 중요한 역할을 하는 개념입니다. 커널 모드는 운영 체제의 핵심 부분으로 시스템 자원에 접근할 수 있는 모드이고, 사용자 모드는 응용 프로그램이 동작하는 모드입니다. 커널 모드에서는 자원 접근이 허용되지만 사용자 모드에서는 허용되지 않습니다. 또한 커널 모드는 특권 명령을 실행할 수 있지만 사용자 모드는 특권 명령을 실행할 수 없습니다. 따라서, 커널 모드와 사용자 모드의 주요 차이점은 권한과 자원 접근에 있습니다.",
+  //           "score": 0,
+  //           "subject": "OperatingSystem"
+  //       }
+  //   ],
+  //   score_of_subjects: {
+  //       "OperatingSystem": 0
+  //   },
+  //   graph_data: {
+  //       "subjects": {
+  //           "OperatingSystem": 1
+  //       },
+  //       "max_subjects_number": 1
+  //   },
+  //   username: "지원",
+  //   datetime: "2024-05-15 14:55",
+  //   score_100_percent: 0,
+  //   time: null
+  // };
 
   const correctAnswer = data.result.filter(el => el.score !== 0);
   const [selected, setSelected] = useState("1");

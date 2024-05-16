@@ -7,5 +7,5 @@ interface problem {
 }
 
 export const scoringProblem = (param: problem): Promise<any> => {
-  return instance.post(`/api/ticket/scoring`, {...param});
+  return instance.post(`/api/score/scoring`, {...param});
 }

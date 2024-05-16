@@ -5,6 +5,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import Box from '@mui/material/Box';
 import { useLocation, useNavigate } from "react-router-dom";
+import { delSession } from "../services/interview_setting_service";
 
 export default function Agreement() {
   const { state: data } = useLocation();
@@ -35,8 +36,13 @@ export default function Agreement() {
     }
   };
 
-  const handleClickSubmitBtn = () => {
-    navigate("/problem-solve", { state: data });
+  const handleClickSubmitBtn = async () => {
+    await delSession().then(res => {
+      navigate("/problem-solve", { state: data });
+    })
+    .catch(err => {
+      console.log(err);
+    });
   };
 
   return (

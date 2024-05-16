@@ -68,7 +68,7 @@ const subjectArr = [
   ]
 export const interviewSlice = createSlice({
     name: "interview",
-    initialState: {agreementInterview: false, interviewType: "Chatting", selectedCategory: subjectArr},
+    initialState: {agreementInterview: false, interviewType: "Chatting", selectedCategory: subjectArr, requestedProblem: []},
     reducers: {
         agreementInterview: (state, action) => {
             state.agreementInterview = action.payload;
@@ -78,9 +78,12 @@ export const interviewSlice = createSlice({
         },
         selectedCategory: (state, action) => {
             state.selectedCategory = action.payload;
+        },
+        requestedProblem: (state, action) => {
+          state.requestedProblem = action.payload;
         }
     },
 });
 
 export default interviewSlice.reducer;
-export const { agreementInterview, interviewType, selectedCategory } = interviewSlice.actions;
+export const { agreementInterview, interviewType, selectedCategory, requestedProblem } = interviewSlice.actions;
