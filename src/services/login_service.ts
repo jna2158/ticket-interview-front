@@ -42,5 +42,5 @@ export const getUserInfo = () => {
 
 /** 회원 탈퇴 요청 */
 export const deleteAccount = () => {
-  return instance.post(`${API_HOST}/api/account/app/deleteAccount`);
+  return instance.post(`${API_HOST}/api/accounts/app/deleteAccount`);
 }
