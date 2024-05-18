@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useMutation } from "react-query";
 import { deleteAccount, googleLogin } from "../../../services/login_service";
 import { HOME_URL } from "../../../shared/api_constant";
@@ -6,12 +6,13 @@ import { HOME_URL } from "../../../shared/api_constant";
 export default function GoogleOauthRedirect() {
   const authCode: string = new URL(window.location.href).searchParams.get("code")!;
   const isReqDeleteAccount = sessionStorage.getItem("isDeleteAccountPage");
+  const [successDelAccount, setSuccessDelAccount] = useState(false);
 
   const loginMutation = useMutation(googleLogin, {
     onSuccess: ({ data }) => {
       if (isReqDeleteAccount === "true") {
         deleteAccount().then(res => {
-          console.log(res);
+          setSuccessDelAccount(true);
         })
         .catch(err => {
           console.log(err);
@@ -36,7 +37,9 @@ export default function GoogleOauthRedirect() {
   }, []);
 
   return (
-    null
+    isReqDeleteAccount && successDelAccount ? (
+      <div>회원 탈퇴가 완료되었습니다.</div>
+    ) : null
   )
     
 }
