@@ -28,7 +28,7 @@ const AppWithNavbar = () => {
   const location = useLocation();
   return (
     <>
-      {location.pathname !== '/deleteAccount' && <Navbar />}
+      {(location.pathname !== "/deleteAccount" && location.pathname !== "/deleteaccount") && <Navbar />}
       <Routes>
         <Route path="/" element={<App />}></Route>
         <Route path="/select-category" element={<SelectCategory />}></Route>

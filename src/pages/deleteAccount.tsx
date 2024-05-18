@@ -4,9 +4,11 @@ import logo from "../assets/image/app_logo_with_name.png";
 import GoogleButton from "../components/oauth/oauth_login_button/google_button";
 import KakaoButton from "../components/oauth/oauth_login_button/kakao_button";
 import NaverButton from "../components/oauth/oauth_login_button/naver_button";
+
 export default function LoginModal() {
   useEffect(() => {
-    localStorage.setItem("isDeleteAccountPage", "true");
+    // localStorage.setItem("isDeleteAccountPage", "true");
+    sessionStorage.setItem("isDeleteAccountPage", "true");
   }, []);
 
   return (
