@@ -39,3 +39,8 @@ export const logout = (): Promise<any> => {
 export const getUserInfo = () => {
   return instance.post(`${LOGIN_URL}/api/accounts/app/userinfo`);
 }
+
+/** 회원 탈퇴 요청 */
+export const deleteAccount = () => {
+  return instance.post(`${API_HOST}/api/ticket/app/deleteAccount`);
+}
