@@ -7,7 +7,6 @@ import NaverButton from "../components/oauth/oauth_login_button/naver_button";
 
 export default function LoginModal() {
   useEffect(() => {
-    // localStorage.setItem("isDeleteAccountPage", "true");
     sessionStorage.setItem("isDeleteAccountPage", "true");
   }, []);
 

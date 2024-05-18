@@ -5,7 +5,6 @@ import { HOME_URL } from "../../../shared/api_constant";
 
 export default function GoogleOauthRedirect() {
   const authCode: string = new URL(window.location.href).searchParams.get("code")!;
-  // const isReqDeleteAccount = localStorage.getItem("isDeleteAccountPage");
   const isReqDeleteAccount = sessionStorage.getItem("isDeleteAccountPage");
 
   const loginMutation = useMutation(googleLogin, {
@@ -23,7 +22,6 @@ export default function GoogleOauthRedirect() {
         localStorage.setItem("email", data.email);
         window.location.href = HOME_URL;
       }
-      
     },
     onError: (err) => {
       console.log(err);
