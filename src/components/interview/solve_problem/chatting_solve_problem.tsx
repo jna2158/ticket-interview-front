@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import styled, { css } from "styled-components";
 import profile from "../../../assets/image/profile.svg";
-import logo from "../../../assets/image/app_logo_small.png";
-import logoName from "../../../assets/image/app_name.png";
+import logo from "../../../assets/image/logo/app_logo_small.png";
+import logoName from "../../../assets/image/logo/app_name.png";
 import SendIcon from "@mui/icons-material/Send";
 import { getUserInfo } from "../../../services/login_service";
 import { useSelector } from "react-redux";

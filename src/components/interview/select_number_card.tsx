@@ -1,15 +1,15 @@
 import React, { useEffect } from "react";
 import { useDispatch} from "react-redux";
 import styled from "styled-components";
-import dataStructure from "../../assets/image/DataStructure.svg";
-import python from "../../assets/image/Python.svg";
-import database from "../../assets/image/Database.svg";
-import javascript from "../../assets/image/Javascript.svg";
-import person from "../../assets/image/Personality.svg";
-import programming from "../../assets/image/GeneralProgramming.svg";
-import network from "../../assets/image/Networking.svg";
-import algorithm from "../../assets/image/Algorithm.svg";
-import operating from "../../assets/image/OperatingSystem.svg";
+import dataStructure from "../../assets/image/subject/DataStructure.svg";
+import python from "../../assets/image/subject/Python.svg";
+import database from "../../assets/image/subject/Database.svg";
+import javascript from "../../assets/image/subject/Javascript.svg";
+import person from "../../assets/image/subject/Personality.svg";
+import programming from "../../assets/image/subject/GeneralProgramming.svg";
+import network from "../../assets/image/subject/Networking.svg";
+import algorithm from "../../assets/image/subject/Algorithm.svg";
+import operating from "../../assets/image/subject/OperatingSystem.svg";
 import { selectedCategory } from "../../redux/interview_slice";
 
 export default function ProblemSelectCard({ subjectArr }) {

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import logo from "../assets/image/app_name.png";
+import logo from "../assets/image/logo/app_name.png";
 import LoginModal from "./login_modal";
 import { logout } from "../services/login_service";
 import { useDispatch, useSelector } from "react-redux";

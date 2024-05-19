@@ -1,5 +1,5 @@
 import React from "react";
-import naverLogo from "../../../assets/image/btn_naver.svg";
+import naverLogo from "../../../assets/image/login/naver.svg";
 
 export default function NaverButton() {
   /** naver authorization server에 로그인 요청을 해서 authcode를 응답받는다. */

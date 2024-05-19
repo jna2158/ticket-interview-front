@@ -5,7 +5,7 @@ import styled from "styled-components";
 import GoogleButton from "./oauth/oauth_login_button/google_button";
 import KakaoButton from "./oauth/oauth_login_button/kakao_button";
 import NaverButton from "./oauth/oauth_login_button/naver_button";
-import logo from "../assets/image/app_logo_with_name.png";
+import logo from "../assets/image/logo/app_logo_with_name.png";
 import { useDispatch } from "react-redux";
 import { isLoginModalOpen } from "../redux/login_slice";
 

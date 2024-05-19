@@ -1,6 +1,6 @@
 import React from "react";
 import { styled } from "styled-components";
-import logo from "../assets/image/app_logo_with_name.png";
+import logo from "../assets/image/logo/app_logo_with_name.png";
 
 export default function SuccessDeleteAccount() {
   return (

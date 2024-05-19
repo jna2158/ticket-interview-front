@@ -1,5 +1,5 @@
 import React from "react";
-import googleLogo from "../../../assets/image/btn_google.svg";
+import googleLogo from "../../../assets/image/login/google.svg";
 
 export default function GoogleButton() {
 

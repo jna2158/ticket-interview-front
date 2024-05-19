@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
-import logo from "../assets/image/app_logo_with_name.png";
+import logo from "../assets/image/logo/app_logo_with_name.png";
 import GoogleButton from "../components/oauth/oauth_login_button/google_button";
 import KakaoButton from "../components/oauth/oauth_login_button/kakao_button";
 import NaverButton from "../components/oauth/oauth_login_button/naver_button";
