@@ -23,8 +23,9 @@ export default function TicketSolveProblem({data, subject, nextProblem, isLast, 
       last_problem: isLast ? totalLength : 0,
       subject: subject.slice(0, index).trim()
     }
-    setLoading(true);
+    
     if (isLast) {
+      setLoading(true);
       param.numberOfQuestion = totalLength;
       param.subjects = requestedProblem;
     }
