@@ -1,13 +1,13 @@
 import React from "react";
-import dataStructure from "../../assets/image/data-structure-icon.png";
-import python from "../../assets/image/python-icon.png";
-import database from "../../assets/image/database-icon.png";
-import javascript from "../../assets/image/javascript-icon.png";
-import person from "../../assets/image/person-icon.png";
-import programming from "../../assets/image/programming-icon.png";
-import network from "../../assets/image/network-icon.png";
-import algorithm from "../../assets/image/algorithm-icon.png";
-import operating from "../../assets/image/operating-system-icon.png";
+import dataStructure from "../../assets/image/DataStructure.svg";
+import python from "../../assets/image/Python.svg";
+import database from "../../assets/image/Database.svg";
+import javascript from "../../assets/image/Javascript.svg";
+import person from "../../assets/image/Personality.svg";
+import programming from "../../assets/image/GeneralProgramming.svg";
+import network from "../../assets/image/Networking.svg";
+import algorithm from "../../assets/image/Algorithm.svg";
+import operating from "../../assets/image/OperatingSystem.svg";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
 import { selectedCategory } from "../../redux/interview_slice";
@@ -39,7 +39,7 @@ export default function SubjectCard({ subjectArr }: any) {
       <CardWrapper className="row">
         <Card className="col" checked={isChecked("DataStructure")} onClick={(e) => { handleCheckboxChange("DataStructure") }}>
           <Icon>
-            <img src={dataStructure} width={90} />
+            <img src={dataStructure} width={85} />
           </Icon>
           <TitleWrapper>
             <Title>자료구조</Title>
@@ -54,7 +54,7 @@ export default function SubjectCard({ subjectArr }: any) {
         
         <Card className="col" checked={isChecked("OperatingSystem")} onClick={(e) => { handleCheckboxChange("OperatingSystem") }}>
           <Icon>
-            <img src={operating} width={90}/>
+            <img src={operating} width={85}/>
           </Icon>
           <TitleWrapper>
             <Title>운영체제</Title>
@@ -86,7 +86,7 @@ export default function SubjectCard({ subjectArr }: any) {
       <CardWrapper className="row">
         <Card className="col" checked={isChecked("Database")} onClick={(e) => { handleCheckboxChange("Database") }}>
           <Icon>
-            <img src={database} width={85} />
+            <img src={database} width={80} />
           </Icon>
           <TitleWrapper>
             <Title>데이터베이스</Title>
@@ -148,7 +148,7 @@ export default function SubjectCard({ subjectArr }: any) {
 
         <Card className="col" checked={isChecked("Javascript")} onClick={(e) => { handleCheckboxChange("Javascript") }}>
           <Icon>
-            <img src={javascript} width={80} />
+            <img src={javascript} width={75} />
           </Icon>
           <TitleWrapper>
             <Title>Javascript</Title>
@@ -163,7 +163,7 @@ export default function SubjectCard({ subjectArr }: any) {
                 
         <Card className="col" checked={isChecked("Personality")} onClick={(e) => { handleCheckboxChange("Personality") }}>
           <Icon>
-            <img src={person} width={80} />
+            <img src={person} width={90} />
           </Icon>
           <TitleWrapper>
             <Title>인성</Title>

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import logo from "../assets/image/logo.svg";
+import logo from "../assets/image/app_name.png";
 import LoginModal from "./login_modal";
 import { logout } from "../services/login_service";
 import { useDispatch, useSelector } from "react-redux";
@@ -32,7 +32,7 @@ export default function Navbar() {
         <div className="container-fluid">
           <div className="navbar-header pull-left">
             <a className="navbar-brand page-scroll" href="/">
-              <span className="brand-logo"><img src={logo} alt="logo" title="logo" className="img-responsive"></img></span>
+              <span className="brand-logo"><img src={logo} alt="logo" title="logo" width={220} className="img-responsive"></img></span>
             </a>   
           </div>
           <LoginButtonContainer className="main-nav pull-right">

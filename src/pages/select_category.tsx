@@ -3,7 +3,7 @@ import styled from "styled-components";
 import AddCardIcon from '@mui/icons-material/AddCard';
 import MarkUnreadChatAltIcon from '@mui/icons-material/MarkUnreadChatAlt';
 import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { interviewType } from "../redux/interview_slice";
 
 export default function SelectCategory() {

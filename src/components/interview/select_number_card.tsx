@@ -1,15 +1,15 @@
 import React, { useEffect } from "react";
 import { useDispatch} from "react-redux";
 import styled from "styled-components";
-import dataStructure from "../../assets/image/data-structure-icon.png";
-import python from "../../assets/image/python-icon.png";
-import database from "../../assets/image/database-icon.png";
-import javascript from "../../assets/image/javascript-icon.png";
-import person from "../../assets/image/person-icon.png";
-import programming from "../../assets/image/programming-icon.png";
-import network from "../../assets/image/network-icon.png";
-import algorithm from "../../assets/image/algorithm-icon.png";
-import operating from "../../assets/image/operating-system-icon.png";
+import dataStructure from "../../assets/image/DataStructure.svg";
+import python from "../../assets/image/Python.svg";
+import database from "../../assets/image/Database.svg";
+import javascript from "../../assets/image/Javascript.svg";
+import person from "../../assets/image/Personality.svg";
+import programming from "../../assets/image/GeneralProgramming.svg";
+import network from "../../assets/image/Networking.svg";
+import algorithm from "../../assets/image/Algorithm.svg";
+import operating from "../../assets/image/OperatingSystem.svg";
 import { selectedCategory } from "../../redux/interview_slice";
 
 export default function ProblemSelectCard({ subjectArr }) {
@@ -64,7 +64,7 @@ export default function ProblemSelectCard({ subjectArr }) {
                   subjectArr[idx] && (
                     <Card className="col">
                       <Icon>
-                        <img src={`${imageMapping[subjectArr[idx].id]}`} width={100}/>
+                        <img src={`${imageMapping[subjectArr[idx].id]}`} width={90}/>
                       </Icon>
                       <TitleWrapper>
                         <Title>{subjectArr[idx].title}</Title>
@@ -87,7 +87,7 @@ export default function ProblemSelectCard({ subjectArr }) {
                   subjectArr[idx + 1] && (
                     <Card className="col">
                       <Icon>
-                        <img src={`${imageMapping[subjectArr[idx + 1].id]}`} width={100}/>
+                        <img src={`${imageMapping[subjectArr[idx + 1].id]}`} width={90}/>
                       </Icon>
                       <TitleWrapper>
                         <Title>{subjectArr[idx + 1].title}</Title>
