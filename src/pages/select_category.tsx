@@ -1,10 +1,10 @@
 import React from "react";
 import styled from "styled-components";
-import AddCardIcon from '@mui/icons-material/AddCard';
-import MarkUnreadChatAltIcon from '@mui/icons-material/MarkUnreadChatAlt';
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { interviewType } from "../redux/interview_slice";
+import ticket from "../assets/image/ticket.svg";
+import chatting from "../assets/image/chatting.svg";
 
 export default function SelectCategory() {
   const navigate = useNavigate();
@@ -20,12 +20,12 @@ export default function SelectCategory() {
       <Title>STEP1. 진행하고자 하는 면접 방식을 선택해주세요.</Title>
       <BoxWrapper>
         <Box onClick={() => handleClickCategoryBtn("Ticket")}>
-          <AddCardIcon sx={{fontSize: 150, color: "#1864ab"}} />
+          <img src={ticket} width={200} />
           <Info>티켓 형식의 면접</Info>
           <SubInfo>시험보듯이 한 문제씩 풀어나가는 티켓 형식의 면접입니다.</SubInfo>
         </Box>
         <Box onClick={() => handleClickCategoryBtn("Chatting")}>
-          <MarkUnreadChatAltIcon sx={{fontSize: 150, color: "#e67700"}} />
+          <img src={chatting} width={200} />
           <Info>채팅 형식의 면접</Info>
           <SubInfo>대화하듯이 풀어가는 채팅 형식의 면접입니다.</SubInfo>
         </Box>
