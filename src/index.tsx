@@ -26,9 +26,14 @@ const queryClient = new QueryClient();
 
 const AppWithNavbar = () => {
   const location = useLocation();
+  const navbarRender = location.pathname !== "/deleteAccount"
+    && location.pathname !== "/deleteaccount"
+    && location.pathname !== "/accounts/google/login/"
+    && location.pathname !== "/accounts/kakao/login/"
+    && location.pathname !== "/accounts/naver/login/";
   return (
     <>
-      {(location.pathname !== "/deleteAccount" && location.pathname !== "/deleteaccount") && <Navbar />}
+      {navbarRender && <Navbar />}
       <Routes>
         <Route path="/" element={<App />}></Route>
         <Route path="/select-category" element={<SelectCategory />}></Route>
