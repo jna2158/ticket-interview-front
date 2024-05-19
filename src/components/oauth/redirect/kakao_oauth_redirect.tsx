@@ -1,19 +1,19 @@
-import React, { useEffect } from "react";
-// react-query
+import React, { useEffect, useState } from "react";
 import { useMutation } from "react-query";
-// oauth
 import { deleteAccount, kakaoLogin } from "../../../services/login_service";
 import { HOME_URL } from "../../../shared/api_constant";
+import SuccessDeleteAccount from "../../success_delete_account";
 
 export default function KakaoOauthRedirect() {
   const authCode: string = new URL(window.location.href).searchParams.get("code")!;
   const isReqDeleteAccount = sessionStorage.getItem("isDeleteAccountPage");
+  const [successDelAccount, setSuccessDelAccount] = useState(false);
 
   const loginMutation = useMutation(kakaoLogin, {
     onSuccess: ({ data }) => {
       if (isReqDeleteAccount === "true") {
         deleteAccount().then(res => {
-          console.log(res);
+          setSuccessDelAccount(true);
         })
         .catch(err => {
           console.log(err);
@@ -38,7 +38,8 @@ export default function KakaoOauthRedirect() {
   }, []);
 
   return (
-    null
-  )
-    
+    isReqDeleteAccount && successDelAccount ? (
+      <SuccessDeleteAccount />
+    ) : null
+  ) 
 }
