@@ -8,6 +8,8 @@ import Face6Icon from '@mui/icons-material/Face6';
 import NoteAltIcon from '@mui/icons-material/NoteAlt';
 import SettingsIcon from '@mui/icons-material/Settings';
 import Userinfo from '../components/mypage/userinfo';
+import InterviewResultList from '../components/mypage/interview_result_list';
+import Setting from '../components/mypage/setting';
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -43,7 +45,7 @@ function a11yProps(index: number) {
 }
 
 export default function Mypage() {
-  const [value, setValue] = React.useState(1);
+  const [value, setValue] = React.useState(2);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
@@ -85,10 +87,10 @@ export default function Mypage() {
             <Userinfo />
           </TabPanel>
           <TabPanel value={value} index={2}>
-            면접 기록 페이지
+            <InterviewResultList />
           </TabPanel>
           <TabPanel value={value} index={3}>
-            셋팅 페이지
+            <Setting />
           </TabPanel>
         </Box>
       </ProblemSection>
