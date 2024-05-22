@@ -24,8 +24,14 @@ export default function Navbar() {
     })
     .catch(err => {
       console.log(err);
-    })
+    });
   }
+
+  /** 마이페이지로 이동 */
+  const handleClickMypageBtn = () => {
+    navigate("/mypage");
+  };
+
   return (
     <>
       <nav className="navbar-custom navbar-fixed-top" role="navigation">
@@ -45,7 +51,7 @@ export default function Navbar() {
           {
             clickProfile ? (
               <Profile className="profile_dropdown_section">
-                  <li>마이페이지</li>
+                  <li onClick={handleClickMypageBtn}>마이페이지</li>
                   <li onClick={handleClickLogoutBtn}>로그아웃</li>
               </Profile>
             ) : <></>

@@ -19,6 +19,7 @@ import "../src/assets/css/main.css";
 import Agreement from "./pages/agreement";
 import SelectCategory from "./pages/select_category";
 import DeleteAccount from "./pages/deleteAccount";
+import Mypage from "./pages/mypage";
 
 const rootElement = document.getElementById('root');
 const root = ReactDOM.createRoot(rootElement!);
@@ -44,6 +45,7 @@ const AppWithNavbar = () => {
         <Route path="/accounts/google/login/" element={<GoogleOauthRedirect />}></Route>
         <Route path="/accounts/kakao/login/" element={<KakaoOauthRedirect />}></Route>
         <Route path="/accounts/naver/login/" element={<NaverOauthRedirect />}></Route>
+        <Route path="/mypage" element={<Mypage />}></Route>
         <Route path="/deleteAccount" element={<DeleteAccount />}></Route>
       </Routes>
     </>
