@@ -1,12 +1,22 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { styled } from "styled-components";
+import { result } from "../../services/interview_service";
 
 export default function InterviewResultList() {
+
+  useEffect(() => {
+    result().then(res => {
+      console.log(res);
+    })
+    .catch(err => {
+      console.log(err);
+    })
+  }, []);
   return (
     <Wrapper>
       <CardWrapper>
-        <Card />
-        <Card />
+        <Card><div>2024-01-02 15:03</div></Card>
+        <Card><div></div></Card>
         <Card />
         <Card />
         <Card />
@@ -32,11 +42,17 @@ const CardWrapper = styled.div`
     background: #ccc; 
   }
 `;
-const Card = styled.div` 
+const Card = styled.div`
   width: 65vw;
   height: 15vh;
   margin-bottom: 5%;
   border-radius: 7px;
-  box-shadow: "0px 4px 10px rgba(0, 0, 0, 0.1)";
-  background: #072c4f;
+  background: #868e96;
+
+  & div {
+    border-radius: 7px 7px 1px 1px;
+    width: 65vw;
+    height: 4vh;
+    background-color: #ced4da;
+  }
 `;

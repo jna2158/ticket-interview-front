@@ -75,7 +75,7 @@ export default function Mypage() {
               width: "15vw"
             }}
           >
-            <Tab label={<Profile>User Profile</Profile>} {...a11yProps(0)} disabled />
+            <Tab label={<Profile>Profile</Profile>} {...a11yProps(0)} disabled />
             <Tab icon={<Face6Icon sx={{fontSize: "35px"}} />} iconPosition="start" label="내 정보" {...a11yProps(1)} sx={{fontSize: "35px", marginRight: "20%", marginBottom: "5.5%", color: "#495057"}} />
             <Tab icon={<NoteAltIcon sx={{fontSize: "35px"}} />} iconPosition="start" label="면접 기록" {...a11yProps(2)} sx={{fontSize: "35px", marginRight: "10%", marginBottom: "5.5%", color: "#495057"}} />
             <Tab icon={<SettingsIcon sx={{fontSize: "38px"}} />} iconPosition="start" label="설정" {...a11yProps(3)} sx={{fontSize: "35px", marginRight: "35%", marginBottom: "5.5%", color: "#495057"}} />
