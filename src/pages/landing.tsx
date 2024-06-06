@@ -15,8 +15,8 @@ export default function Landing() {
       dispatch(isLoginModalOpen(true));
       return;
     }
-    navigate("/select-category");
-    // navigate("/interview-score");
+    // navigate("/select-category");
+    navigate("/interview-score");
 
   };
 
@@ -32,6 +32,76 @@ export default function Landing() {
     </Wrapper> 
   );
 }
+
+const ChartContainer = styled.div`
+  width: 100%;
+  background-color: #e0e0e0;
+  border-radius: 5px;
+  margin: '20px 0';
+`;
+
+const ChartFill = styled.div<{percentage: number}>`
+  width: ${(props) => props.percentage}%;
+  background-color: #76c7c0;
+  height: 30px;
+  border-radius: '5px 0 0 5px'
+`
+
+const Title1 = styled.div`
+  display: flex;
+  align-items: center;
+  width: 65vw;
+  height: 4vh;
+  border-radius: 5px;
+  margin-bottom: 3px;
+  font-size: 15px;
+  padding-left: 3%;
+  color: white;
+  background-color: #2A1693;
+`;
+const Card = styled.div`
+  display: flex;
+  width: 65vw;
+  height: 15vh;
+  margin-bottom: 5%;
+  border-radius: 5px;
+  background: #262729;
+`;
+const ResultCnt = styled.div`
+  display: flex;
+  align-items: center;
+  border-right: 1px dotted #7b7b7b;
+  padding: 30px;
+  margin-right: 10px;
+`;
+const SubjectList = styled.div`
+  display: flex;
+  width: 55vw;
+  gap: 20px;
+  flex-direction: column;
+  padding: 2%;
+`;
+const BadgeWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+const Badge = styled.span`
+  padding: 10px;
+  height: 3vh;
+  border-radius: 18px;
+  margin-right: 2%;
+  align-content: center;
+  background-color: #176ab8;
+`;
+
+
+
+
+
+
+
+
+
 
 const Wrapper = styled.div`
   height: 100vh;
