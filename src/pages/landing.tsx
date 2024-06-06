@@ -15,8 +15,8 @@ export default function Landing() {
       dispatch(isLoginModalOpen(true));
       return;
     }
-    // navigate("/select-category");
-    navigate("/interview-score");
+    navigate("/select-category");
+    // navigate("/interview-score");
 
   };
 
@@ -29,7 +29,7 @@ export default function Landing() {
           <InterviewButton onClick={handleClickStartBtn}>시작하기</InterviewButton>
         </div>
       </LandingSection>
-    </Wrapper> 
+    </Wrapper>
   );
 }
 
@@ -40,7 +40,7 @@ const ChartContainer = styled.div`
   margin: '20px 0';
 `;
 
-const ChartFill = styled.div<{percentage: number}>`
+const ChartFill = styled.div<{ percentage: number }>`
   width: ${(props) => props.percentage}%;
   background-color: #76c7c0;
   height: 30px;
@@ -120,7 +120,7 @@ const SubTitle = styled.p`
   font-weight: 500;
   color: #adb5bd;
 `;
-const LandingSection = styled.section<{image}>`
+const LandingSection = styled.section<{ image }>`
   position: relative;
   width: 100%;
   height: 100vh;
