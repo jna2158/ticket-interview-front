@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react"
 import { styled } from "styled-components";
 import { result } from "../../services/interview_service";
+import { useNavigate } from "react-router-dom";
 
 export default function InterviewResultList() {
   const [list, setList] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     result().then(res => {
@@ -14,20 +16,30 @@ export default function InterviewResultList() {
         console.log(err);
       })
   }, []);
+
+  const handleClickBtn = (el) => {
+    const resultString = el.result;
+    const parsedResult = JSON.parse(resultString);
+    const newData = {
+      ...el,
+      result: parsedResult
+    };
+    navigate("/interview-score", { state: newData });
+  };
   return (
     <Wrapper>
       <CardWrapper>
         {
-          list.map(el => {
+          list.map((el, idx) => {
             const graphData = JSON.parse(el.graph_data);
             const scoreOfSubjects = JSON.parse(el.score_of_subjects);
-
-
+            const totalSubjectsValue = Object.keys(graphData.subjects).reduce((sum, key) => sum + graphData.subjects[key], 0);
+            const totalScoresValue = Object.keys(scoreOfSubjects).reduce((sum, key) => sum + scoreOfSubjects[key], 0);
             return (
               <>
                 <Title>{el.datetime}</Title>
                 <Card>
-                  <ResultCnt>결과<br />0 / 3</ResultCnt>
+                  <ResultCnt>결과<br />{totalScoresValue} / {totalSubjectsValue}</ResultCnt>
                   <SubjectList>
                     {Object.keys(graphData.subjects).map((subject, idx) => (
                       <BadgeWrapper key={idx}>
@@ -38,7 +50,7 @@ export default function InterviewResultList() {
                       </BadgeWrapper>
                     ))}
                   </SubjectList>
-                  <ArrowIcon className="fa-solid fa-arrow-right"></ArrowIcon>
+                  <ArrowIcon className="fa-solid fa-arrow-right" onClick={() => handleClickBtn(el)}></ArrowIcon>
                 </Card>
               </>
             )
@@ -145,4 +157,7 @@ const ArrowIcon = styled.i`
   align-content: center;
   color: #a0a0a0;
   margin-right: 10px;
+  cursor: pointer;
 `
+
+
