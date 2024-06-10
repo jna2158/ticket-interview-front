@@ -14,8 +14,6 @@ export default function Navbar() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  dispatch(isLoginModalOpen(true));
-
   /* 로그아웃 버튼 클릭했을 때 */
   const handleClickLogoutBtn = async () => {
     await logout().then(res => {
