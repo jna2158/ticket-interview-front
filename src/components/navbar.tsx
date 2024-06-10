@@ -14,6 +14,8 @@ export default function Navbar() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  dispatch(isLoginModalOpen(true));
+
   /* 로그아웃 버튼 클릭했을 때 */
   const handleClickLogoutBtn = async () => {
     await logout().then(res => {
@@ -22,9 +24,9 @@ export default function Navbar() {
       navigate("/");
       window.location.reload();
     })
-    .catch(err => {
-      console.log(err);
-    });
+      .catch(err => {
+        console.log(err);
+      });
   }
 
   /** 마이페이지로 이동 */
@@ -39,20 +41,20 @@ export default function Navbar() {
           <div className="navbar-header pull-left">
             <a className="navbar-brand page-scroll" href="/">
               <span className="brand-logo"><img src={logo} alt="logo" title="logo" width={220} className="img-responsive"></img></span>
-            </a>   
+            </a>
           </div>
           <LoginButtonContainer className="main-nav pull-right">
             {
               isLogin
-              ? <a onClick={() => setClickProfile(!clickProfile)}>{ localStorage.getItem("username")}</a>
-              : <button className="btn btn-outline-light" onClick={() => dispatch(isLoginModalOpen(true))}>로그인</button>
+                ? <a onClick={() => setClickProfile(!clickProfile)}>{localStorage.getItem("username")}</a>
+                : <button className="btn btn-outline-light" onClick={() => dispatch(isLoginModalOpen(true))}>로그인</button>
             }
           </LoginButtonContainer>
           {
             clickProfile ? (
               <Profile className="profile_dropdown_section">
-                  <li onClick={handleClickMypageBtn}>마이페이지</li>
-                  <li onClick={handleClickLogoutBtn}>로그아웃</li>
+                <li onClick={handleClickMypageBtn}>마이페이지</li>
+                <li onClick={handleClickLogoutBtn}>로그아웃</li>
               </Profile>
             ) : <></>
           }
