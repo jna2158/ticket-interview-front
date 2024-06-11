@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import GoogleButton from "./oauth/oauth_login_button/google_button";
 import KakaoButton from "./oauth/oauth_login_button/kakao_button";
@@ -9,6 +9,12 @@ import { isLoginModalOpen } from "../redux/login_slice";
 
 export default function LoginModal() {
   const dispatch = useDispatch();
+  const [isLogin, setIsLogin] = useState(true); // State to toggle between login and signup
+
+  const toggleView = () => {
+    setIsLogin(!isLogin);
+  };
+
   return (
     <LoginModalOverlay>
       <Modal>
@@ -17,15 +23,32 @@ export default function LoginModal() {
           <span className="error animated tada" id="msg"></span>
           <Form name="form1" className="box">
             <img src={logo} alt="TInterview logo" width={170} />
-            <h5>간편 로그인을 통해 당신의 면접 실력을<br /> 향상시킬 AI 면접 파트너를 만나봐요.</h5>
-            <InputWrapper>
-              <TextInput type="text" placeholder="Email" />
-              <PasswordInput type="password" placeholder="Password" />
-              <ButtonWrapper>
-                <LoginButton type="button">로그인</LoginButton>
-              </ButtonWrapper>
-            </InputWrapper>
-            <SignUpText>아직 계정이 없으신가요? <a href="/signup">회원가입</a></SignUpText>
+            {isLogin ? (
+              <>
+                <h5>간편 로그인을 통해 당신의 면접 실력을<br /> 향상시킬 AI 면접 파트너를 만나봐요.</h5>
+                <InputWrapper>
+                  <TextInput type="text" placeholder="Email" />
+                  <PasswordInput type="password" placeholder="Password" />
+                  <ButtonWrapper>
+                    <LoginButton type="button">로그인</LoginButton>
+                  </ButtonWrapper>
+                </InputWrapper>
+                <ToggleText>아직 계정이 없으신가요? <a onClick={toggleView}>회원가입</a></ToggleText>
+              </>
+            ) : (
+              <>
+                <h5>회원가입을 통해 AI 면접 파트너를 만나보세요.</h5>
+                <InputWrapper>
+                  <TextInput type="text" placeholder="Email" />
+                  <TextInput type="text" placeholder="Username" />
+                  <PasswordInput type="password" placeholder="Password" />
+                  <ButtonWrapper>
+                    <SignupButton type="button">회원가입</SignupButton>
+                  </ButtonWrapper>
+                </InputWrapper>
+                <ToggleText>이미 계정이 있으신가요? <a onClick={toggleView}>로그인</a></ToggleText>
+              </>
+            )}
             <Hr />
             <SocialLoginInfo>간편하게 SNS 로그인</SocialLoginInfo>
             <SocialLoginSection>
@@ -37,7 +60,7 @@ export default function LoginModal() {
         </div>
       </Modal>
     </LoginModalOverlay>
-  )
+  );
 }
 
 const LoginModalOverlay = styled.section`
@@ -143,13 +166,18 @@ const LoginButton = styled(Button)`
   margin: 0;
 `;
 
-const SignUpText = styled.div`
+const SignupButton = styled(Button)`
+  background-color: #5c6bc0;
+  margin: 0;
+`;
+
+const ToggleText = styled.div`
   margin-top: 15px;
   font-size: 14px;
   color: ${({ theme }) => theme.colors.gray5};
   & a {
-    color: ${({ theme }) => theme.colors.primary};
     text-decoration: none;
+    cursor: pointer;
   }
 `;
 
