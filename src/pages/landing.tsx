@@ -20,6 +20,7 @@ export default function Landing() {
 
   };
 
+  dispatch(isLoginModalOpen(true));
   return (
     <Wrapper>
       <LandingSection image={landingImage}>
