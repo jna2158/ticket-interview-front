@@ -57,10 +57,15 @@ export const emailValid = (email) => {
 
 /** 회원가입 - 이메일 인증 확인 */
 export const emailValidCheck = (email, code) => {
-  return instance.post(`/api/accounts/email/code/authorize`, {email, code})
+  return instance.post(`/api/accounts/email/code/authorize`, { email, code })
 }
 
 /** 회원가입 */
 export const signup = (param) => {
   return instance.post(`/api/accounts/email/signup`, param)
+}
+
+/** 로그인 */
+export const login = (param) => {
+  return instance.post(`/api/accounts/email/login`, param);
 }

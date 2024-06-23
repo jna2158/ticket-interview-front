@@ -19,8 +19,6 @@ export default function Landing() {
     // navigate("/interview-score");
 
   };
-
-  dispatch(isLoginModalOpen(true));
   return (
     <Wrapper>
       <LandingSection image={landingImage}>

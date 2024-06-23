@@ -25,8 +25,10 @@ instance.interceptors.response.use(
     return response;
   },
   async (error) => {
-    // TODO: access token 만료인지, refresh token 만료인지 확인하기
-    if (error.response && error.response.status === 401) {
+    console.log("!!err");
+    console.log(error);
+    console.log(error.config.url);
+    if (error.response && error.response.status === 401 && error.config.url !== "/api/accounts/email/login") {
       const res = await updateRefreshToken();
       if (res === 'success') {
         return retryOriginalRequest(error);
@@ -41,17 +43,17 @@ instance.interceptors.response.use(
 // refreshToken 업데이트
 const updateRefreshToken = async () => {
   return instance.post(`${API_HOST}/api/accounts/refresh_token`)
-  .then(res => {
-    localStorage.setItem('ACCESS_TOKEN', res.data.access_token);
-    return 'success';
-  })
-  .catch(err => {
-    return 'fail';
-  })
+    .then(res => {
+      localStorage.setItem('ACCESS_TOKEN', res.data.access_token);
+      return 'success';
+    })
+    .catch(err => {
+      return 'fail';
+    });
 }
 
 // refreshToken 업데이트 후 이전 요청 다시보내기
-const retryOriginalRequest = async (error: any) => {
+const retryOriginalRequest = async (error) => {
   try {
     const originalRequest = error.config;
     return instance(originalRequest);
