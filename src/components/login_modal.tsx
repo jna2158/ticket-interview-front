@@ -142,7 +142,6 @@ export default function LoginModal() {
 
     login(param)
       .then((res) => {
-        console.log(res);
         localStorage.setItem("ACCESS_TOKEN", res.data.access_token);
         localStorage.setItem("username", res.data.username);
         localStorage.setItem("email", res.data.email);
@@ -150,7 +149,7 @@ export default function LoginModal() {
         window.location.href = HOME_URL;
       })
       .catch((err) => {
-        setErrors((prev) => ({ ...prev, password: "이메일 또는 비밀번호가 잘못되었습니다." }));
+        setErrors((prev) => ({ ...prev, password: "이메일 또는 비밀번호를 확인해주세요." }));
       });
   };
 
