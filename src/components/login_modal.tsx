@@ -11,7 +11,7 @@ import { HOME_URL } from "../shared/api_constant";
 
 export default function LoginModal() {
   const dispatch = useDispatch();
-  const [isLogin, setIsLogin] = useState(true); // Changed to true to show login form initially
+  const [isLogin, setIsLogin] = useState(true);
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -25,6 +25,14 @@ export default function LoginModal() {
 
   /** 로그인<->회원가입 */
   const toggleView = () => {
+    setEmail("");
+    setUsername("");
+    setPassword("");
+    setEmailChecked(false);
+    setErrors({ email: "", username: "", password: "" });
+    setIsCodeSent(false);
+    setIsCodeVerified(false);
+    setVerificationErrors("");
     setIsLogin(!isLogin);
   };
 
